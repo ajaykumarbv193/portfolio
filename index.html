@@ -4,180 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ajay Kumar - Portfolio</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+
+  <style>
     :root {
-      --background-color: #1a1a1a; /* Dark background */
-      --primary-color: #ffffff; /* White text */
-      --secondary-color: #f3f4f6; /* Light gray for accents */
-      --highlight-color: #00bcd4; /* Teal for highlights */
-      --card-background: #2a2a2a; /* Dark card background */
-      --shadow-color: rgba(0, 0, 0, 0.2);
+      --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      --card-bg: #1e1e1e;
+      --primary: #ffffff;
+      --accent: #00bcd4;
+      --soft-gray: #b0b0b0;
+      --radius: 12px;
       --transition: 0.3s ease;
-      --border-radius: 0.5rem;
     }
 
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;  
+      margin: 0; padding: 0; box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: var(--background-color);
-      color: var(--primary-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-      min-height: 100vh;
+      background: var(--background);
+      color: var(--primary);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
+    /* HEADER */
     header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: sticky; top: 0;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 2rem;
-      box-shadow: 0 2px 4px var(--shadow-color);
-      position: sticky;
-      top: 0;
-      background: var(--background-color);
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
       z-index: 10;
     }
+    header img { width: 70px; height: 70px; }
 
     nav a {
-      color: var(--secondary-color);
-      font-weight: 700;
-      text-decoration: none;
+      color: var(--primary);
       margin: 0 1rem;
-      transition: color var(--transition);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
     }
-    nav a:hover {
-      color: var(--highlight-color);
-    }
+    nav a:hover { color: var(--accent); }
 
+    /* HERO */
     .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      margin: 4rem 0;
+      padding: 3rem 1rem;
+      animation: fadeIn 1.2s ease forwards;
     }
     .hero img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      width: 160px; height: 160px;
+      border-radius: 50%; object-fit: cover;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      margin-bottom: 1.5rem;
     }
     .hero h1 {
-      font-size: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
       margin-bottom: 0.5rem;
     }
     .hero p {
-      font-size: 1.125rem;
-      margin-bottom: 1.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 600px; font-size: 1.2rem; color: var(--soft-gray);
+      margin-bottom: 2rem;
     }
     .cta-button {
-      padding: 0.75rem 2rem;
-      background: var(--highlight-color);
+      background: var(--accent);
       color: #000;
-      border-radius: var(--border-radius);
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius);
       text-decoration: none;
-      transition: background var(--transition);
+      font-weight: 600;
+      transition: var(--transition);
     }
     .cta-button:hover {
       background: #0097a7;
+      transform: scale(1.05);
     }
 
+    /* SECTIONS */
     .section {
-      margin: 3rem 0;
+      padding: 4rem 2rem;
       text-align: center;
     }
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--highlight-color);
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      font-family: 'Poppins', sans-serif;
     }
+
+    /* PROJECTS */
     .cards-grid {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
     }
     .card {
-      background: var(--card-background);
-      border-radius: var(--border-radius);
-      box-shadow: 0 2px 8px var(--shadow-color);
-      padding: 1.5rem;
-      transition: box-shadow var(--transition);
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--radius);
       width: 300px;
-      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: var(--transition);
     }
     .card:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
-    .card h3 {
-      margin-bottom: 1rem;
-      color: var(--highlight-color);
-    }
-    .card p {
-      margin-bottom: 1rem;
-      color: var(--secondary-color);
-    }
+    .card h3 { margin-bottom: 1rem; color: var(--accent); }
+    .card p { margin-bottom: 1.5rem; color: var(--soft-gray); }
 
-    .contact-section {
-      text-align: center;
-      margin: 3rem 0;
+    /* EXPERIENCE TIMELINE */
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      max-width: 700px;
     }
-    .contact-section h2 {
-      margin-bottom: 1rem;
-      color: var(--highlight-color);
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      background: var(--accent);
+      top: 0; bottom: 0; left: 50%;
+      margin-left: -1.5px;
     }
-    .email-row {
-      margin: 1rem 0;
+    .timeline-container {
+      padding: 1rem;
+      position: relative;
+      width: 50%;
     }
+    .timeline-container.left { left: 0; }
+    .timeline-container.right { left: 50%; }
+    .timeline-box {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .timeline-container.left .timeline-box { margin-right: auto; }
+    .timeline-container.right .timeline-box { margin-left: auto; }
+
+    /* CONTACT */
+    .contact-section p { max-width: 600px; margin: 0 auto 1.2rem; }
     .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
+      display: flex; justify-content: center; gap: 1rem;
     }
     .social-icons a {
-      width: 36px;
-      height: 36px;
+      width: 45px; height: 45px;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 50%;
-      background: var(--highlight-color);
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background var(--transition);
+      background: var(--accent);
+      transition: var(--transition);
     }
+    .social-icons a img { width: 24px; height: 24px; }
     .social-icons a:hover {
       background: #0097a7;
+      transform: scale(1.1);
     }
 
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .cards-grid {
-        flex-direction: column;
-        align-items: center;
-      }
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 768px) {
+      nav a { margin: 0 0.5rem; }
+      .timeline::after { left: 30px; }
+      .timeline-container { width: 100%; padding-left: 60px; }
+      .timeline-container.right { left: 0; }
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
-    <div class="logo" aria-label="Portfolio Logo">
-      <img src="Images/AJ.png" alt="Logo" style="width: 80px; height: 80px; object-fit: contain;">
+    <div class="logo">
+      <img src="Images/AJ.png" alt="Logo">
     </div>
-    <nav aria-label="Primary navigation">
+    <nav>
       <a href="#hero">Home</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
@@ -185,54 +202,56 @@
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero" id="hero">
-    <img src="Images/ICON.jpg" alt="Your portrait" />
+    <img src="Images/ICON.jpg" alt="Profile">
     <h1>Ajay Kumar</h1>
-    <p>Creative and detail-oriented designer passionate about crafting visual identities and user experiences.</p>
+    <p>Creative and detail-oriented designer with a passion for crafting visual identities and building meaningful user experiences.</p>
     <a href="#projects" class="cta-button">View My Work</a>
   </section>
 
+  <!-- PROJECTS -->
   <section class="section" id="projects">
     <h2 class="section-title">Projects</h2>
     <div class="cards-grid">
       <article class="card">
         <h3>Graphic Design</h3>
-        <p>Explore my graphic design projects that showcase my creativity and attention to detail.</p>
-        <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank" rel="noopener noreferrer">View Project</a>
+        <p>Showcasing my creativity through professional, impactful designs crafted with precision and detail.</p>
+        <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
       </article>
+
       <article class="card">
         <h3>UI/UX Design</h3>
-        <p>Check out my UI/UX design work that focuses on user-centered design principles.</p>
-        <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank" rel="noopener noreferrer">View Project</a>
+        <p>Designing intuitive and delightful user experiences with a focus on usability and accessibility.</p>
+        <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
       </article>
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section class="section" id="experience">
     <h2 class="section-title">Experience</h2>
-    <div class="cards-grid">
-      <article class="card">
-        <h3>inGO Electrics Pvt Ltd</h3>
-        <p>As a Graphic Designer, Web Designer & Social Media Handler, I craft thoughtful and engaging visuals.</p>
-        <div class="date">- Internship</div>
-      </article>
+    <div class="timeline">
+      <div class="timeline-container left">
+        <div class="timeline-box">
+          <h3>inGO Electrics Pvt Ltd</h3>
+          <p>Worked as Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
+          <small>- Internship</small>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="contact-section" id="contact">
-    <h2>Contact</h2>
-    <p>If you have any questions or would like to collaborate, feel free to reach out!</p>
-    <div class="email-row">
-      <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
-    </div>
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>If you’d like to collaborate or have any questions, I’d love to hear from you.</p>
+    <p><a href="mailto:ajaykumarbv193@gmail.com" style="color:var(--accent); font-weight:bold;">ajaykumarbv193@gmail.com</a></p>
     <div class="social-icons">
-      <a href="https://www.linkedin.com/in/ajay-b-v-805922334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <img src="Images/LINKEDIN.png" alt="LinkedIn" />
-      </a>
-      <a href="https://www.instagram.com/aj_devil__?igsh=MWt0eWNld2E5NXZ2aA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <img src="Images/INSTAGRAM.png" alt="Instagram" />
-      </a>
+      <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
+      <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
     </div>
   </section>
+
 </body>
 </html>
