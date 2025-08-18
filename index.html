@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio</title>
+  <title>Ajay Kumar - Portfolio</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
     :root {
-      --background-color: #000000; /* Black background */
-      --primary-color: #00ff00; /* Green for text */
-      --secondary-color: #f472b6; /* Pink for highlights */
-      --card-background: #121212; /* Dark card background */
-      --shadow-color: rgba(255, 255, 255, 0.1);
+      --background-color: #1a1a1a; /* Dark background */
+      --primary-color: #ffffff; /* White text */
+      --secondary-color: #f3f4f6; /* Light gray for accents */
+      --highlight-color: #00bcd4; /* Teal for highlights */
+      --card-background: #2a2a2a; /* Dark card background */
+      --shadow-color: rgba(0, 0, 0, 0.2);
       --transition: 0.3s ease;
       --border-radius: 0.5rem;
     }
@@ -24,7 +25,7 @@
     }
 
     body {
-      font-family: 'Roboto Mono', monospace;
+      font-family: 'Roboto', sans-serif;
       background: var(--background-color);
       color: var(--primary-color);
       display: flex;
@@ -32,32 +33,6 @@
       align-items: center;
       padding: 2rem;
       min-height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Splash Screen */
-    .splash-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #1e1e1e; /* Dark background for splash */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-    .splash-screen.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .splash-text {
-      font-size: 3rem;
-      color: var(--secondary-color);
-      text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
     }
 
     header {
@@ -74,26 +49,26 @@
     }
 
     nav a {
-      color: var(--primary-color);
-      font-weight: 600;
+      color: var(--secondary-color);
+      font-weight: 700;
       text-decoration: none;
       margin: 0 1rem;
       transition: color var(--transition);
     }
     nav a:hover {
-      color: var(--secondary-color);
+      color: var(--highlight-color);
     }
 
     .hero {
       text-align: center;
-      margin: 2rem 0;
+      margin: 4rem 0;
     }
     .hero img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       margin-bottom: 1rem;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
     .hero h1 {
       font-size: 2.5rem;
@@ -106,16 +81,16 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .download-cv a {
+    .cta-button {
       padding: 0.75rem 2rem;
-      background: var(--secondary-color);
+      background: var(--highlight-color);
       color: #000;
       border-radius: var(--border-radius);
       text-decoration: none;
       transition: background var(--transition);
     }
-    .download-cv a:hover {
-      background: #d45a9a;
+    .cta-button:hover {
+      background: #0097a7;
     }
 
     .section {
@@ -125,6 +100,7 @@
     .section-title {
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: var(--highlight-color);
     }
     .cards-grid {
       display: flex;
@@ -142,17 +118,15 @@
       text-align: center;
     }
     .card:hover {
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
-    .card img {
-      border-radius: var(--border-radius);
+    .card h3 {
       margin-bottom: 1rem;
-      width: 100%;
-      height: auto;
+      color: var(--highlight-color);
     }
-    .card .title {
-      font-weight: 600;
-      margin: 0.5rem 0;
+    .card p {
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
     }
 
     .contact-section {
@@ -161,6 +135,7 @@
     }
     .contact-section h2 {
       margin-bottom: 1rem;
+      color: var(--highlight-color);
     }
     .email-row {
       margin: 1rem 0;
@@ -175,7 +150,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: var(--secondary-color);
+      background: var(--highlight-color);
       color: #000;
       display: flex;
       align-items: center;
@@ -183,7 +158,7 @@
       transition: background var(--transition);
     }
     .social-icons a:hover {
-      background: #d45a9a;
+      background: #0097a7;
     }
 
     @media (max-width: 640px) {
@@ -198,10 +173,6 @@
   </style>
 </head>
 <body>
-  <div class="splash-screen" id="splash-screen">
-    <div class="splash-text" id="splash-text"></div>
-  </div>
-
   <header>
     <div class="logo" aria-label="Portfolio Logo">
       <img src="Images/AJ.png" alt="Logo" style="width: 80px; height: 80px; object-fit: contain;">
@@ -216,29 +187,23 @@
 
   <section class="hero" id="hero">
     <img src="Images/ICON.jpg" alt="Your portrait" />
-    <h1>Create Beyond Limits</h1>
-    <p>
-      Creative and detail-oriented aspiring designer passionate about crafting visual identities.
-      Skilled in logo design, branding, and basic UI design through academic and self-initiated projects.
-      Eager to grow, contribute fresh ideas, and align visuals with clear, user-focused strategies.
-    </p>
-    <div class="download-cv">
-      <a href="https://drive.google.com/file/d/1QlPNMGpnPd2saGTXtJD2GAeQogeHG9aE/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
-    </div>
+    <h1>Ajay Kumar</h1>
+    <p>Creative and detail-oriented designer passionate about crafting visual identities and user experiences.</p>
+    <a href="#projects" class="cta-button">View My Work</a>
   </section>
 
   <section class="section" id="projects">
     <h2 class="section-title">Projects</h2>
     <div class="cards-grid">
       <article class="card">
-        <img src="Images/Graphic Design.png" alt="Graphic design work" />
-        <div class="title">Graphic Design</div>
-        <a class="link" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank" rel="noopener noreferrer">Click to visit</a>
+        <h3>Graphic Design</h3>
+        <p>Explore my graphic design projects that showcase my creativity and attention to detail.</p>
+        <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank" rel="noopener noreferrer">View Project</a>
       </article>
       <article class="card">
-        <img src="Images/UIUX design.png" alt="UI/UX design work" />
-        <div class="title">UI/UX Design</div>
-        <a class="link" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank" rel="noopener noreferrer">Click to visit</a>
+        <h3>UI/UX Design</h3>
+        <p>Check out my UI/UX design work that focuses on user-centered design principles.</p>
+        <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank" rel="noopener noreferrer">View Project</a>
       </article>
     </div>
   </section>
@@ -248,9 +213,7 @@
     <div class="cards-grid">
       <article class="card">
         <h3>inGO Electrics Pvt Ltd</h3>
-        <p>
-          As a Graphic Designer, Web Designer & Social Media Handler, I craft thoughtful and engaging visuals. I’ve interned at inGo Electrics Pvt Ltd, where I focused on graphic design, web design, and social media handling for platforms like Instagram, working on creative digital projects.
-        </p>
+        <p>As a Graphic Designer, Web Designer & Social Media Handler, I craft thoughtful and engaging visuals.</p>
         <div class="date">- Internship</div>
       </article>
     </div>
@@ -258,10 +221,7 @@
 
   <section class="contact-section" id="contact">
     <h2>Contact</h2>
-    <p>
-      I’m a fresher with a strong interest in branding and digital interface design.
-      Eager to contribute to creative projects and continuously improve through real-world experience.
-    </p>
+    <p>If you have any questions or would like to collaborate, feel free to reach out!</p>
     <div class="email-row">
       <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
     </div>
@@ -274,28 +234,5 @@
       </a>
     </div>
   </section>
-
-  <script>
-    // Typing effect for splash screen
-    const text = "Alpha Grey";
-    const splashTextElement = document.getElementById("splash-text");
-    let index = 0;
-
-    function type() {
-      if (index < text.length) {
-        splashTextElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(type, 150); // Adjust typing speed here
-      } else {
-        setTimeout(() => {
-          document.getElementById('splash-screen').classList.add('hidden');
-        }, 3000); // Keep splash screen for 5 seconds after typing
-      }
-    }
-
-    window.onload = function() {
-      type();
-    };
-  </script>
 </body>
 </html>
