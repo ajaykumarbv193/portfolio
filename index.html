@@ -3,212 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay - Designer Portfolio</title>
+  <title>Ajay — Designer Portfolio</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #13151b;
       --accent: #49e2c4;
-      --card: #1a1d26;
+      --card: #181b23;
       --card-hover: #232b38;
       --text: #fff;
       --muted: #bfc9da;
-      --radius: 14px;
-      --transition: cubic-bezier(.46,.03,.52,.96) 0.3s;
+      --radius: 16px;
+      --transition: cubic-bezier(.46,.03,.52,.96) 0.32s;
+      --gradient: linear-gradient(145deg, #49e2c4 0%, #28344c 100%);
     }
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
       color: var(--text);
       margin: 0;
+      overflow-x: hidden;
     }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 0 1rem;
-    }
-    .hero-img {
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      border: 2.5px solid var(--accent);
-      object-fit: cover;
-      margin-bottom: 1rem;
-      background: #232936;
-      box-shadow: 0 0 14px rgba(73,226,196,0.10);
+    header { text-align:center; padding: 3rem 0 1.3rem 0; position:relative; }
+    .ajay-hero-img {
+      width: 90px;height: 90px;margin: 0 auto 1.1rem auto;
+      display: block; border-radius: 50%;border:3px solid var(--accent);
+      object-fit: cover; background: #232936;
+      box-shadow: 0 0 25px rgba(73,226,196,0.11);
     }
     h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
-      font-weight: 600;
-      letter-spacing: 1px;
+      font-family: 'Montserrat',sans-serif;font-size:2.4rem;margin-bottom:0.6rem;font-weight:800;letter-spacing:1px;
+      background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-clip: text;
     }
-    .subtitle { color: var(--muted); font-size: 1.07rem; margin-bottom: 1.7rem;}
+    .subtitle {
+      color: var(--muted); font-size: 1.13rem; margin-bottom: 1.8rem;
+      letter-spacing: 0.5px;
+    }
     nav {
-      margin-bottom: 1.4rem;
+      text-align:center; margin-bottom: 0.9rem;
     }
     nav a {
-      color: var(--text); margin: 0 1.1rem;
-      font-weight: 600; text-decoration: none;
-      font-size: 1.07rem;
-      font-family: 'Montserrat', sans-serif;
-      transition: color var(--transition);
+      color: var(--accent); margin:0 1.24rem;
+      font-weight:600;text-decoration:none;font-size:1.07rem;transition:color var(--transition);
+      font-family: 'Montserrat',sans-serif;
     }
-    nav a:hover { color: var(--accent); }
-    /* Section */
+    nav a:hover { color: #fff; }
     .section-title {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--accent);
-      font-size: 1.23rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      text-align: center;
+      font-family: 'Montserrat',sans-serif;color: var(--accent);
+      font-size: 1.19rem; margin-bottom: 1.1rem; font-weight:600;text-align:center;
+      letter-spacing:0.5px;
     }
-    .section { padding: 2.1rem 0; text-align: center;}
-    /* PROJECT CARDS */
-    .cards-grid { 
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.1rem;
-      margin-bottom: 2rem;
+    /* Projects – interactive grid */
+    .projects-grid {
+      display: flex; justify-content:center; flex-wrap:wrap; gap: 2rem; margin-bottom:2rem;
     }
-    .card {
+    .project-card {
       background: var(--card);
       border-radius: var(--radius);
-      box-shadow: 0 1px 9px rgba(73,226,196,0.09);
-      width: 220px;
-      padding: 1rem 1.1rem;
-      text-align: left;
-      border: 2px solid transparent;
+      box-shadow: 0 1px 13px rgba(73,226,196,0.10);
+      width: 265px; min-height: 153px;
+      text-align: left; border: 2px solid transparent;
       transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      position: relative;
-      z-index: 1;
+      position: relative; cursor: pointer;
+      overflow: hidden;
+      display: flex; flex-direction: column; justify-content: space-between;
     }
-    .card h3 {
-      margin-bottom: 0.4rem;
-      color: var(--accent);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.02rem;
-      font-weight: 600;
+    .project-card h3 {
+      margin: 1.15rem 1.2rem 0.65rem 1.2rem; color: var(--accent);
+      font-family: 'Montserrat',sans-serif;font-size:1.08rem;font-weight:600;
     }
-    .card p {
-      color: var(--muted);
-      font-size: 0.98rem;
-      margin-bottom: 0.7rem;
+    .project-card p {
+      color: var(--muted); font-size: 1.03rem; margin:0 1.2rem 1rem 1.2rem;
+      min-height: 36px;
     }
-    .card a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity var(--transition);
+    .project-card a {
+      align-self: flex-start; margin: 0 1.2rem 1.2rem 1.2rem;
+      background: var(--accent); color: #13151b; border-radius: 8px;
+      padding: 0.43rem 1.2rem; font-weight:600; text-decoration:none;
+      font-size:1.01rem; letter-spacing: 0.03em;
+      box-shadow:0 0 5px rgba(73,226,196,0.1); transition: background var(--transition), color var(--transition);
     }
-    .card a:hover { opacity: 0.66; }
-    .card:hover {
-      transform: translateY(-7px) scale(1.05);
-      box-shadow: 0 6px 18px 0 rgba(73,226,196,0.14);
-      border: 2px solid var(--accent);
+    .project-card a:hover {
+      background: #34b091; color: #fff;
+    }
+    .project-card:hover {
       background: var(--card-hover);
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 0 23px rgba(73,226,196,0.14);
+      border: 2px solid var(--accent);
     }
-    /* CONTACT CARD */
+    /* Contact card */
     .contact-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.4rem;
-      max-width: 290px;
-      margin: 1.3rem auto 0 auto;
-      box-shadow: 0 1px 9px rgba(73,226,196,0.10);
-      text-align: center;
-      transition: box-shadow var(--transition), transform var(--transition), background var(--transition), border var(--transition);
-      border: 2px solid transparent;
-      font-size: 1.02rem;
+      background: var(--card); border-radius: var(--radius); padding: 1.2rem 1.5rem;
+      box-shadow: 0 1px 7px rgba(73,226,196,0.11);
+      margin: 2rem auto 0 auto; max-width: 328px; text-align:center;
+      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+      border: 2px solid transparent; font-size: 1.12rem;
     }
-    .contact-card:hover {
-      background: var(--card-hover);
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 13px rgba(73,226,196,0.11);
-      transform: scale(1.04);
+    .contact-card:hover { background: var(--card-hover); border: 2px solid var(--accent); box-shadow: 0 0 15px rgba(73,226,196,.13); transform: scale(1.03);}
+    .contact-card form { margin-top: 1rem; }
+    .contact-card input, .contact-card textarea {
+      width: 98%; padding: 0.7rem; margin-bottom:0.7rem;
+      border-radius: 9px; border: 1px solid #22283b;
+      background: #161926; color: var(--text); font-family: inherit;
+      font-size: 1.01rem;
     }
-    .contact-card a {
-      color: var(--accent);
-      font-weight: 600; font-size: 1.01rem; text-decoration: none;
-      margin-bottom: 0.5rem; display: inline-block; transition: opacity var(--transition), text-decoration var(--transition);
-    }
-    .contact-card a:hover { text-decoration: underline; opacity: 0.7;}
-    /* Contact form simple */
-    .contact-form input, .contact-form textarea {
-      width: 100%; padding: 0.8rem; margin-bottom: 0.7rem;
-      border-radius: 8px; border: 1px solid #1d222e;
-      background: #181b23; color: var(--text); font-family: inherit;
-      resize: vertical; font-size: 1rem;
-    }
-    .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--accent);}
-    .contact-form button {
-      background: var(--accent); color: #12161c;
-      border-radius: 8px; font-weight: 600;
-      font-size: 1rem; padding: 0.7rem 2rem; border: none;
-      cursor: pointer; transition: background var(--transition);
-    }
-    .contact-form button:hover { background: #34b091; color: #fff;}
-    /* SOCIAL ICONS */
-    .social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 0.7rem;}
-    .social-icons a {
-      width: 33px; height: 33px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; background: rgba(73,226,196,0.10);
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      box-shadow: 0 0 7px rgba(73,226,196,0.09);
-    }
-    .social-icons a img {
-      width: 14px; height: 14px; object-fit: contain;
-    }
-    .social-icons a:hover {
-      background: var(--accent);
-      transform: scale(1.14);
-      box-shadow: 0 0 8px rgba(73,226,196,0.16);
-    }
+    .contact-card input:focus, .contact-card textarea:focus { outline: 2px solid var(--accent);}
+    .contact-card button {
+      background: var(--accent); color: #13151b; border-radius: 8px;
+      font-weight:600; font-size:1.02rem; padding:0.6rem 2.1rem; border:none;
+      cursor:pointer; transition: background var(--transition), color var(--transition);}
+    .contact-card button:hover { background: #34b091; color:#fff;}
+    .contact-card .social-icons {margin-top:1.1rem;}
+    .contact-card .social-icons a { width:33px; height:33px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:rgba(73,226,196,0.10); margin:0 0.5rem; box-shadow:0 0 6px rgba(73,226,196,0.08); transition: transform var(--transition), background var(--transition);}
+    .contact-card .social-icons a img { width:16px; height:16px; object-fit:contain;}
+    .contact-card .social-icons a:hover {background:var(--accent); transform:scale(1.14)}
     @media (max-width: 700px){
-      .cards-grid{flex-direction:column;align-items:center;}
-      .contact-card {width:96vw;}
+      .projects-grid{flex-direction:column;align-items:center;}
+      .contact-card { width:96vw;}
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="Images/ICON.jpg" alt="Ajay portrait" class="hero-img" />
+    <img src="Images/ICON.jpg" alt="Ajay portrait" class="ajay-hero-img" />
     <h1>Ajay</h1>
-    <div class="subtitle">Designer | Visual Identity & UI/UX Enthusiast</div>
+    <div class="subtitle">Designer • Visual Identity & UI/UX Enthusiast</div>
     <nav>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="section" id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="cards-grid">
-      <!-- Example Project Card -->
-      <article class="card">
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <!-- Card 1 -->
+      <div class="project-card">
         <h3>Graphic Design</h3>
-        <p>Striking digital artworks, posters, branding material, and more—explore my creative library.</p>
-        <a href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
-      </article>
-      <article class="card">
+        <p>Posters, branding, digital artwork: expressive visuals designed for real-world impact.</p>
+        <a href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Gallery</a>
+      </div>
+      <!-- Card 2 -->
+      <div class="project-card">
         <h3>UI/UX Design</h3>
-        <p>Modern user interface designs and app mockups, focused on delightful and intuitive user experience.</p>
-        <a href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
-      </article>
+        <p>Clean, intuitive web and app interfaces that blend usability and aesthetics.</p>
+        <a href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Case Studies</a>
+      </div>
+      <!-- Card 3: Add More Projects -->
+      <!--
+      <div class="project-card">
+        <h3>Project Title</h3>
+        <p>Project description here, tech, tools, and results.</p>
+        <a href="https://link-to-your-project.com" target="_blank">View Project</a>
+      </div>
+      -->
     </div>
   </section>
 
-  <section class="section" id="contact">
-    <h2 class="section-title">Contact Me</h2>
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
     <div class="contact-card">
-      <form class="contact-form" action="mailto:ajaykumarbv193@gmail.com" method="POST" enctype="text/plain">
+      <div style="font-size: 1.04rem; margin-bottom:1rem;">Let’s collaborate! Send a message or connect via social:</div>
+      <form action="mailto:ajaykumarbv193@gmail.com" method="POST" enctype="text/plain">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+        <button type="submit">Send</button>
       </form>
-      <div style="margin: 0.8rem 0 .2rem 0; font-size: 0.97rem;">
-        Or email: <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
+      <div style="margin: .9rem 0 .3rem 0; font-size: 0.98rem;">
+        Or email: <a href="mailto:ajaykumarbv193@gmail.com" style="color: var(--accent);font-weight:600;text-decoration:none;">ajaykumarbv193@gmail.com</a>
       </div>
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
