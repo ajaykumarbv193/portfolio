@@ -1,304 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay Kumar - Portfolio</title>
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      --card-bg: #1e1e1e;
-      --primary: #fff;
-      --accent: #00bcd4;
-      --soft-gray: #b0b0b0;
-      --radius: 12px;
-      --transition: 0.3s ease;
-    }
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Roboto', 'Poppins', sans-serif;
-      background: var(--background);
-      color: var(--primary);
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-      min-height: 100vh;
-    }
-    .aj-bg {
-      position: fixed;
-      top: 50%; left: 50%;
-      width: 110vw; height: 110vh;
-      max-width: none;
-      min-width: 500px;
-      object-fit: contain;
-      transform: translate(-50%, -50%) rotate(-18deg);
-      opacity: 0.065;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-    }
-    .content-wrapper { position: relative; z-index: 1; width: 100%; }
+<!-- ... inside <head> ... -->
+<style>
+  :root {
+    --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --card-bg: #1e1e1e;
+    --primary: #fff;
+    --accent: #00bcd4;
+    --soft-gray: #b0b0b0;
+    --radius: 12px;
+    --transition: 0.3s ease;
+  }
+  body {
+    font-family: 'Roboto', 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--primary);
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .aj-bg {
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 90vw; max-width: 800px; min-width: 320px;
+    height: auto;
+    transform: translate(-50%, -50%) rotate(-18deg);
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .content-wrapper { position: relative; z-index: 1; width: 100%; }
 
-    header {
-      position: sticky; top: 0;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.1rem 2rem 1rem 2rem;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(9px);
-      z-index: 10;
-    }
-    header .logo img {
-      width: 50px; height: 50px; object-fit: contain; border-radius: 12px;
-    }
-    nav {
-      display: flex; align-items: center;
-    }
-    nav a {
-      color: var(--primary); margin: 0 1.1rem;
-      text-decoration: none; font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      transition: color var(--transition);
-      font-size: 1.07rem;
-    }
-    nav a:hover { color: var(--accent);}
-    .hero {
-      min-height: 70vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center; padding: 4rem 1rem 2rem 1rem;
-      animation: fadeIn 1.2s var(--transition) forwards;
-    }
-    .hero img {
-      width: 120px; height: 120px;
-      border-radius: 50%; object-fit: cover;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.11);
-      margin-bottom: 1.1rem;
-      border: 2px solid var(--accent);
-      background: #232936;
-      transition: box-shadow var(--transition), transform var(--transition);
-    }
-    .hero img:hover {
-      box-shadow: 0 0 30px var(--accent);
-      transform: scale(1.04);
-    }
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.2rem;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    .hero p {
-      max-width: 480px; font-size: 1.08rem; color: var(--soft-gray);
-      margin: 0 auto 1.6rem auto;
-    }
-    .cta-button {
-      background: var(--accent);
-      color: #000;
-      padding: 0.7rem 1.6rem;
-      border-radius: var(--radius);
-      text-decoration: none;
-      font-weight: 600;
-      transition: background var(--transition), transform var(--transition);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-    }
-    .cta-button:hover {
-      background: #0097a7;
-      transform: scale(1.06);
-    }
-    .section {
-      padding: 2.5rem 1rem;
-      text-align: center;
-    }
-    .section-title {
-      font-size: 1.32rem;
-      margin-bottom: 1.2rem;
-      color: var(--accent);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-    }
-    /* Smaller Project Cards */
-    .cards-grid {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.1rem;
-      margin-bottom: 1.1rem;
-    }
-    .card {
-      background: var(--card-bg);
-      padding: 0.8rem 1rem;
-      border-radius: var(--radius);
-      width: 185px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      border: 2px solid transparent;
-      margin: 0.3rem 0;
-      text-align: left;
-      position: relative;
-    }
-    .card h3 { margin-bottom: 0.5rem; color: var(--accent); font-family: 'Poppins', sans-serif; font-size: 1rem;}
-    .card p { color: var(--soft-gray); margin-bottom: 0.6rem; font-size: 0.91rem;}
-    .card .cta-button { margin-bottom: 0; font-size: 0.92rem;}
-    .card:hover {
-      background: #222a36;
-      border: 2px solid var(--accent);
-      box-shadow: 0 8px 14px rgba(0,188,212,0.09);
-      transform: translateY(-6px) scale(1.05);
-    }
-    .timeline {
-      margin: 1.6rem auto 0 auto;
-      max-width: 400px;
-      text-align: left;
-    }
-    .timeline-box {
-      background: var(--card-bg);
-      padding: 1rem 1.1rem;
-      border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      margin-bottom: 1.1rem;
-      border-left: 3.5px solid var(--accent);
-      font-size: 1rem;
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-    }
-    .timeline-box:hover {
-      background: #222a36;
-      box-shadow: 0 0 14px var(--accent);
-      transform: scale(1.02);
-    }
-    .timeline-box h3 { color: var(--accent); font-size: 1.06rem;}
-    .timeline-box small { color: var(--soft-gray); }
-    .contact-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 1rem 1.2rem;
-      max-width: 220px;
-      margin: 1.2rem auto 0 auto;
-      box-shadow: 0 2px 9px rgba(0,188,212,0.06);
-      text-align: center;
-      border: 2px solid transparent;
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      font-size: 1rem;
-    }
-    .contact-card:hover {
-      background: #222a36;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 13px var(--accent);
-      transform: scale(1.03);
-    }
-    /* Email Icon Button */
-    .mail-icon-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px;
-      background: var(--accent);
-      border: none; border-radius: 50%;
-      box-shadow: 0 0 7px rgba(0,188,212,0.10);
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      margin-bottom: 0.7rem;
-      margin-top: 0.1rem;
-    }
-    .mail-icon-btn:hover {
-      background: #0097a7;
-      transform: scale(1.1);
-    }
-    .mail-icon-btn img {
-      width: 20px; height: 20px; object-fit: contain;
-      filter: brightness(1.2);
-    }
-    .social-icons {
-      display: flex; justify-content: center; gap: 1rem; margin-top: 0.7rem;
-    }
-    .social-icons a {
-      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; background: var(--accent); transition: background var(--transition), transform var(--transition);
-      box-shadow: 0 0 7px rgba(0,188,212,0.06);
-    }
-    .social-icons a img { width: 18px; height: 18px; object-fit: contain;}
-    .social-icons a:hover {
-      background: #0097a7;
-      transform: scale(1.10);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(36px);}
-      to { opacity: 1; transform: none;}
-    }
-    @media(max-width:700px){
-      .cards-grid{flex-direction:column;align-items:center;}
-      .card {width:88vw;}
-      .contact-card, .timeline, .timeline-box {max-width:94vw;}
-      .hero img {width:80px;height:80px;}
-      .aj-bg {min-width:330px;}
-    }
-  </style>
-</head>
-<body>
-  <!-- AJ LOGO BACKGROUND -->
-  <img class="aj-bg" src="Images/AJ.png" alt="AJ Logo Background" />
-  <div class="content-wrapper">
-    <!-- HEADER -->
-    <header>
-      <div class="logo">
-        <img src="Images/AJ.png" alt="Logo">
-      </div>
-      <nav>
-        <a href="#hero">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <img src="Images/ICON.jpg" alt="Profile">
-      <h1>Ajay Kumar</h1>
-      <p>Creative and detail-oriented designer passionate about crafting visual identities and meaningful user experiences.</p>
-      <a href="#projects" class="cta-button">View My Work</a>
-    </section>
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Graphic Design</h3>
-          <p>Creative visual designs crafted with precision and impact.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View</a>
-        </article>
-        <article class="card">
-          <h3>UI/UX Design</h3>
-          <p>Modern and intuitive user experiences focused on usability.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View</a>
-        </article>
-      </div>
-    </section>
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-box">
-          <h3>inGO Electrics Pvt Ltd</h3>
-          <p>Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
-          <small>- Internship</small>
-        </div>
-      </div>
-    </section>
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-card">
-        <button class="mail-icon-btn" onclick="window.location.href='mailto:ajaykumarbv193@gmail.com'">
-          <img src="Images/GMAIL.png" alt="Gmail Icon">
-        </button>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
-          <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
-        </div>
-      </div>
-    </section>
-  </div>
-</body>
-</html>
+  header {
+    position: sticky; top: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem clamp(1rem, 6vw, 2.5rem);
+    background: rgba(0,0,0,0.58);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  header .logo img {
+    width: 44px; height: 44px; object-fit: contain; border-radius: 9px;
+  }
+  nav a {
+    color: var(--primary);
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.12rem);
+    transition: color var(--transition);
+  }
+  nav a:hover { color: var(--accent);}
+  
+  /* HERO SECTION */
+  .hero {
+    min-height: 50vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: clamp(2rem, 7vw, 5rem) 1rem 2rem 1rem;
+    animation: fadeIn 1.2s var(--transition) forwards;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hero img {
+    width: clamp(80px, 22vw, 140px); 
+    height: clamp(80px, 22vw, 140px);
+    border-radius: 50%; 
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.11);
+    margin-bottom: 1.1rem;
+    border: 2px solid var(--accent);
+    background: #232936;
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.3rem, 6vw, 2.6rem);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .hero p {
+    max-width: 96vw; width: 420px; font-size: clamp(0.92rem, 2vw, 1.12rem); color: var(--soft-gray);
+    margin: 0 auto 1.6rem auto;
+  }
+  .cta-button {
+    background: var(--accent);
+    color: #000;
+    padding: 0.7rem 1.6rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background var(--transition), transform var(--transition);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.92rem, 2vw, 1.08rem);
+    margin-top: 1rem;
+    display: inline-block;
+  }
+  .cta-button:hover {
+    background: #0097a7;
+    transform: scale(1.06);
+  }
+  /* SECTION TITLES */
+  .section {
+    padding: clamp(1rem, 6vw, 2.3rem) 1rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .section-title {
+    font-size: clamp(1.15rem, 4vw, 1.7rem);
+    margin-bottom: 1.2rem;
+    color: var(--accent);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+  }
+  /* Project Cards */
+  .cards-grid {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+    margin-bottom: 1.1rem;
+    width: 100%;
+  }
+  .card {
+    background: var(--card-bg);
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--radius);
+    width: clamp(140px, 45vw, 210px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+    border: 2px solid transparent;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  .card h3 { 
+    margin-bottom: 0.45rem; 
+    color: var(--accent); 
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.98rem, 2vw, 1.12rem);
+  }
+  .card p { 
+    color: var(--soft-gray); 
+    margin-bottom: 0.65rem; 
+    font-size: clamp(0.85rem, 2vw, 0.97rem);
+  }
+  .card .cta-button { margin-bottom: 0; font-size: clamp(0.87rem, 2vw, 1rem);}
+  .card:hover {
+    background: #222a36;
+    border: 2px solid var(--accent);
+    box-shadow: 0 8px 18px rgba(0,188,212,0.10);
+    transform: translateY(-3px) scale(1.04);
+  }
+  /* Timeline/Experience */
+  .timeline {
+    margin: 1.6rem auto 0 auto;
+    max-width: 96vw;
+    text-align: left;
+  }
+  .timeline-box {
+    background: var(--card-bg);
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    margin-bottom: 1.1rem;
+    border-left: 3px solid var(--accent);
+    font-size: clamp(0.89rem, 2vw, 1.07rem);
+    transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+    max-width: 500px;
+  }
+  .timeline-box:hover {
+    background: #222a36;
+    box-shadow: 0 0 14px var(--accent);
+    transform: scale(1.02);
+  }
+  .timeline-box h3 { color: var(--accent); font-size: 1.05rem;}
+  .timeline-box small { color: var(--soft-gray); }
+  /* Contact Card + Responsive Email/Social */
+  .contact-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    max-width: 260px;
+    margin: 1.2rem auto 0 auto;
+    box-shadow: 0 2px 9px rgba(0,188,212,0.06);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .contact-card:hover {
+    background: #222a36;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 13px var(--accent);
+    transform: scale(1.03);
+  }
+  .mail-icon-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    background: var(--accent);
+    border: none; border-radius: 50%;
+    box-shadow: 0 0 7px rgba(0,188,212,0.10);
+    cursor: pointer;
+    transition: background var(--transition), transform var(--transition);
+    margin: .7rem 0 .2rem 0;
+  }
+  .mail-icon-btn img {
+    width: 19px; height: 19px; object-fit: contain;
+  }
+  .mail-icon-btn:hover { background: #0097a7; transform: scale(1.09);}
+  .social-icons {
+    display: flex; justify-content: center; gap: 1rem; margin-top: 0.4rem;
+    width: 100%;
+  }
+  .social-icons a {
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; background: var(--accent); transition: background var(--transition), transform var(--transition);
+    box-shadow: 0 0 7px rgba(0,188,212,0.06);
+  }
+  .social-icons a img { width: 16px; height: 16px;}
+  .social-icons a:hover {
+    background: #0097a7;
+    transform: scale(1.08);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(32px);}
+    to { opacity: 1; transform: none;}
+  }
+  @media(max-width:600px){
+    .cards-grid{flex-direction:column;align-items:center;}
+    .card {width:96vw;}
+    .contact-card, .timeline, .timeline-box {max-width:97vw;}
+    .hero img {width:68px;height:68px;}
+    .aj-bg {min-width:210px;}
+  }
+</style>
+<!-- ... Rest of your HTML stays unchanged ... -->
