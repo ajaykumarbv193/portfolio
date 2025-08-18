@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay Kumar - Portfolio</title>
+  <title>Ajay- Portfolio</title>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
@@ -42,6 +42,7 @@
       z-index: 0;
     }
     .content-wrapper { position: relative; z-index: 1; width: 100%; }
+
     header {
       position: sticky; top: 0;
       display: flex; justify-content: space-between; align-items: center;
@@ -166,10 +167,13 @@
       box-shadow: 0 8px 22px rgba(0,188,212,0.16);
       transform: translateY(-7px) scale(1.07);
     }
-    .timeline {
-      margin: 2.2rem auto 0 auto;
-      max-width: 72vw;
-      text-align: left;
+
+    /* Experience Section - Center Card */
+    .experience-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
     }
     .timeline-box {
       background: var(--card-bg);
@@ -181,6 +185,8 @@
       font-size: 1.14rem;
       transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
       max-width: 520px;
+      min-width: 320px;
+      text-align: left;
     }
     .timeline-box:hover {
       background: #222a36;
@@ -189,6 +195,8 @@
     }
     .timeline-box h3 { color: var(--accent); font-size: 1.23rem;}
     .timeline-box small { color: var(--soft-gray); }
+
+    /* Contact Card: Text above, icons at the bottom in row */
     .contact-card {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -200,13 +208,22 @@
       border: 2px solid transparent;
       transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
       font-size: 1.15rem;
-      display: flex; flex-direction: column; align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
     }
     .contact-card:hover {
       background: #222a36;
       border: 2px solid var(--accent);
       box-shadow: 0 0 13px var(--accent);
       transform: scale(1.05);
+    }
+    .contact-text {
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
     }
     .mail-icon-btn {
       display: inline-flex; align-items: center; justify-content: center;
@@ -223,15 +240,27 @@
     }
     .mail-icon-btn:hover { background: #0097a7; transform: scale(1.13);}
     .social-icons {
-      display: flex; justify-content: center; gap: 0.8rem; margin-top: 0.7rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.3rem;
       width: 100%;
     }
     .social-icons a {
-      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; background: var(--accent); transition: background var(--transition), transform var(--transition);
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: background var(--transition), transform var(--transition);
       box-shadow: 0 0 8px rgba(0,188,212,0.07);
     }
-    .social-icons a img { width: 20px; height: 20px;}
+    .social-icons a img {
+      width: 20px;
+      height: 20px;
+    }
     .social-icons a:hover {
       background: #0097a7;
       transform: scale(1.13);
@@ -305,7 +334,7 @@
     <!-- EXPERIENCE -->
     <section class="section" id="experience">
       <h2 class="section-title">Experience</h2>
-      <div class="timeline">
+      <div class="experience-wrapper">
         <div class="timeline-box">
           <h3>inGO Electrics Pvt Ltd</h3>
           <p>Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
@@ -318,12 +347,17 @@
     <section class="section" id="contact">
       <h2 class="section-title">Contact</h2>
       <div class="contact-card">
+        <div class="contact-text">
+          If you'd like to collaborate or have questions, reach out:
+        </div>
         <button class="mail-icon-btn" onclick="window.location.href='mailto:ajaykumarbv193@gmail.com'">
           <img src="Images/GMAIL.png" alt="Gmail Icon">
         </button>
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
           <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
+          <!-- Add a third icon if needed -->
+          <!-- <a href="#"><img src="Images/DRIBBBLE.png" alt="Dribbble"></a> -->
         </div>
       </div>
     </section>
