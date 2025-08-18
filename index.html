@@ -10,265 +10,305 @@
 
   <style>
     :root {
-      --bg-dark: #0d0d0d;
-      --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      --card-bg: #1a1a1a;
-      --text: #ffffff;
-      --muted: #b0b0b0;
-      --accent: #00ffcc; /* Neon greenish-cyan */
-      --accent-hover: #00cba9;
+      --bg-dark: #10131a;
+      --accent: #49e2c4; /* Minty blue-green */
+      --accent-hover: #34b091;
+      --card-bg: #181b23;
+      --text: #fff;
+      --muted: #bfc9da;
       --radius: 14px;
-      --transition: all 0.35s ease;
+      --transition: all 0.3s cubic-bezier(.46,.03,.52,.96);
     }
-
     * {
       margin: 0; padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg-dark);
       color: var(--text);
       line-height: 1.6;
+      position: relative;
       overflow-x: hidden;
     }
-
-    /* ---------------- SPLASH SCREEN ---------------- */
-    #splash {
+    /* AJ LOGO Background */
+    .aj-bg {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--bg-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      opacity: 0.09;
+      width: 50vw;
+      max-width: 600px;
+      min-width: 280px;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+    }
+    #main-content {
+      position: relative;
+      z-index: 2;
+    }
+    /* SPLASH SCREEN */
+    #splash {
+      position: fixed; top:0;left:0;right:0;bottom:0;
+      background: linear-gradient(135deg, #171c22 55%, #243b36 100%);
+      display: flex; align-items: center; justify-content: center;
       z-index: 1000;
       font-family: 'Montserrat', sans-serif;
     }
     #splash h1 {
-      font-size: 4rem;
+      font-size: 3.3rem;
       color: var(--accent);
-      animation: glow 1.5s infinite alternate;
+      text-shadow: 0 0 14px var(--accent), 0 0 44px #1c2b29;
+      opacity: 0.73;
+      letter-spacing: 2px;
+      font-weight: 700;
+      animation: splashGlow 1.4s infinite alternate;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
-      to { text-shadow: 0 0 20px #fff, 0 0 40px var(--accent); }
+    @keyframes splashGlow {
+      from { text-shadow: 0 0 10px var(--accent), 0 0 18px var(--accent); }
+      to { text-shadow: 0 0 20px #34b091, 0 0 40px var(--accent); }
     }
+    #splash.fade { opacity: 0; visibility: hidden; transition: opacity 1s ease, visibility 1s ease; }
 
-    /* Fade-Out Splash */
-    #splash.fade {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
-
-    /* ---------------- HEADER ---------------- */
+    /* HEADER */
     header {
       position: sticky;
       top: 0;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 2rem;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      z-index: 50;
+      background: rgba(14,19,30, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 10;
     }
-    header img { width: 70px; height: 70px; }
+    header img { width: 60px; height: 60px; }
 
     nav a {
       color: var(--text);
       margin: 0 1rem;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
       transition: var(--transition);
     }
     nav a:hover { color: var(--accent); }
 
-    /* ---------------- HERO ---------------- */
+    /* HERO */
     .hero {
       min-height: 90vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center;
       padding: 3rem 1rem;
     }
     .hero img {
-      width: 170px; height: 170px;
+      width: 155px; height: 155px;
       border-radius: 50%;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 25px rgba(0,255,204,0.4);
-      margin-bottom: 1.5rem;
+      border: 2.5px solid var(--accent);
+      box-shadow: 0 0 20px rgba(73,226,196,0.19);
+      margin-bottom: 1.2rem;
       transition: var(--transition);
     }
     .hero img:hover {
-      transform: rotate(5deg) scale(1.05);
-      box-shadow: 0 0 40px rgba(0,255,204,0.8);
+      transform: scale(1.04);
+      box-shadow: 0 0 33px rgba(73,226,196,0.23);
     }
-    .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-    .hero p { max-width: 600px; font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
+    .hero h1 {
+      font-size: 2.7rem;
+      letter-spacing: 1px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.4rem;
+    }
+    .hero p {
+      max-width: 580px; font-size: 1.15rem; color: var(--muted);
+      margin-bottom: 1.8rem;
+    }
     .cta-button {
       background: var(--accent);
-      color: #000;
-      padding: 0.9rem 2.2rem;
+      color: #12161c;
+      padding: 0.75rem 2rem;
       border-radius: var(--radius);
-      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.07rem;
       font-weight: 600;
+      text-decoration: none;
       transition: var(--transition);
+      box-shadow: 0 0 18px rgba(73,226,196,0.09);
     }
     .cta-button:hover {
       background: var(--accent-hover);
-      transform: scale(1.08);
-      box-shadow: 0 0 20px rgba(0,255,204,0.6);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(73,226,196,0.15);
+      transform: scale(1.07);
     }
-
-    /* ---------------- SECTIONS ---------------- */
+    /* SECTIONS */
     .section {
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
       text-align: center;
     }
     .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
+      font-size: 2rem;
+      margin-bottom: 1.6rem;
       color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
     }
-
-    /* ---------------- CARDS ---------------- */
+    /* CARDS */
     .cards-grid {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
     }
     .card {
       background: var(--card-bg);
-      padding: 2rem;
+      padding: 1.15rem 2rem;
       border-radius: var(--radius);
       width: 300px;
       cursor: pointer;
-      box-shadow: 0 0 0 rgba(0,255,204,0.2);
-      transition: var(--transition);
+      box-shadow: 0 0 0 rgba(73,226,196,0.11);
       border: 2px solid transparent;
+      transition: var(--transition);
     }
-    .card h3 { margin-bottom: 1rem; color: var(--accent); }
-    .card p { margin-bottom: 1.5rem; color: var(--muted); }
-
-    /* Hover effect animation */
+    .card h3 {
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: 1.07rem;
+    }
     .card:hover {
-      transform: translateY(-10px) scale(1.05);
+      transform: translateY(-8px) scale(1.03);
       border: 2px solid var(--accent);
-      box-shadow: 0 0 25px rgba(0,255,204,0.5);
+      box-shadow: 0 0 13px rgba(73,226,196,0.17);
+      background: #202736;
     }
-
-    /* ---------------- EXPERIENCE ---------------- */
+    /* EXPERIENCE */
     .timeline {
       max-width: 700px; margin: 0 auto;
     }
     .experience-card {
       background: var(--card-bg);
       border-left: 4px solid var(--accent);
-      padding: 1.5rem;
+      padding: 1.1rem 1.5rem;
       border-radius: var(--radius);
-      margin-bottom: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,255,204,0.2);
+      margin-bottom: 1.3rem;
+      box-shadow: 0 0 10px rgba(73,226,196,0.11);
       transition: var(--transition);
+      text-align: left;
     }
     .experience-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0,255,204,0.5);
+      transform: scale(1.02);
+      box-shadow: 0 0 18px rgba(73,226,196,0.15);
+      background: #212738;
     }
-
-    /* ---------------- CONTACT ---------------- */
+    .experience-card h3 {
+      color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .experience-card p { color: var(--muted); }
+    /* CONTACT */
     .social-icons {
       display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;
     }
     .social-icons a {
-      width: 50px; height: 50px;
+      width: 45px; height: 45px;
       display: flex; align-items: center; justify-content: center;
       border-radius: 50%;
-      background: rgba(0,255,204,0.1);
+      background: rgba(73,226,196,0.10);
       transition: var(--transition);
     }
-    .social-icons a img { width: 24px; height: 24px; filter: brightness(1.2); }
-    .social-icons a:hover {
-      transform: scale(1.2);
-      background: var(--accent);
-      box-shadow: 0 0 20px rgba(0,255,204,0.6);
+    .social-icons a img {
+      width: 22px; height: 22px; filter: brightness(1.25);
     }
-
+    .social-icons a:hover {
+      transform: scale(1.15);
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(73,226,196,0.23);
+    }
     /* RESPONSIVE */
-    @media(max-width:768px) {
-      .hero h1 { font-size: 2.4rem; }
-      .cards-grid { flex-direction: column; align-items: center; }
+    @media(max-width:770px) {
+      .hero h1 { font-size: 2rem; }
+      .cards-grid { flex-direction: column; align-items: center;}
+      .aj-bg { width: 70vw; }
     }
   </style>
 </head>
 <body>
+  <!-- AJ LOGO BACKGROUND -->
+  <img src="Images/AJ.png" alt="AJ Logo Background" class="aj-bg">
 
-  <!-- SPLASH SCREEN -->
-  <div id="splash">
-    <h1>Alpha Grey!</h1>
-  </div>
-
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <img src="Images/AJ.png" alt="Logo">
+  <div id="main-content">
+    <!-- SPLASH SCREEN -->
+    <div id="splash">
+      <h1>Alpha Grey!</h1>
     </div>
-    <nav>
-      <a href="#hero">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <img src="Images/ICON.jpg" alt="Profile">
-    <h1>Ajay Kumar</h1>
-    <p>Creative and detail-oriented designer with a passion for crafting visual identities and meaningful digital experiences.</p>
-    <a href="#projects" class="cta-button">View My Work</a>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section" id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="cards-grid">
-      <article class="card">
-        <h3>Graphic Design</h3>
-        <p>Showcasing visually striking designs that highlight creativity and attention to detail.</p>
-        <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
-      </article>
-      <article class="card">
-        <h3>UI/UX Design</h3>
-        <p>Designing intuitive and engaging digital experiences with user-centered design principles.</p>
-        <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="timeline">
-      <div class="experience-card">
-        <h3>inGO Electrics Pvt Ltd</h3>
-        <p>Graphic Designer, Web Designer & Social Media Handler. Creating thoughtful designs and engaging visuals for brand growth.</p>
-        <small>- Internship</small>
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <img src="Images/AJ.png" alt="Logo">
       </div>
-    </div>
-  </section>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <h2 class="section-title">Contact</h2>
-    <p>If you'd like to collaborate, feel free to reach out.</p>
-    <p><a href="mailto:ajaykumarbv193@gmail.com" style="color:var(--accent); font-weight:bold;">ajaykumarbv193@gmail.com</a></p>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
-      <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <img src="Images/ICON.jpg" alt="Profile">
+      <h1>Ajay Kumar</h1>
+      <p>Creative and detail-oriented designer with a passion for crafting visual identities and meaningful digital experiences.</p>
+      <a href="#projects" class="cta-button">View My Work</a>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Graphic Design</h3>
+          <p>Showcasing visually striking designs that highlight creativity and attention to detail.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
+        </article>
+        <article class="card">
+          <h3>UI/UX Design</h3>
+          <p>Designing intuitive and engaging digital experiences with user-centered design principles.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="experience-card">
+          <h3>inGO Electrics Pvt Ltd</h3>
+          <p>Graphic Designer, Web Designer & Social Media Handler. Creating thoughtful designs and engaging visuals for brand growth.</p>
+          <small>- Internship</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p>If you'd like to collaborate, feel free to reach out.</p>
+      <p><a href="mailto:ajaykumarbv193@gmail.com" style="color:var(--accent); font-weight:600;">ajaykumarbv193@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
+      </div>
+    </section>
+  </div>
 
   <!-- SCRIPT FOR SPLASH -->
   <script>
@@ -276,7 +316,7 @@
       const splash = document.getElementById("splash");
       setTimeout(() => {
         splash.classList.add("fade");
-      }, 2200); // splash stays for 2.2 sec
+      }, 2000); // splash duration (2 sec)
     });
   </script>
 </body>
