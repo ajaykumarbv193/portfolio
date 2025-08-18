@@ -29,7 +29,6 @@
       position: relative;
       min-height: 100vh;
     }
-    /* AJ LOGO FULLSCREEN BG */
     .aj-bg {
       position: fixed;
       top: 50%; left: 50%;
@@ -43,12 +42,8 @@
       user-select: none;
       z-index: 0;
     }
-    .content-wrapper {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-    }
-    /* HEADER */
+    .content-wrapper { position: relative; z-index: 1; width: 100%; }
+
     header {
       position: sticky; top: 0;
       display: flex; justify-content: space-between; align-items: center;
@@ -71,7 +66,6 @@
       font-size: 1.07rem;
     }
     nav a:hover { color: var(--accent);}
-    /* HERO */
     .hero {
       min-height: 70vh;
       display: flex; flex-direction: column;
@@ -118,7 +112,6 @@
       background: #0097a7;
       transform: scale(1.06);
     }
-    /* SECTION TITLES, GRID */
     .section {
       padding: 2.5rem 1rem;
       text-align: center;
@@ -131,33 +124,32 @@
       font-weight: 600;
       letter-spacing: 0.8px;
     }
-    /* PROJECT CARDS */
+    /* Smaller Project Cards */
     .cards-grid {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;
-      margin-bottom: 1.5rem;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.1rem;
+      margin-bottom: 1.1rem;
     }
     .card {
       background: var(--card-bg);
-      padding: 1.1rem 1.4rem;
+      padding: 0.8rem 1rem;
       border-radius: var(--radius);
-      width: 250px;
+      width: 185px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.13);
       transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
       border: 2px solid transparent;
-      margin: 0.5rem 0;
+      margin: 0.3rem 0;
       text-align: left;
       position: relative;
     }
-    .card h3 { margin-bottom: 0.7rem; color: var(--accent); font-family: 'Poppins', sans-serif;}
-    .card p { color: var(--soft-gray); margin-bottom: 1.1rem; font-size: 0.99rem;}
-    .card .cta-button { margin-bottom: 0; font-size: 0.98rem;}
+    .card h3 { margin-bottom: 0.5rem; color: var(--accent); font-family: 'Poppins', sans-serif; font-size: 1rem;}
+    .card p { color: var(--soft-gray); margin-bottom: 0.6rem; font-size: 0.91rem;}
+    .card .cta-button { margin-bottom: 0; font-size: 0.92rem;}
     .card:hover {
       background: #222a36;
       border: 2px solid var(--accent);
-      box-shadow: 0 8px 18px rgba(0,188,212,0.10);
-      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 8px 14px rgba(0,188,212,0.09);
+      transform: translateY(-6px) scale(1.05);
     }
-    /* TIMELINE/EXPERIENCE (minimal, left only) */
     .timeline {
       margin: 1.6rem auto 0 auto;
       max-width: 400px;
@@ -180,18 +172,17 @@
     }
     .timeline-box h3 { color: var(--accent); font-size: 1.06rem;}
     .timeline-box small { color: var(--soft-gray); }
-    /* CONTACT CARD */
     .contact-card {
       background: var(--card-bg);
       border-radius: var(--radius);
       padding: 1rem 1.2rem;
-      max-width: 300px;
+      max-width: 220px;
       margin: 1.2rem auto 0 auto;
       box-shadow: 0 2px 9px rgba(0,188,212,0.06);
       text-align: center;
       border: 2px solid transparent;
       transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      font-size: 1.06rem;
+      font-size: 1rem;
     }
     .contact-card:hover {
       background: #222a36;
@@ -199,10 +190,26 @@
       box-shadow: 0 0 13px var(--accent);
       transform: scale(1.03);
     }
-    .contact-card a {
-      color: var(--accent); font-weight: 600; text-decoration: none; transition: opacity var(--transition), text-decoration var(--transition);
+    /* Email Icon Button */
+    .mail-icon-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      background: var(--accent);
+      border: none; border-radius: 50%;
+      box-shadow: 0 0 7px rgba(0,188,212,0.10);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      margin-bottom: 0.7rem;
+      margin-top: 0.1rem;
     }
-    .contact-card a:hover { text-decoration: underline; opacity: 0.7;}
+    .mail-icon-btn:hover {
+      background: #0097a7;
+      transform: scale(1.1);
+    }
+    .mail-icon-btn img {
+      width: 20px; height: 20px; object-fit: contain;
+      filter: brightness(1.2);
+    }
     .social-icons {
       display: flex; justify-content: center; gap: 1rem; margin-top: 0.7rem;
     }
@@ -211,19 +218,18 @@
       border-radius: 50%; background: var(--accent); transition: background var(--transition), transform var(--transition);
       box-shadow: 0 0 7px rgba(0,188,212,0.06);
     }
-    .social-icons a img { width: 16px; height: 16px; object-fit: contain;}
+    .social-icons a img { width: 18px; height: 18px; object-fit: contain;}
     .social-icons a:hover {
       background: #0097a7;
       transform: scale(1.10);
     }
-    /* Fade-in animation for hero/sections */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(36px);}
       to { opacity: 1; transform: none;}
     }
-    /* Responsive */
     @media(max-width:700px){
       .cards-grid{flex-direction:column;align-items:center;}
+      .card {width:88vw;}
       .contact-card, .timeline, .timeline-box {max-width:94vw;}
       .hero img {width:80px;height:80px;}
       .aj-bg {min-width:330px;}
@@ -259,13 +265,13 @@
       <div class="cards-grid">
         <article class="card">
           <h3>Graphic Design</h3>
-          <p>Professional, creative visual designs crafted with precision and detail.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
+          <p>Creative visual designs crafted with precision and impact.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View</a>
         </article>
         <article class="card">
           <h3>UI/UX Design</h3>
-          <p>Delightful and intuitive user experiences focused on usability and accessibility.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
+          <p>Modern and intuitive user experiences focused on usability.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View</a>
         </article>
       </div>
     </section>
@@ -284,8 +290,9 @@
     <section class="section" id="contact">
       <h2 class="section-title">Contact</h2>
       <div class="contact-card">
-        <p>If you'd like to collaborate or have questions, reach out:</p>
-        <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
+        <button class="mail-icon-btn" onclick="window.location.href='mailto:ajaykumarbv193@gmail.com'">
+          <img src="Images/GMAIL.png" alt="Gmail Icon">
+        </button>
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
           <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
