@@ -141,7 +141,6 @@
       max-width: 900px;
       margin: 0 auto 1.5rem auto;
     }
-    /* PROJECT CARD WITH IMAGE SHADE */
     .exp-card {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -157,44 +156,27 @@
       flex-direction: column;
       overflow: hidden;
       position: relative;
-      padding: 0;
-    }
-    .exp-card .card-img-wrap {
-      width: 100%;
-      height: 150px;
-      position: relative;
-      overflow: hidden;
-    }
-    .exp-card .card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-    .exp-card .card-img-gradient {
-      position: absolute;
-      left: 0; bottom: 0; width: 100%; height: 90px;
-      background: linear-gradient(0deg, rgba(30,30,30,0.94) 70%, rgba(30,30,30,0.03) 100%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .exp-card-content {
-      position: absolute;
-      left: 0; bottom: 0; width: 100%;
-      z-index: 2;
-      padding: 1.2rem 1.2rem 1.2rem 1.2rem;
-      display: flex;
-      flex-direction: column;
       align-items: flex-start;
-      box-sizing: border-box;
+      justify-content: flex-start;
+      padding: 2.5rem 2rem 2rem 2rem;
+      text-align: left;
+    }
+    .exp-card .project-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+      object-fit: contain;
+      border-radius: 11px;
+      background: #181d23;
+      display: block;
+      box-shadow: 0 1px 10px rgba(0,188,212,.12);
     }
     .exp-card h3 {
       font-family: 'Poppins', sans-serif;
       color: var(--accent);
       font-size: 1.16rem;
       font-weight: 700;
-      margin: 0 0 .6rem 0;
+      margin-bottom: .6rem;
     }
     .exp-card p {
       color: var(--primary);
@@ -215,6 +197,7 @@
       display: inline-block;
       text-align: center;
       transition: background var(--transition), color var(--transition), transform var(--transition);
+      margin-top: 1rem;
     }
     .exp-card .cta-button:hover {
       background: #0097a7;
@@ -227,12 +210,7 @@
       transform: scale(1.04);
       border-left: 4px solid #fff;
     }
-    .exp-card:not(:has(.card-img-wrap)), .contact-card {
-      padding: 1.7rem 2rem;
-      position: static;
-    }
-    .exp-card small,
-    .contact-card small {
+    .exp-card small {
       color: var(--soft-gray); margin-top: .8rem; letter-spacing: 0.5px; font-size: 0.97rem;
     }
     .contact-card {
@@ -250,6 +228,7 @@
       align-items: flex-start;
       justify-content: center;
       transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+      padding: 1.7rem 2rem;
     }
     .contact-card:hover {
       background: #222a36;
@@ -338,26 +317,16 @@
       <h2 class="section-title">Projects</h2>
       <div class="card-row">
         <div class="exp-card">
-          <div class="card-img-wrap">
-            <img src="Images/Graphic Design.png" alt="Graphic Design Sample" class="card-image" />
-            <div class="card-img-gradient"></div>
-            <div class="exp-card-content">
-              <h3>Graphic Design</h3>
-              <p>Creative visual designs crafted with precision and impact.</p>
-              <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View</a>
-            </div>
-          </div>
+          <img src="Images/graphic-icon.png" alt="Graphic Design Icon" class="project-icon" />
+          <h3>Graphic Design</h3>
+          <p>Creative visual designs crafted with precision and impact.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View</a>
         </div>
         <div class="exp-card">
-          <div class="card-img-wrap">
-            <img src="Images/UIUX design.png" alt="UI/UX Design Sample" class="card-image" />
-            <div class="card-img-gradient"></div>
-            <div class="exp-card-content">
-              <h3>UI/UX Design</h3>
-              <p>Modern and intuitive user experiences focused on usability.</p>
-              <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View</a>
-            </div>
-          </div>
+          <img src="Images/uiux-icon.png" alt="UI/UX Design Icon" class="project-icon" />
+          <h3>UI/UX Design</h3>
+          <p>Modern and intuitive user experiences focused on usability.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View</a>
         </div>
       </div>
     </section>
