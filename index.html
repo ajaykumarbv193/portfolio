@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay - Portfolio</title>
+  <title>Ajay - Designer Portfolio</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #10131a;
+      --bg: #13151b;
       --accent: #49e2c4;
-      --card-bg: #181b23;
-      --card-hover-bg: #232b38;
+      --card: #1a1d26;
+      --card-hover: #232b38;
       --text: #fff;
       --muted: #bfc9da;
       --radius: 14px;
@@ -22,289 +22,207 @@
       background: var(--bg);
       color: var(--text);
       margin: 0;
-      overflow-x: hidden;
     }
-    /* AJ Logo BG */
-    .aj-bg {
-      position: fixed; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.07;
-      width: 36vw;
-      max-width: 340px;
-      min-width: 170px;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-    }
-    /* HEADER */
     header {
-      padding: 1.2rem 2rem;
       text-align: center;
-      background: transparent;
-      z-index: 1;
-      position: relative;
-    }
-    nav a {
-      color: var(--text);
-      margin: 0 1.2rem;
-      font-weight: 600;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      transition: color var(--transition);
-      font-size: 1.08rem;
-    }
-    nav a:hover { color: var(--accent);}
-    /* HERO */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 2.5rem 1rem 1rem 1rem;
-      min-height: 48vh;
-      position: relative;
-      z-index: 1;
+      padding: 2rem 1rem 0 1rem;
     }
     .hero-img {
-      width: 102px; height: 102px;
+      width: 100px; height: 100px;
       border-radius: 50%;
-      border: 2.7px solid var(--accent);
+      border: 2.5px solid var(--accent);
       object-fit: cover;
-      object-position: center;
-      box-shadow: 0 0 15px rgba(73,226,196,0.14);
       margin-bottom: 1rem;
       background: #232936;
-      transition: box-shadow var(--transition), transform var(--transition);
-      display: block;
+      box-shadow: 0 0 14px rgba(73,226,196,0.10);
     }
-    .hero-img:hover {
-      box-shadow: 0 0 25px rgba(73,226,196,0.21);
-      transform: scale(1.06);
-    }
-    .hero h1 {
+    h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
+      margin-bottom: 0.2rem;
       font-weight: 600;
-      text-align: center;
+      letter-spacing: 1px;
     }
-    .hero p {
-      color: var(--muted);
-      font-size: 1.09rem;
-      text-align: center;
-      max-width: 390px;
-      margin-bottom: 0.6rem;
+    .subtitle { color: var(--muted); font-size: 1.07rem; margin-bottom: 1.7rem;}
+    nav {
+      margin-bottom: 1.4rem;
     }
-    /* SECTION TITLE */
+    nav a {
+      color: var(--text); margin: 0 1.1rem;
+      font-weight: 600; text-decoration: none;
+      font-size: 1.07rem;
+      font-family: 'Montserrat', sans-serif;
+      transition: color var(--transition);
+    }
+    nav a:hover { color: var(--accent); }
+    /* Section */
     .section-title {
       font-family: 'Montserrat', sans-serif;
       color: var(--accent);
-      font-size: 1.32rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.23rem;
+      margin-bottom: 1rem;
       font-weight: 600;
       text-align: center;
     }
-    .section {
-      padding: 1.9rem 0;
-      text-align: center;
-      z-index: 1;
-      position: relative;
-    }
-    /* CARDS GRID */
+    .section { padding: 2.1rem 0; text-align: center;}
+    /* PROJECT CARDS */
     .cards-grid { 
-      display: flex; 
-      justify-content: center; 
-      flex-wrap: wrap; gap: 1.3rem;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.1rem;
+      margin-bottom: 2rem;
     }
     .card {
-      background: var(--card-bg);
+      background: var(--card);
       border-radius: var(--radius);
-      box-shadow: 0 1px 7px rgba(73,226,196,0.09);
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      width: 260px;
-      padding: 1.1rem 1.3rem;
-      text-align: center;
+      box-shadow: 0 1px 9px rgba(73,226,196,0.09);
+      width: 220px;
+      padding: 1rem 1.1rem;
+      text-align: left;
       border: 2px solid transparent;
-      margin: 0.3rem 0;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
       position: relative;
       z-index: 1;
     }
     .card h3 {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.4rem;
       color: var(--accent);
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.08rem;
+      font-size: 1.02rem;
       font-weight: 600;
     }
     .card p {
       color: var(--muted);
-      font-size: 1.04rem;
-      margin-bottom: 1rem;
+      font-size: 0.98rem;
+      margin-bottom: 0.7rem;
     }
-    .card:hover {
-      transform: translateY(-9px) scale(1.05);
-      box-shadow: 0 6px 24px 0 rgba(73,226,196,0.13);
-      border: 2px solid var(--accent);
-      background: var(--card-hover-bg);
-    }
-    .cta-button {
-      background: var(--accent);
-      color: #12161c;
-      padding: 0.6rem 1.3rem;
-      border-radius: var(--radius);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.02rem;
+    .card a {
+      color: var(--accent);
       font-weight: 600;
       text-decoration: none;
-      border: none;
-      transition: background var(--transition), box-shadow var(--transition), color var(--transition), transform var(--transition);
-      box-shadow: 0 0 5px rgba(73,226,196,0.10);
-      display: inline-block;
-      margin-bottom: 0;
+      transition: opacity var(--transition);
     }
-    .cta-button:hover {
-      background: #34b091;
-      color: #fff;
-      box-shadow: 0 0 14px rgba(73,226,196,0.17);
-      transform: scale(1.08);
-    }
-    /* EXPERIENCE */
-    .timeline {
-      max-width: 540px; margin: 0 auto;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .experience-card {
-      background: var(--card-bg);
-      border-left: 3.7px solid var(--accent);
-      padding: 1rem;
-      border-radius: var(--radius);
-      box-shadow: 0 1px 7px rgba(73,226,196,0.10);
-      text-align: left;
-      margin-bottom: 1.1rem;
-      width: 94%;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-    }
-    .experience-card h3 {
-      color: var(--accent);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.06rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .experience-card p { color: var(--muted); font-size: 0.97rem;}
-    .experience-card:hover {
-      background: var(--card-hover-bg);
-      transform: scale(1.03);
-      box-shadow: 0 0 15px rgba(73,226,196,0.17);
+    .card a:hover { opacity: 0.66; }
+    .card:hover {
+      transform: translateY(-7px) scale(1.05);
+      box-shadow: 0 6px 18px 0 rgba(73,226,196,0.14);
+      border: 2px solid var(--accent);
+      background: var(--card-hover);
     }
     /* CONTACT CARD */
     .contact-card {
-      background: var(--card-bg);
+      background: var(--card);
       border-radius: var(--radius);
-      padding: 1.1rem 1.3rem;
-      max-width: 270px;
-      margin: 1.2rem auto 0 auto;
-      box-shadow: 0 1px 7px rgba(73,226,196,0.12);
+      padding: 1.1rem 1.4rem;
+      max-width: 290px;
+      margin: 1.3rem auto 0 auto;
+      box-shadow: 0 1px 9px rgba(73,226,196,0.10);
       text-align: center;
       transition: box-shadow var(--transition), transform var(--transition), background var(--transition), border var(--transition);
       border: 2px solid transparent;
       font-size: 1.02rem;
     }
     .contact-card:hover {
-      background: var(--card-hover-bg);
+      background: var(--card-hover);
       border: 2px solid var(--accent);
-      box-shadow: 0 0 13px rgba(73,226,196,0.12);
+      box-shadow: 0 0 13px rgba(73,226,196,0.11);
       transform: scale(1.04);
     }
-    .contact-card a, .contact-card p {
+    .contact-card a {
       color: var(--accent);
-      font-weight: 600; 
-      font-size: 1.01rem;
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      transition: opacity var(--transition), text-decoration var(--transition);
+      font-weight: 600; font-size: 1.01rem; text-decoration: none;
+      margin-bottom: 0.5rem; display: inline-block; transition: opacity var(--transition), text-decoration var(--transition);
     }
     .contact-card a:hover { text-decoration: underline; opacity: 0.7;}
+    /* Contact form simple */
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 0.8rem; margin-bottom: 0.7rem;
+      border-radius: 8px; border: 1px solid #1d222e;
+      background: #181b23; color: var(--text); font-family: inherit;
+      resize: vertical; font-size: 1rem;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--accent);}
+    .contact-form button {
+      background: var(--accent); color: #12161c;
+      border-radius: 8px; font-weight: 600;
+      font-size: 1rem; padding: 0.7rem 2rem; border: none;
+      cursor: pointer; transition: background var(--transition);
+    }
+    .contact-form button:hover { background: #34b091; color: #fff;}
     /* SOCIAL ICONS */
-    .social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 0.8rem;}
+    .social-icons { display: flex; justify-content: center; gap: 1rem; margin-top: 0.7rem;}
     .social-icons a {
-      width: 37px; height: 37px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(73,226,196,0.09); transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      width: 33px; height: 33px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: rgba(73,226,196,0.10);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
       box-shadow: 0 0 7px rgba(73,226,196,0.09);
     }
     .social-icons a img {
-      width: 18px; height: 18px; object-fit: contain;
+      width: 14px; height: 14px; object-fit: contain;
     }
     .social-icons a:hover {
       background: var(--accent);
-      transform: scale(1.15);
+      transform: scale(1.14);
       box-shadow: 0 0 8px rgba(73,226,196,0.16);
     }
-    /* Responsive */
-    @media(max-width:540px){
-      .cards-grid { flex-direction: column; align-items: center;}
-      .aj-bg { width: 62vw; }
-      .hero-img { width: 80px; height: 80px;}
-      .timeline, .experience-card, .contact-card { max-width: 98vw; }
+    @media (max-width: 700px){
+      .cards-grid{flex-direction:column;align-items:center;}
+      .contact-card {width:96vw;}
     }
   </style>
 </head>
 <body>
-  <!-- AJ Logo BG -->
-  <img src="Images/AJ.png" alt="AJ Logo Background" class="aj-bg">
   <header>
+    <img src="Images/ICON.jpg" alt="Ajay portrait" class="hero-img" />
+    <h1>Ajay</h1>
+    <div class="subtitle">Designer | Visual Identity & UI/UX Enthusiast</div>
     <nav>
-      <a href="#hero">Home</a>
       <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
-  <main>
-    <section class="hero" id="hero">
-      <img src="Images/ICON.jpg" alt="Ajay portrait" class="hero-img" />
-      <h1>Ajay</h1>
-      <p>Creative and detail-oriented designer passionate about visual identity and meaningful digital experiences.</p>
-    </section>
 
-    <section class="section" id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="cards-grid">
-        <article class="card">
-          <h3>Graphic Design</h3>
-          <p>Striking designs blending creativity, precision, and impactful aesthetics.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
-        </article>
-        <article class="card">
-          <h3>UI/UX Design</h3>
-          <p>Crafting intuitive interfaces with delightful, user-focused design principles.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
-        </article>
-      </div>
-    </section>
+  <section class="section" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="cards-grid">
+      <!-- Example Project Card -->
+      <article class="card">
+        <h3>Graphic Design</h3>
+        <p>Striking digital artworks, posters, branding material, and more—explore my creative library.</p>
+        <a href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
+      </article>
+      <article class="card">
+        <h3>UI/UX Design</h3>
+        <p>Modern user interface designs and app mockups, focused on delightful and intuitive user experience.</p>
+        <a href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
+      </article>
+      <!-- Add more cards below: -->
+      <!--
+      <article class="card">
+        <h3>Project Title</h3>
+        <p>Project description or tech stack.</p>
+        <a href="https://your-link.com">View Project</a>
+      </article>
+      -->
+    </div>
+  </section>
 
-    <section class="section" id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="experience-card">
-          <h3>inGO Electrics Pvt Ltd</h3>
-          <p>Graphic Designer, Web Designer & Social Media Handler. Created visuals and digital experiences as an intern.</p>
-        </div>
+  <section class="section" id="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-card">
+      <form class="contact-form" action="mailto:ajaykumarbv193@gmail.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div style="margin: 0.8rem 0 .2rem 0; font-size: 0.97rem;">
+        Or email: <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
       </div>
-    </section>
-
-    <section class="section" id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-card">
-        <p>If you'd like to collaborate, reach out:</p>
-        <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
-          <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
-        </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </body>
 </html>
