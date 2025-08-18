@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700;800&family=Plus+Jakarta+Sans:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
     :root {
-      --Background-Color: #000000; /* Black background */
-      --Primary-Color: #f3f4f6; /* very light gray for text */
-      --Body-Text-Color: #a1a1aa; /* neutral gray */
-      --Card-Color: #121212; /* dark card background */
-      --Highlight-Gradient: linear-gradient(180deg, #f472b6 0%, #e879f9 100%); /* Pink/Purple gradient */
-      --Shadow-Color: rgba(0, 0, 0, 0.7);
-      --Transition: 0.3s ease;
-      --Border-Radius: 0.75rem;
+      --background-color: #000000; /* Black background */
+      --primary-color: #00ff00; /* Green for text */
+      --secondary-color: #f472b6; /* Pink for highlights */
+      --card-background: #121212; /* Dark card background */
+      --shadow-color: rgba(255, 255, 255, 0.1);
+      --transition: 0.3s ease;
+      --border-radius: 0.5rem;
     }
 
     * {
@@ -25,369 +24,166 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--Background-Color);
-      color: var(--Body-Text-Color);
+      font-family: 'Roboto Mono', monospace;
+      background: var(--background-color);
+      color: var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Splash Screen */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1e1e1e; /* Dark background for splash */
       display: flex;
       justify-content: center;
-      padding: 4rem 1rem 6rem;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      scroll-behavior: smooth;
-      position: relative;
-      overflow-x: hidden;
+      align-items: center;
+      z-index: 100;
+      opacity: 1;
+      transition: opacity 0.5s ease;
     }
-
-    .container {
-      max-width: 1200px; 
-      width: 100%;
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Decorative Background Logo (Glassmorphic style) */
-    .decor-logo {
-      position: fixed;
-      top: 65%;
-      left: 50%;
-      width: 1000px;
-      max-width: 15000vw;
-      opacity: 0.2;
-      transform: translate(-50%, -50%) rotate(15deg);
+    .splash-screen.hidden {
+      opacity: 0;
       pointer-events: none;
-      user-select: none;
-      filter: saturate(200%) brightness(0.8);
-      z-index: 0;
-      border-radius: 1rem;
-      backdrop-filter: blur(10px);
-      transition: opacity 0.3s ease;
+    }
+    .splash-text {
+      font-size: 3rem;
+      color: var(--secondary-color);
+      text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
     }
 
-    /* Sticky header */
     header {
-      position: sticky;
-      top: 0;
-      background: var(--Background-Color);
-      box-shadow: 0 1px 8px var(--Shadow-Color);
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      z-index: 20;
-    }
-
-    header .logo {
-      width: 80px;
-      height: 80px;
-      display: inline-block;
-      /* Placeholder for logo image */
-    }
-
-    nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
+      box-shadow: 0 2px 4px var(--shadow-color);
+      position: sticky;
+      top: 0;
+      background: var(--background-color);
+      z-index: 10;
     }
 
     nav a {
-      color: var(--Body-Text-Color);
+      color: var(--primary-color);
       font-weight: 600;
       text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: var(--Border-Radius);
-      transition: color var(--Transition), background-color var(--Transition);
-      font-size: 1rem;
+      margin: 0 1rem;
+      transition: color var(--transition);
     }
-    nav a:hover,
-    nav a:focus {
-      color: #f472b6;
-      background-color: #1e293b;
-      outline: none;
+    nav a:hover {
+      color: var(--secondary-color);
     }
 
-    /* Hero Section */
     .hero {
-      margin: 4rem 0 6rem;
       text-align: center;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 2rem 0;
     }
-    .hero-img {
-      width: 220px;
-      height: 220px;
+    .hero img {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 2rem;
-      box-shadow: 0 8px 24px rgba(232, 121, 249, 0.4);
-      border: 3px solid #f472b6;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
     }
     .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--Primary-Color);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-    .hero h1 .highlight {
-      background: var(--Highlight-Gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
     .hero p {
       font-size: 1.125rem;
-      color: var(--Body-Text-Color);
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-      max-width: 720px;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
       margin-left: auto;
       margin-right: auto;
     }
     .download-cv a {
-      display: inline-block;
-      font-weight: 700;
-      font-size: 1.125rem;
-      padding: 1rem 3rem;
-      background: var(--Highlight-Gradient);
+      padding: 0.75rem 2rem;
+      background: var(--secondary-color);
       color: #000;
-      border-radius: var(--Border-Radius);
+      border-radius: var(--border-radius);
       text-decoration: none;
-      box-shadow: 0 12px 30px rgba(232, 121, 249, 0.5);
-      transition: background-color var(--Transition), box-shadow var(--Transition);
+      transition: background var(--transition);
     }
-    .download-cv a:hover,
-    .download-cv a:focus {
-      background: #9c27b0;
-      box-shadow: 0 14px 36px rgba(156, 39, 176, 0.7);
-      outline: none;
-      color: #fff;
+    .download-cv a:hover {
+      background: #d45a9a;
     }
 
-    /* Experience with text */
-    .section-subtitle {
+    .section {
+      margin: 3rem 0;
       text-align: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 600;
-      color: var(--Body-Text-Color);
-      letter-spacing: 0.2rem;
-      margin-bottom: 3rem;
-      font-size: 1.25rem;
     }
-
-    /* Icon row: fully colored icons no fade */
-    .icon-row {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      margin-bottom: 6rem;
-      flex-wrap: wrap;
-    }
-    .icon-row img {
-      width: 48px;
-      height: 48px;
-      filter: none;
-      cursor: default;
-      transition: transform 0.3s ease;
-    }
-    .icon-row img:hover,
-    .icon-row img:focus {
-      transform: scale(1.1);
-      outline: none;
-    }
-
-    /* Sections */
-    section {
-      margin-bottom: 6rem;
-      padding: 0 1rem;
-    }
-
-    /* Section titles */
     .section-title {
-      font-weight: 700;
-      font-size: 2.25rem;
-      color: var(--Primary-Color);
-      margin-bottom: 2rem;
-      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-
-    /* Cards grid: flex layout centered */
     .cards-grid {
       display: flex;
       justify-content: center;
-      gap: 3rem;
+      gap: 2rem;
       flex-wrap: wrap;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
     }
-
-    /* Individual Card */
     .card {
-      background: var(--Card-Color);
-      border-radius: var(--Border-Radius);
-      box-shadow: 0 2px 8px var(--Shadow-Color);
+      background: var(--card-background);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px var(--shadow-color);
       padding: 1.5rem;
-      transition: box-shadow var(--Transition), transform var(--Transition);
-      display: flex;
-      flex-direction: column;
-      cursor: default;
-      min-width: 280px;
-      max-width: 350px;
+      transition: box-shadow var(--transition);
+      width: 300px;
       text-align: center;
     }
-    .card:hover,
-    .card:focus-within {
-      box-shadow: 0 8px 24px rgba(232, 121, 249, 0.4);
-      transform: translateY(-8px);
-      outline: none;
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
     }
-
     .card img {
-      border-radius: var(--Border-Radius);
-      margin-bottom: 1.25rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
       width: 100%;
       height: auto;
-      object-fit: cover;
-      user-select: none;
-      margin-left: auto;
-      margin-right: auto;
     }
-
     .card .title {
-      font-weight: 700;
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: var(--Primary-Color);
-    }
-    .card .link {
       font-weight: 600;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      color: #f472b6;
-      text-decoration: none;
-      align-self: center;
-      margin-bottom: 0.75rem;
-      user-select: none;
-      transition: color var(--Transition);
-    }
-    .card .link:hover,
-    .card .link:focus {
-      color: #9c27b0;
-      outline: none;
+      margin: 0.5rem 0;
     }
 
-    /* Experience Card */
-    .experience-card p {
-      font-size: 1rem;
-      color: var(--Body-Text-Color);
-      line-height: 1.5;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .experience-card .date {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-      text-align: center;
-      user-select: none;
-    }
-
-    /* Contact Section */
     .contact-section {
-      background: var(--Card-Color);
-      border-radius: var(--Border-Radius);
-      padding: 2rem 2rem 3rem;
-      color: var(--Primary-Color);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
-      margin-bottom: -150px;
+      margin: 3rem 0;
     }
     .contact-section h2 {
       margin-bottom: 1rem;
-      font-size: 2rem;
-      font-weight: 700;
     }
-    .contact-section p {
-      font-size: 1rem;
-      color: var(--Body-Text-Color);
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-    }
-
     .email-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      color: var(--Primary-Color);
-      font-weight: 600;
-      user-select: text;
-      justify-content: center;
+      margin: 1rem 0;
     }
-    .email-row svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--Primary-Color);
-    }
-    .email-row a {
-      color: #f472b6;
-      text-decoration: none;
-      user-select: text;
-    }
-    .email-row a:hover,
-    .email-row a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
-
     .social-icons {
-      margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1rem;
+      margin-top: 1rem;
     }
     .social-icons a {
-      display: inline-flex;
       width: 36px;
       height: 36px;
-      border-radius: 8px;
-      background: #f472b6;
-      color: var(--Background-Color);
+      border-radius: 50%;
+      background: var(--secondary-color);
+      color: #000;
+      display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background var(--transition);
     }
-    .social-icons a:hover,
-    .social-icons a:focus {
-      background: #9c27b0;
-      outline: none;
-      color: #fff;
-    }
-    .social-icons svg {
-      fill: currentColor;
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 1024px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      nav {
-        gap: 1rem;
-      }
-      .cards-grid {
-        gap: 2rem;
-      }
+    .social-icons a:hover {
+      background: #d45a9a;
     }
 
     @media (max-width: 640px) {
@@ -396,125 +192,110 @@
       }
       .cards-grid {
         flex-direction: column;
-        gap: 0rem;
-      }
-      header {
-        padding: 0rem;
-      }
-      .cards-grid {
-        display: flex;
-        flex-direction: column;
         align-items: center;
-      }
-      .card {
-        max-width: 90vw;
-      }
-      .hero-img {
-        width: 160px;
-        height: 160px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Decorative background logo behind content -->
-  <img src="Images/AJ.png" alt="Decorative background logo" class="decor-logo" aria-hidden="true" />
-
-  <div class="container" role="main">
-    <header>
-      <div class="logo" aria-label="Portfolio Logo" tabindex="0">
-        <!-- Replace below with your logo image -->
-        <img src="Images/AJ.png" alt="Logo" style="width: 80px; height: 80px; object-fit: contain;">
-      </div>
-      <nav aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <section class="hero" id="hero" tabindex="-1">
-      <!-- Image slot for your photo -->
-      <img src="Images/ICON.jpg" alt="Your portrait" class="hero-img" />
-
-      <h1>
-        Create <br />
-        <span class="highlight">Beyound Limits </span>
-      </h1>
-      <p>
-        Creative and detail-oriented aspiring designer passionate about crafting visual identities.
-        Skilled in logo design, branding, and basic UI design through academic and self-initiated projects.
-        Eager to grow, contribute fresh ideas, and align visuals with clear, user-focused strategies.      </p>
-      <div class="download-cv">
-        <a href="https://drive.google.com/file/d/1QlPNMGpnPd2saGTXtJD2GAeQogeHG9aE/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Download CV in new tab">Download CV</a>
-      </div>
-    </section>
-
-    <div class="section-subtitle" aria-hidden="true">Experience With</div>
-
-    <div class="icon-row" aria-label="Skills icons">
-      <img src="Images/CSS.png"  >
-      <img src="Images/FIGMA.png" alt="Figma icon" />
-      <img src="Images/HTML.png" alt="HTML icon" />
-      <img src="Images/LR.png" alt="Lightroom icon" />
-      <img src="Images/PR.png" alt="Premiere Pro icon" />
-      <img src="Images/PS.png" alt="Photoshop icon" />
-    <section class="projects-section" id="projects" tabindex="-1">
-      <h2 class="section-title">Projects</h2>
-      <div class="cards-grid">
-        <article class="card" tabindex="0">
-          <img src="Images/Graphic Design.png" alt="Graphic design work" />
-          <a class="link" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank" rel="noopener noreferrer">Click to visit</a>
-          <div class="title">Graphic Design</div>
-        </article>
-        <article class="card" tabindex="0">
-          <img src="Images/UIUX design.png" alt="UI/UX design work" />
-          <a class="link" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank" rel="noopener noreferrer">Click to visit</a>
-          <div class="title">UI/UX Design</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="experience-section" id="experience" tabindex="-1">
-      <h2 class="section-title">Experience</h2>
-      <div class="cards-grid" style="justify-content:center;">
-        <article class="card experience-card" tabindex="0" style="max-width: 600px; text-align: center;">
-          <h3>inGO Electrics pvt ltd</h3>
-          <p>
-            As a Graphic Designer, Web Designer & Social Media Handler, I craft thoughtful and engaging visuals. I’ve interned at inGo Electrics Pvt Ltd, where I focused on graphic design, web design, and social media handling for platforms like Instagram, working on creative digital projects.
-          </p>
-          <div class="date">- Internship</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact" tabindex="-1" aria-label="Contact information and form">
-      <h2>Contact</h2>
-      <p>
-        I’m a fresher with a strong interest in branding and digital interface design.
-        Eager to contribute to creative projects and continuously improve through real-world experience.
-        I’ve built my skills through internships, online courses, and personal design projects.
-        My goal is to create meaningful designs that are both visually appealing and user-friendly </p>
-      <div class="email-row" style="justify-content:center;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 17 17" fill="none" aria-hidden="true">
-          <path d="M2.83719 3.09497H13.6693C14.3815 3.09497 14.9589 3.67232 14.9589 4.38451V12.1217C14.9589 12.8339 14.3815 13.4113 13.6693 13.4113H2.83719C2.125 13.4113 1.54765 12.8339 1.54765 12.1217V4.38451C1.54765 3.67232 2.125 3.09497 2.83719 3.09497Z" stroke="var(--Primary-Color)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12.8954 5.1582L8.25304 8.76891L3.6107 5.1582" stroke="var(--Primary-Color)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span><a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a></span>
-      </div>
-
-      <div class="social-icons" role="list" aria-label="Social media links">
-        <a href="https://www.linkedin.com/in/ajay-b-v-805922334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" role="listitem">
-          <!-- Icon placeholder for LinkedIn -->
-          <img src="Images/LINKEDIN.png" >
-        </a>
-        <a href="https://www.instagram.com/aj_devil__?igsh=MWt0eWNld2E5NXZ2aA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" role="listitem">
-          <!-- Icon placeholder for Instagram -->
-          <img src="Images/INSTAGRAM.png" >
-        </a>
-      </div>
-    </section>
+  <div class="splash-screen" id="splash-screen">
+    <div class="splash-text" id="splash-text"></div>
   </div>
+
+  <header>
+    <div class="logo" aria-label="Portfolio Logo">
+      <img src="Images/AJ.png" alt="Logo" style="width: 80px; height: 80px; object-fit: contain;">
+    </div>
+    <nav aria-label="Primary navigation">
+      <a href="#hero">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <img src="Images/ICON.jpg" alt="Your portrait" />
+    <h1>Create Beyond Limits</h1>
+    <p>
+      Creative and detail-oriented aspiring designer passionate about crafting visual identities.
+      Skilled in logo design, branding, and basic UI design through academic and self-initiated projects.
+      Eager to grow, contribute fresh ideas, and align visuals with clear, user-focused strategies.
+    </p>
+    <div class="download-cv">
+      <a href="https://drive.google.com/file/d/1QlPNMGpnPd2saGTXtJD2GAeQogeHG9aE/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="cards-grid">
+      <article class="card">
+        <img src="Images/Graphic Design.png" alt="Graphic design work" />
+        <div class="title">Graphic Design</div>
+        <a class="link" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank" rel="noopener noreferrer">Click to visit</a>
+      </article>
+      <article class="card">
+        <img src="Images/UIUX design.png" alt="UI/UX design work" />
+        <div class="title">UI/UX Design</div>
+        <a class="link" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank" rel="noopener noreferrer">Click to visit</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="cards-grid">
+      <article class="card">
+        <h3>inGO Electrics Pvt Ltd</h3>
+        <p>
+          As a Graphic Designer, Web Designer & Social Media Handler, I craft thoughtful and engaging visuals. I’ve interned at inGo Electrics Pvt Ltd, where I focused on graphic design, web design, and social media handling for platforms like Instagram, working on creative digital projects.
+        </p>
+        <div class="date">- Internship</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <h2>Contact</h2>
+    <p>
+      I’m a fresher with a strong interest in branding and digital interface design.
+      Eager to contribute to creative projects and continuously improve through real-world experience.
+    </p>
+    <div class="email-row">
+      <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/ajay-b-v-805922334?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img src="Images/LINKEDIN.png" alt="LinkedIn" />
+      </a>
+      <a href="https://www.instagram.com/aj_devil__?igsh=MWt0eWNld2E5NXZ2aA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="Images/INSTAGRAM.png" alt="Instagram" />
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Typing effect for splash screen
+    const text = "Alpha Grey";
+    const splashTextElement = document.getElementById("splash-text");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        splashTextElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 150); // Adjust typing speed here
+      } else {
+        setTimeout(() => {
+          document.getElementById('splash-screen').classList.add('hidden');
+        }, 3000); // Keep splash screen for 5 seconds after typing
+      }
+    }
+
+    window.onload = function() {
+      type();
+    };
+  </script>
 </body>
 </html>
