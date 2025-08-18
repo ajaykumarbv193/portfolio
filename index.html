@@ -5,46 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ajay Kumar - Portfolio</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      --card-bg: #1e1e1e;
-      --primary: #ffffff;
-      --accent: #00bcd4;
-      --soft-gray: #b0b0b0;
-      --radius: 12px;
-      --transition: 0.3s ease;
+      --bg-dark: #0d0d0d;
+      --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      --card-bg: #1a1a1a;
+      --text: #ffffff;
+      --muted: #b0b0b0;
+      --accent: #00ffcc; /* Neon greenish-cyan */
+      --accent-hover: #00cba9;
+      --radius: 14px;
+      --transition: all 0.35s ease;
     }
 
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0; padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--background);
-      color: var(--primary);
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* ---------------- SPLASH SCREEN ---------------- */
+    #splash {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      font-family: 'Montserrat', sans-serif;
+    }
+    #splash h1 {
+      font-size: 4rem;
+      color: var(--accent);
+      animation: glow 1.5s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
+      to { text-shadow: 0 0 20px #fff, 0 0 40px var(--accent); }
+    }
+
+    /* Fade-Out Splash */
+    #splash.fade {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    /* ---------------- HEADER ---------------- */
     header {
-      position: sticky; top: 0;
+      position: sticky;
+      top: 0;
       display: flex; justify-content: space-between; align-items: center;
       padding: 1rem 2rem;
       background: rgba(0,0,0,0.6);
       backdrop-filter: blur(10px);
-      z-index: 10;
+      z-index: 50;
     }
     header img { width: 70px; height: 70px; }
 
     nav a {
-      color: var(--primary);
+      color: var(--text);
       margin: 0 1rem;
       text-decoration: none;
       font-weight: 600;
@@ -52,32 +84,28 @@
     }
     nav a:hover { color: var(--accent); }
 
-    /* HERO */
+    /* ---------------- HERO ---------------- */
     .hero {
       min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
       text-align: center;
       padding: 3rem 1rem;
-      animation: fadeIn 1.2s ease forwards;
     }
     .hero img {
-      width: 160px; height: 160px;
-      border-radius: 50%; object-fit: cover;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      width: 170px; height: 170px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(0,255,204,0.4);
       margin-bottom: 1.5rem;
+      transition: var(--transition);
     }
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+    .hero img:hover {
+      transform: rotate(5deg) scale(1.05);
+      box-shadow: 0 0 40px rgba(0,255,204,0.8);
     }
-    .hero p {
-      max-width: 600px; font-size: 1.2rem; color: var(--soft-gray);
-      margin-bottom: 2rem;
-    }
+    .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .hero p { max-width: 600px; font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
     .cta-button {
       background: var(--accent);
       color: #000;
@@ -88,11 +116,12 @@
       transition: var(--transition);
     }
     .cta-button:hover {
-      background: #0097a7;
-      transform: scale(1.05);
+      background: var(--accent-hover);
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(0,255,204,0.6);
     }
 
-    /* SECTIONS */
+    /* ---------------- SECTIONS ---------------- */
     .section {
       padding: 4rem 2rem;
       text-align: center;
@@ -101,93 +130,84 @@
       font-size: 2.2rem;
       margin-bottom: 2rem;
       color: var(--accent);
-      font-family: 'Poppins', sans-serif;
     }
 
-    /* PROJECTS */
+    /* ---------------- CARDS ---------------- */
     .cards-grid {
-      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
     .card {
       background: var(--card-bg);
       padding: 2rem;
       border-radius: var(--radius);
       width: 300px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      cursor: pointer;
+      box-shadow: 0 0 0 rgba(0,255,204,0.2);
       transition: var(--transition);
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      border: 2px solid transparent;
     }
     .card h3 { margin-bottom: 1rem; color: var(--accent); }
-    .card p { margin-bottom: 1.5rem; color: var(--soft-gray); }
+    .card p { margin-bottom: 1.5rem; color: var(--muted); }
 
-    /* EXPERIENCE TIMELINE */
+    /* Hover effect animation */
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 25px rgba(0,255,204,0.5);
+    }
+
+    /* ---------------- EXPERIENCE ---------------- */
     .timeline {
-      position: relative;
-      margin: 0 auto;
-      max-width: 700px;
+      max-width: 700px; margin: 0 auto;
     }
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 3px;
-      background: var(--accent);
-      top: 0; bottom: 0; left: 50%;
-      margin-left: -1.5px;
-    }
-    .timeline-container {
-      padding: 1rem;
-      position: relative;
-      width: 50%;
-    }
-    .timeline-container.left { left: 0; }
-    .timeline-container.right { left: 50%; }
-    .timeline-box {
+    .experience-card {
       background: var(--card-bg);
+      border-left: 4px solid var(--accent);
       padding: 1.5rem;
       border-radius: var(--radius);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      position: relative;
-    }
-    .timeline-container.left .timeline-box { margin-right: auto; }
-    .timeline-container.right .timeline-box { margin-left: auto; }
-
-    /* CONTACT */
-    .contact-section p { max-width: 600px; margin: 0 auto 1.2rem; }
-    .social-icons {
-      display: flex; justify-content: center; gap: 1rem;
-    }
-    .social-icons a {
-      width: 45px; height: 45px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      background: var(--accent);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,255,204,0.2);
       transition: var(--transition);
     }
-    .social-icons a img { width: 24px; height: 24px; }
-    .social-icons a:hover {
-      background: #0097a7;
-      transform: scale(1.1);
+    .experience-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(0,255,204,0.5);
     }
 
-    /* ANIMATIONS */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* ---------------- CONTACT ---------------- */
+    .social-icons {
+      display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;
+    }
+    .social-icons a {
+      width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: rgba(0,255,204,0.1);
+      transition: var(--transition);
+    }
+    .social-icons a img { width: 24px; height: 24px; filter: brightness(1.2); }
+    .social-icons a:hover {
+      transform: scale(1.2);
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(0,255,204,0.6);
     }
 
     /* RESPONSIVE */
-    @media(max-width: 768px) {
-      nav a { margin: 0 0.5rem; }
-      .timeline::after { left: 30px; }
-      .timeline-container { width: 100%; padding-left: 60px; }
-      .timeline-container.right { left: 0; }
+    @media(max-width:768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .cards-grid { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <h1>Alpha Grey!</h1>
+  </div>
 
   <!-- HEADER -->
   <header>
@@ -206,7 +226,7 @@
   <section class="hero" id="hero">
     <img src="Images/ICON.jpg" alt="Profile">
     <h1>Ajay Kumar</h1>
-    <p>Creative and detail-oriented designer with a passion for crafting visual identities and building meaningful user experiences.</p>
+    <p>Creative and detail-oriented designer with a passion for crafting visual identities and meaningful digital experiences.</p>
     <a href="#projects" class="cta-button">View My Work</a>
   </section>
 
@@ -216,13 +236,12 @@
     <div class="cards-grid">
       <article class="card">
         <h3>Graphic Design</h3>
-        <p>Showcasing my creativity through professional, impactful designs crafted with precision and detail.</p>
+        <p>Showcasing visually striking designs that highlight creativity and attention to detail.</p>
         <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
       </article>
-
       <article class="card">
         <h3>UI/UX Design</h3>
-        <p>Designing intuitive and delightful user experiences with a focus on usability and accessibility.</p>
+        <p>Designing intuitive and engaging digital experiences with user-centered design principles.</p>
         <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
       </article>
     </div>
@@ -232,20 +251,18 @@
   <section class="section" id="experience">
     <h2 class="section-title">Experience</h2>
     <div class="timeline">
-      <div class="timeline-container left">
-        <div class="timeline-box">
-          <h3>inGO Electrics Pvt Ltd</h3>
-          <p>Worked as Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
-          <small>- Internship</small>
-        </div>
+      <div class="experience-card">
+        <h3>inGO Electrics Pvt Ltd</h3>
+        <p>Graphic Designer, Web Designer & Social Media Handler. Creating thoughtful designs and engaging visuals for brand growth.</p>
+        <small>- Internship</small>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section contact-section" id="contact">
+  <section class="section" id="contact">
     <h2 class="section-title">Contact</h2>
-    <p>If you’d like to collaborate or have any questions, I’d love to hear from you.</p>
+    <p>If you'd like to collaborate, feel free to reach out.</p>
     <p><a href="mailto:ajaykumarbv193@gmail.com" style="color:var(--accent); font-weight:bold;">ajaykumarbv193@gmail.com</a></p>
     <div class="social-icons">
       <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
@@ -253,5 +270,14 @@
     </div>
   </section>
 
+  <!-- SCRIPT FOR SPLASH -->
+  <script>
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splash");
+      setTimeout(() => {
+        splash.classList.add("fade");
+      }, 2200); // splash stays for 2.2 sec
+    });
+  </script>
 </body>
 </html>
