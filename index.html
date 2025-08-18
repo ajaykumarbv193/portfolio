@@ -3,185 +3,295 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay — Designer Portfolio</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Ajay Kumar - Portfolio</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #13151b;
-      --accent: #49e2c4;
-      --card: #181b23;
-      --card-hover: #232b38;
-      --text: #fff;
-      --muted: #bfc9da;
-      --radius: 16px;
-      --transition: cubic-bezier(.46,.03,.52,.96) 0.32s;
-      --gradient: linear-gradient(145deg, #49e2c4 0%, #28344c 100%);
+      --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      --card-bg: #1e1e1e;
+      --primary: #fff;
+      --accent: #00bcd4;
+      --soft-gray: #b0b0b0;
+      --radius: 12px;
+      --transition: 0.3s ease;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      scroll-behavior: smooth;
     }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
+      font-family: 'Roboto', 'Poppins', sans-serif;
+      background: var(--background);
+      color: var(--primary);
+      line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
     }
-    header { text-align:center; padding: 3rem 0 1.3rem 0; position:relative; }
-    .ajay-hero-img {
-      width: 90px;height: 90px;margin: 0 auto 1.1rem auto;
-      display: block; border-radius: 50%;border:3px solid var(--accent);
-      object-fit: cover; background: #232936;
-      box-shadow: 0 0 25px rgba(73,226,196,0.11);
+    /* AJ LOGO FULLSCREEN BG */
+    .aj-bg {
+      position: fixed;
+      top: 50%; left: 50%;
+      width: 110vw; height: 110vh;
+      max-width: none;
+      min-width: 500px;
+      object-fit: contain;
+      transform: translate(-50%, -50%) rotate(-18deg);
+      opacity: 0.065;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
     }
-    h1 {
-      font-family: 'Montserrat',sans-serif;font-size:2.4rem;margin-bottom:0.6rem;font-weight:800;letter-spacing:1px;
-      background: var(--gradient);-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-clip: text;
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
     }
-    .subtitle {
-      color: var(--muted); font-size: 1.13rem; margin-bottom: 1.8rem;
-      letter-spacing: 0.5px;
+    /* HEADER */
+    header {
+      position: sticky; top: 0;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 2rem 1rem 2rem;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(9px);
+      z-index: 10;
+    }
+    header .logo img {
+      width: 50px; height: 50px; object-fit: contain; border-radius: 12px;
     }
     nav {
-      text-align:center; margin-bottom: 0.9rem;
+      display: flex; align-items: center;
     }
     nav a {
-      color: var(--accent); margin:0 1.24rem;
-      font-weight:600;text-decoration:none;font-size:1.07rem;transition:color var(--transition);
-      font-family: 'Montserrat',sans-serif;
+      color: var(--primary); margin: 0 1.1rem;
+      text-decoration: none; font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      transition: color var(--transition);
+      font-size: 1.07rem;
     }
-    nav a:hover { color: #fff; }
-    .section-title {
-      font-family: 'Montserrat',sans-serif;color: var(--accent);
-      font-size: 1.19rem; margin-bottom: 1.1rem; font-weight:600;text-align:center;
-      letter-spacing:0.5px;
+    nav a:hover { color: var(--accent);}
+    /* HERO */
+    .hero {
+      min-height: 70vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 4rem 1rem 2rem 1rem;
+      animation: fadeIn 1.2s var(--transition) forwards;
     }
-    /* Projects – interactive grid */
-    .projects-grid {
-      display: flex; justify-content:center; flex-wrap:wrap; gap: 2rem; margin-bottom:2rem;
-    }
-    .project-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: 0 1px 13px rgba(73,226,196,0.10);
-      width: 265px; min-height: 153px;
-      text-align: left; border: 2px solid transparent;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      position: relative; cursor: pointer;
-      overflow: hidden;
-      display: flex; flex-direction: column; justify-content: space-between;
-    }
-    .project-card h3 {
-      margin: 1.15rem 1.2rem 0.65rem 1.2rem; color: var(--accent);
-      font-family: 'Montserrat',sans-serif;font-size:1.08rem;font-weight:600;
-    }
-    .project-card p {
-      color: var(--muted); font-size: 1.03rem; margin:0 1.2rem 1rem 1.2rem;
-      min-height: 36px;
-    }
-    .project-card a {
-      align-self: flex-start; margin: 0 1.2rem 1.2rem 1.2rem;
-      background: var(--accent); color: #13151b; border-radius: 8px;
-      padding: 0.43rem 1.2rem; font-weight:600; text-decoration:none;
-      font-size:1.01rem; letter-spacing: 0.03em;
-      box-shadow:0 0 5px rgba(73,226,196,0.1); transition: background var(--transition), color var(--transition);
-    }
-    .project-card a:hover {
-      background: #34b091; color: #fff;
-    }
-    .project-card:hover {
-      background: var(--card-hover);
-      transform: translateY(-8px) scale(1.04);
-      box-shadow: 0 0 23px rgba(73,226,196,0.14);
+    .hero img {
+      width: 120px; height: 120px;
+      border-radius: 50%; object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.11);
+      margin-bottom: 1.1rem;
       border: 2px solid var(--accent);
+      background: #232936;
+      transition: box-shadow var(--transition), transform var(--transition);
     }
-    /* Contact card */
-    .contact-card {
-      background: var(--card); border-radius: var(--radius); padding: 1.2rem 1.5rem;
-      box-shadow: 0 1px 7px rgba(73,226,196,0.11);
-      margin: 2rem auto 0 auto; max-width: 328px; text-align:center;
+    .hero img:hover {
+      box-shadow: 0 0 30px var(--accent);
+      transform: scale(1.04);
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .hero p {
+      max-width: 480px; font-size: 1.08rem; color: var(--soft-gray);
+      margin: 0 auto 1.6rem auto;
+    }
+    .cta-button {
+      background: var(--accent);
+      color: #000;
+      padding: 0.7rem 1.6rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background var(--transition), transform var(--transition);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+    }
+    .cta-button:hover {
+      background: #0097a7;
+      transform: scale(1.06);
+    }
+    /* SECTION TITLES, GRID */
+    .section {
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 1.32rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+    }
+    /* PROJECT CARDS */
+    .cards-grid {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      padding: 1.1rem 1.4rem;
+      border-radius: var(--radius);
+      width: 250px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
       transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      border: 2px solid transparent; font-size: 1.12rem;
+      border: 2px solid transparent;
+      margin: 0.5rem 0;
+      text-align: left;
+      position: relative;
     }
-    .contact-card:hover { background: var(--card-hover); border: 2px solid var(--accent); box-shadow: 0 0 15px rgba(73,226,196,.13); transform: scale(1.03);}
-    .contact-card form { margin-top: 1rem; }
-    .contact-card input, .contact-card textarea {
-      width: 98%; padding: 0.7rem; margin-bottom:0.7rem;
-      border-radius: 9px; border: 1px solid #22283b;
-      background: #161926; color: var(--text); font-family: inherit;
-      font-size: 1.01rem;
+    .card h3 { margin-bottom: 0.7rem; color: var(--accent); font-family: 'Poppins', sans-serif;}
+    .card p { color: var(--soft-gray); margin-bottom: 1.1rem; font-size: 0.99rem;}
+    .card .cta-button { margin-bottom: 0; font-size: 0.98rem;}
+    .card:hover {
+      background: #222a36;
+      border: 2px solid var(--accent);
+      box-shadow: 0 8px 18px rgba(0,188,212,0.10);
+      transform: translateY(-8px) scale(1.05);
     }
-    .contact-card input:focus, .contact-card textarea:focus { outline: 2px solid var(--accent);}
-    .contact-card button {
-      background: var(--accent); color: #13151b; border-radius: 8px;
-      font-weight:600; font-size:1.02rem; padding:0.6rem 2.1rem; border:none;
-      cursor:pointer; transition: background var(--transition), color var(--transition);}
-    .contact-card button:hover { background: #34b091; color:#fff;}
-    .contact-card .social-icons {margin-top:1.1rem;}
-    .contact-card .social-icons a { width:33px; height:33px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; background:rgba(73,226,196,0.10); margin:0 0.5rem; box-shadow:0 0 6px rgba(73,226,196,0.08); transition: transform var(--transition), background var(--transition);}
-    .contact-card .social-icons a img { width:16px; height:16px; object-fit:contain;}
-    .contact-card .social-icons a:hover {background:var(--accent); transform:scale(1.14)}
-    @media (max-width: 700px){
-      .projects-grid{flex-direction:column;align-items:center;}
-      .contact-card { width:96vw;}
+    /* TIMELINE/EXPERIENCE (minimal, left only) */
+    .timeline {
+      margin: 1.6rem auto 0 auto;
+      max-width: 400px;
+      text-align: left;
+    }
+    .timeline-box {
+      background: var(--card-bg);
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      margin-bottom: 1.1rem;
+      border-left: 3.5px solid var(--accent);
+      font-size: 1rem;
+      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+    }
+    .timeline-box:hover {
+      background: #222a36;
+      box-shadow: 0 0 14px var(--accent);
+      transform: scale(1.02);
+    }
+    .timeline-box h3 { color: var(--accent); font-size: 1.06rem;}
+    .timeline-box small { color: var(--soft-gray); }
+    /* CONTACT CARD */
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      max-width: 300px;
+      margin: 1.2rem auto 0 auto;
+      box-shadow: 0 2px 9px rgba(0,188,212,0.06);
+      text-align: center;
+      border: 2px solid transparent;
+      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+      font-size: 1.06rem;
+    }
+    .contact-card:hover {
+      background: #222a36;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 13px var(--accent);
+      transform: scale(1.03);
+    }
+    .contact-card a {
+      color: var(--accent); font-weight: 600; text-decoration: none; transition: opacity var(--transition), text-decoration var(--transition);
+    }
+    .contact-card a:hover { text-decoration: underline; opacity: 0.7;}
+    .social-icons {
+      display: flex; justify-content: center; gap: 1rem; margin-top: 0.7rem;
+    }
+    .social-icons a {
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: var(--accent); transition: background var(--transition), transform var(--transition);
+      box-shadow: 0 0 7px rgba(0,188,212,0.06);
+    }
+    .social-icons a img { width: 16px; height: 16px; object-fit: contain;}
+    .social-icons a:hover {
+      background: #0097a7;
+      transform: scale(1.10);
+    }
+    /* Fade-in animation for hero/sections */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(36px);}
+      to { opacity: 1; transform: none;}
+    }
+    /* Responsive */
+    @media(max-width:700px){
+      .cards-grid{flex-direction:column;align-items:center;}
+      .contact-card, .timeline, .timeline-box {max-width:94vw;}
+      .hero img {width:80px;height:80px;}
+      .aj-bg {min-width:330px;}
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="Images/ICON.jpg" alt="Ajay portrait" class="ajay-hero-img" />
-    <h1>Ajay</h1>
-    <div class="subtitle">Designer • Visual Identity & UI/UX Enthusiast</div>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Projects -->
-  <section id="projects">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="projects-grid">
-      <!-- Card 1 -->
-      <div class="project-card">
-        <h3>Graphic Design</h3>
-        <p>Posters, branding, digital artwork: expressive visuals designed for real-world impact.</p>
-        <a href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Gallery</a>
+  <!-- AJ LOGO BACKGROUND -->
+  <img class="aj-bg" src="Images/AJ.png" alt="AJ Logo Background" />
+  <div class="content-wrapper">
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <img src="Images/AJ.png" alt="Logo">
       </div>
-      <!-- Card 2 -->
-      <div class="project-card">
-        <h3>UI/UX Design</h3>
-        <p>Clean, intuitive web and app interfaces that blend usability and aesthetics.</p>
-        <a href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Case Studies</a>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <img src="Images/ICON.jpg" alt="Profile">
+      <h1>Ajay Kumar</h1>
+      <p>Creative and detail-oriented designer passionate about crafting visual identities and meaningful user experiences.</p>
+      <a href="#projects" class="cta-button">View My Work</a>
+    </section>
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Graphic Design</h3>
+          <p>Professional, creative visual designs crafted with precision and detail.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View Project</a>
+        </article>
+        <article class="card">
+          <h3>UI/UX Design</h3>
+          <p>Delightful and intuitive user experiences focused on usability and accessibility.</p>
+          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View Project</a>
+        </article>
       </div>
-      <!-- Card 3: Add More Projects -->
-      <!--
-      <div class="project-card">
-        <h3>Project Title</h3>
-        <p>Project description here, tech, tools, and results.</p>
-        <a href="https://link-to-your-project.com" target="_blank">View Project</a>
+    </section>
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-box">
+          <h3>inGO Electrics Pvt Ltd</h3>
+          <p>Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
+          <small>- Internship</small>
+        </div>
       </div>
-      -->
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-card">
-      <div style="font-size: 1.04rem; margin-bottom:1rem;">Let’s collaborate! Send a message or connect via social:</div>
-      <form action="mailto:ajaykumarbv193@gmail.com" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="3" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-      <div style="margin: .9rem 0 .3rem 0; font-size: 0.98rem;">
-        Or email: <a href="mailto:ajaykumarbv193@gmail.com" style="color: var(--accent);font-weight:600;text-decoration:none;">ajaykumarbv193@gmail.com</a>
+    </section>
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-card">
+        <p>If you'd like to collaborate or have questions, reach out:</p>
+        <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
+          <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
+        </div>
       </div>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><img src="Images/LINKEDIN.png" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com/aj_devil__" target="_blank"><img src="Images/INSTAGRAM.png" alt="Instagram"></a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </body>
 </html>
