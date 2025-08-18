@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay  - Portfolio</title>
-  <!-- Fonts -->
+  <title>Ajay - Portfolio</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -15,9 +15,6 @@
       --soft-gray: #b0b0b0;
       --radius: 14px;
       --transition: 0.3s ease;
-      --card-font-lg: 1.2rem;
-      --card-font-title: 1.3rem;
-      --section-title-font: 2rem;
     }
     body {
       font-family: 'Roboto', 'Poppins', sans-serif;
@@ -88,134 +85,145 @@
     }
     .hero h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       margin-bottom: 0.3rem;
       font-weight: 700;
       letter-spacing: 1.2px;
+      color: var(--primary);
     }
     .hero p {
       max-width: 700px; font-size: 1.18rem; color: var(--soft-gray);
       margin: 0 auto 1.6rem auto;
     }
-    .cta-button {
+    .cta-button, .download-cv-btn {
       background: var(--accent);
       color: #000;
       padding: 1rem 2.2rem;
       border-radius: var(--radius);
-      text-decoration: none;
       font-weight: 600;
-      transition: background var(--transition), transform var(--transition);
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition), color var(--transition), border var(--transition);
       font-family: 'Poppins', sans-serif;
-      font-size: 1.18rem;
+      font-size: 1.11rem;
       margin-top: 1rem;
       display: inline-block;
+      border: none;
+      cursor: pointer;
     }
-    .cta-button:hover {
+    .download-cv-btn {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      margin-left: .8rem;
+    }
+    .cta-button:hover, .download-cv-btn:hover {
       background: #0097a7;
-      transform: scale(1.07);
+      color: #fff;
+      transform: scale(1.06);
+      border-color: #fff;
     }
     .section {
       padding: 3rem 1rem;
       text-align: center;
     }
     .section-title {
-      font-size: var(--section-title-font);
+      font-size: 2rem;
       margin-bottom: 1.4rem;
       color: var(--accent);
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       letter-spacing: 1px;
+      text-align: center;
     }
-    /* Larger Project Cards - Cover 65% screen */
-    .cards-grid {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 2.2rem;
-      margin-bottom: 1.5rem;
-      width: 65vw;
-      margin-left: auto;
-      margin-right: auto;
-      min-width: 320px;
-      max-width: 900px;
-    }
-    .card {
-      background: var(--card-bg);
-      padding: 2rem 2.2rem;
-      border-radius: var(--radius);
-      width: 320px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      border: 2px solid transparent;
-      margin: 0.8rem 0;
-      text-align: left;
-      position: relative;
-    }
-    .card h3 { 
-      margin-bottom: 0.75rem; 
-      color: var(--accent); 
-      font-family: 'Poppins', sans-serif;
-      font-size: var(--card-font-title);
-      font-weight: 700;
-    }
-    .card p { 
-      color: var(--soft-gray); 
-      margin-bottom: 1.05rem;
-      font-size: var(--card-font-lg);
-    }
-    .card .cta-button { margin-bottom: 0; font-size: 1.13rem;}
-    .card:hover {
-      background: #222a36;
-      border: 2px solid var(--accent);
-      box-shadow: 0 8px 22px rgba(0,188,212,0.16);
-      transform: translateY(-7px) scale(1.07);
-    }
-    /* Experience Section - Center Card */
-    .experience-wrapper {
+    /* Universal Experience Card Design */
+    .card-row {
       display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
       justify-content: center;
-      align-items: center;
-      width: 100%;
+      align-items: flex-start;
+      width: 65vw;
+      min-width: 340px;
+      max-width: 900px;
+      margin: 0 auto 1.5rem auto;
     }
-    .timeline-box {
+    .exp-card {
       background: var(--card-bg);
-      padding: 1.3rem 2rem;
       border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.11);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      padding: 1.7rem 2rem;
       margin-bottom: 1.5rem;
-      border-left: 3.5px solid var(--accent);
-      font-size: 1.14rem;
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      max-width: 520px;
-      min-width: 320px;
+      border-left: 4px solid var(--accent);
+      font-size: 1.07rem;
       text-align: left;
+      min-width: 280px;
+      max-width: 370px;
+      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
     }
-    .timeline-box:hover {
+    .exp-card img.card-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 11px;
+      margin-bottom: .7rem;
+      box-shadow: 0 1px 10px rgba(0,188,212,.12);
+    }
+    .exp-card h3 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--accent);
+      font-size: 1.16rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .exp-card small {
+      color: var(--soft-gray); margin-top: .8rem;
+      letter-spacing: 0.5px;
+      font-size: 0.97rem;
+    }
+    .exp-card p {
+      color: var(--primary);
+      margin-bottom: .8rem;
+      font-size: 1.03rem;
+      font-family: 'Roboto', sans-serif;
+    }
+    .exp-card .cta-button {
+      margin-bottom: 0; margin-top: .2rem;
+      font-size: 1rem;
+      padding: 0.7rem 1.3rem;
+    }
+    .exp-card:hover {
       background: #222a36;
       box-shadow: 0 0 14px var(--accent);
       transform: scale(1.04);
+      border-left: 4px solid #fff;
     }
-    .timeline-box h3 { color: var(--accent); font-size: 1.23rem;}
-    .timeline-box small { color: var(--soft-gray); }
-    /* Contact Card: Text above, icons at the bottom in row */
+    /* Contact Card matches */
     .contact-card {
       background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 1.6rem 2rem;
-      max-width: 280px;
-      margin: 2rem auto 0 auto;
       box-shadow: 0 2px 9px rgba(0,188,212,0.08);
-      text-align: center;
-      border: 2px solid transparent;
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      font-size: 1.15rem;
+      padding: 1.7rem 2rem;
+      margin: 2rem auto 0 auto;
+      border-left: 4px solid var(--accent);
+      font-size: 1.05rem;
+      max-width: 370px;
+      min-width: 280px;
+      text-align: left;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
+      align-items: flex-start;
+      justify-content: center;
+      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
     }
     .contact-card:hover {
       background: #222a36;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 13px var(--accent);
-      transform: scale(1.05);
+      box-shadow: 0 0 14px var(--accent);
+      transform: scale(1.04);
+      border-left: 4px solid #fff;
     }
     .contact-text {
       margin-bottom: 1.2rem;
@@ -225,9 +233,9 @@
     }
     .social-icons {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 1rem;
-      margin-top: 1.3rem;
+      margin-top: 1.2rem;
       width: 100%;
     }
     .social-icons a {
@@ -254,22 +262,20 @@
       to { opacity: 1; transform: none;}
     }
     @media(max-width:900px){
-      .cards-grid{width:92vw;}
-      .card{width:94vw;}
-      .timeline{max-width:94vw;}
-      .timeline-box{max-width:94vw;}
-      .contact-card{max-width:92vw;}
+      .card-row{width:92vw;}
+      .exp-card, .contact-card{width:94vw;max-width:98vw;}
+      .hero{padding:2rem 1rem;}
     }
     @media(max-width:600px){
       header .logo img {width: 36px; height: 36px;}
-      .cards-grid{flex-direction:column;align-items:center;}
-      .card {width:96vw;}
+      .card-row{flex-direction:column;align-items:center;width:100vw;}
+      .exp-card, .contact-card {width:96vw;}
       .hero img {width:72px;height:72px;}
       .aj-bg {min-width:210px;}
-      .section-title {font-size: 1.3rem;}
-      .hero h1{font-size:1.4rem;}
-      .hero p {font-size:0.95rem;}
-      .cta-button{font-size:1rem;}
+      .section-title {font-size: 1.18rem;}
+      .hero h1{font-size:1.19rem;}
+      .hero p {font-size:0.92rem;}
+      .cta-button, .download-cv-btn {font-size:0.95rem;}
     }
   </style>
 </head>
@@ -296,32 +302,40 @@
       <h1>Ajay</h1>
       <p>Creative and detail-oriented designer passionate about crafting visual identities and meaningful user experiences.</p>
       <a href="#projects" class="cta-button">View My Work</a>
+      <a href="Images/CV.pdf" class="download-cv-btn" download>Download CV</a>
     </section>
 
     <!-- PROJECTS -->
     <section class="section" id="projects">
       <h2 class="section-title">Projects</h2>
-      <div class="cards-grid">
-        <article class="card">
+      <div class="card-row">
+        <div class="exp-card">
+          <img src="Images/graphic-design.jpg" alt="Graphic Design Sample" class="card-image" />
           <h3>Graphic Design</h3>
           <p>Creative visual designs crafted with precision and impact.</p>
           <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View</a>
-        </article>
-        <article class="card">
+        </div>
+        <div class="exp-card">
+          <img src="Images/uiux-design.jpg" alt="UI/UX Design Sample" class="card-image" />
           <h3>UI/UX Design</h3>
           <p>Modern and intuitive user experiences focused on usability.</p>
           <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View</a>
-        </article>
+        </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section class="section" id="experience">
       <h2 class="section-title">Experience</h2>
-      <div class="experience-wrapper">
-        <div class="timeline-box">
+      <div class="card-row">
+        <div class="exp-card">
           <h3>inGO Electrics Pvt Ltd</h3>
           <p>Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
+          <small>- Internship</small>
+        </div>
+        <div class="exp-card">
+          <h3>UI/UX Designer Intern</h3>
+          <p>Designed modern interfaces and enhanced user flows for web and mobile, focusing on accessibility and delightful interactions.</p>
           <small>- Internship</small>
         </div>
       </div>
