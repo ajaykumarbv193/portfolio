@@ -31,12 +31,14 @@ nav a:hover,nav a.active{color:var(--accent)}
 
 /* Hero */
 .hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero::before{
-  content:"";
+.hero-bg{
   position:absolute;
   inset:0;
-  background: url('images/Background.jpg') center/cover no-repeat;
+  width:100%;
+  height:100%;
+  object-fit:cover;
   filter: blur(6px) brightness(0.55);
+  z-index:-1;
 }
 .hero::after{content:"";position:absolute;inset:0;background:rgba(23,24,29,0.75)}
 .hero .content{position:relative;z-index:2;max-width:700px;text-align:left;padding:20px}
@@ -129,6 +131,8 @@ footer{padding:40px 20px;text-align:center;color:var(--muted)}
 </header>
 
 <section id="home" class="hero">
+  <!-- Background image converted from CSS to HTML img tag -->
+  <img src="images/Background.jpg" class="hero-bg" alt="Background">
   <div class="content">
     <h1>AJAY B V</h1>
     <p class="subtitle">Graphic Designer & UI/UX Designer</p>
@@ -150,8 +154,8 @@ footer{padding:40px 20px;text-align:center;color:var(--muted)}
     <h2>About</h2>
     <p>
       I'm a passionate Graphic and UI/UX Designer with strong technical skills and a creative mindset.  
-      As a BSc Computer Science student, I blend design with logic — crafting digital experiences, brand visuals,
-      and engaging content. Ready to take up freelance projects and collaborations.
+      As a BSc Computer Science graduate, I blend design with logic — crafting digital experiences, brand visuals,
+      and engaging content. Currently seeking full-time opportunities while available for freelance projects.
     </p>
     <p style="margin-top:10px;color:var(--accent)">Email: <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a></p>
   </div>
@@ -227,11 +231,8 @@ footer{padding:40px 20px;text-align:center;color:var(--muted)}
       <img src="Images/VR_Interiors.jpg" alt="Brand Identity Project">
       <div class="content">
         <h3>VR Interiors</h3>
-      
       </div>
     </div>
-    
-    
     
     <!-- Freelance Project 2 -->
     <div class="freelance-card">
@@ -240,6 +241,7 @@ footer{padding:40px 20px;text-align:center;color:var(--muted)}
         <h3>BloomCrest</h3>
       </div>
     </div>
+  </div>
 </section>
 
 <footer>
