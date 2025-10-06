@@ -1,371 +1,751 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ajay - Portfolio</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      --card-bg: #1e1e1e;
-      --primary: #fff;
-      --accent: #00bcd4;
-      --soft-gray: #b0b0b0;
-      --radius: 14px;
-      --transition: 0.3s ease;
-      --shadow: 0 2px 10px rgba(0,0,0,0.13);
-    }
-    body {
-      font-family: 'Roboto', 'Poppins', sans-serif;
-      background: var(--background);
-      color: var(--primary);
-      line-height: 1.6;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-    .aj-bg {
-      position: fixed;
-      top: 50%; left: 50%;
-      width: 110vw; height: 110vh;
-      max-width: none;
-      min-width: 320px;
-      object-fit: contain;
-      transform: translate(-50%, -50%) rotate(-18deg);
-      opacity: 0.10;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-    }
-    .content-wrapper { position: relative; z-index: 1; width: 100%; }
-    header {
-      position: sticky; top: 0;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem clamp(1rem, 6vw, 2.5rem);
-      background: rgba(0,0,0,0.58);
-      backdrop-filter: blur(8px);
-      z-index: 10;
-    }
-    header .logo img {
-      width: 52px; height: 52px; object-fit: contain; border-radius: 11px;
-    }
-    nav a {
-      color: var(--primary);
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.18rem;
-      transition: color var(--transition);
-    }
-    nav a:hover { color: var(--accent);}
-    .hero {
-      min-height: 50vh;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      text-align: center; padding: 4.5rem 1.2rem 2rem 1.2rem;
-      animation: fadeIn 1.2s var(--transition) forwards;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .hero img {
-      width: 135px; height: 135px;
-      border-radius: 50%; 
-      object-fit: cover;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-      margin-bottom: 1.1rem;
-      border: 2.5px solid var(--accent);
-      background: #232936;
-      transition: box-shadow var(--transition), transform var(--transition);
-    }
-    .hero img:hover {
-      box-shadow: 0 0 30px var(--accent);
-      transform: scale(1.04);
-    }
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.2rem;
-      margin-bottom: 0.3rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      color: var(--primary);
-    }
-    .hero p {
-      max-width: 700px; font-size: 1.15rem; color: var(--soft-gray);
-      margin: 0 auto 1.6rem auto;
-    }
-    .download-cv-btn {
-      background: var(--accent);
-      color: #000;
-      padding: 1rem 2.2rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      text-decoration: none;
-      transition: background var(--transition), transform var(--transition), color var(--transition), border var(--transition);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.07rem;
-      margin-top: 1rem;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-    }
-    .download-cv-btn:hover {
-      background: #0097a7;
-      color: #fff;
-      transform: scale(1.06);
-      border-color: #fff;
-    }
-    .section {
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1.4rem;
-      color: var(--accent);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-    .card-row {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 2.2rem;
-      justify-content: center;
-      align-items: stretch;
-      width: 65vw;
-      min-width: 340px;
-      max-width: 900px;
-      margin: 0 auto 1.5rem auto;
-    }
-    .exp-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-bottom: 1.5rem;
-      border-left: 4px solid var(--accent);
-      font-size: 1.07rem;
-      min-width: 280px;
-      max-width: 370px;
-      flex: 1 1 320px;
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      position: relative;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 2.5rem 2rem 2rem 2rem;
-      text-align: left;
-    }
-    .exp-card .project-icon {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 1rem;
-      object-fit: contain;
-      border-radius: 11px;
-      background: #181d23;
-      display: block;
-      box-shadow: 0 1px 10px rgba(0,188,212,.12);
-    }
-    .exp-card h3 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--accent);
-      font-size: 1.16rem;
-      font-weight: 700;
-      margin-bottom: .6rem;
-    }
-    .exp-card p {
-      color: var(--primary);
-      font-size: 1.03rem;
-      margin: 0 0 1rem 0;
-      font-family: 'Roboto', sans-serif;
-    }
-    .exp-card .cta-button {
-      font-size: 1rem;
-      padding: 0.7rem 1.3rem;
-      background: var(--accent);
-      color: #000;
-      border-radius: var(--radius);
-      border: none;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-      transition: background var(--transition), color var(--transition), transform var(--transition);
-      margin-top: 1rem;
-    }
-    .exp-card .cta-button:hover {
-      background: #0097a7;
-      color: #fff;
-      transform: scale(1.06);
-    }
-    .exp-card:hover {
-      background: #222a36;
-      box-shadow: 0 0 14px var(--accent);
-      transform: scale(1.04);
-      border-left: 4px solid #fff;
-    }
-    .exp-card small {
-      color: var(--soft-gray); margin-top: .8rem; letter-spacing: 0.5px; font-size: 0.97rem;
-    }
-    .contact-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin: 2rem auto 0 auto;
-      border-left: 4px solid var(--accent);
-      font-size: 1.05rem;
-      max-width: 370px;
-      min-width: 280px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      transition: box-shadow var(--transition), background var(--transition), transform var(--transition), border var(--transition);
-      padding: 1.7rem 2rem;
-    }
-    .contact-card:hover {
-      background: #222a36;
-      box-shadow: 0 0 14px var(--accent);
-      transform: scale(1.04);
-      border-left: 4px solid #fff;
-    }
-    .contact-text {
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-      font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
-      white-space: nowrap;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: flex-start;
-      gap: 1rem;
-      margin-top: 1.2rem;
-      width: 100%;
-    }
-    .social-icons a {
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: var(--accent);
-      transition: background var(--transition), transform var(--transition);
-      box-shadow: 0 0 8px rgba(0,188,212,0.07);
-    }
-    .social-icons a img {
-      width: 20px;
-      height: 20px;
-    }
-    .social-icons a:hover {
-      background: #0097a7;
-      transform: scale(1.13);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(32px);}
-      to { opacity: 1; transform: none;}
-    }
-    @media(max-width:900px){
-      .card-row{width:92vw;}
-      .exp-card, .contact-card{width:94vw;max-width:98vw;}
-      .hero{padding:2rem 1rem;}
-    }
-    @media(max-width:700px){
-      .card-row{flex-direction:column;align-items:center;width:100vw;}
-      .exp-card, .contact-card {width:96vw;}
-      .hero img {width:72px;height:72px;}
-      .aj-bg {min-width:210px;}
-      .section-title {font-size: 1.18rem;}
-      .hero h1{font-size:1.19rem;}
-      .hero p {font-size:0.92rem;}
-      .cta-button, .download-cv-btn {font-size:0.95rem;}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jason Martin — Portfolio</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-1: #232731;
+    --bg-2: #17181d;
+    --accent: #4ad0fc;
+    --muted: #9aa1ab;
+    --card-shadow: 0 8px 24px rgba(11,13,16,0.6);
+    --glass: rgba(255,255,255,0.03);
+    --glass-2: rgba(255,255,255,0.02);
+    --radius: 14px;
+    --max-width: 1200px;
+    --text: #ffffff;
+  }
+
+  /* Reset + base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+    color:var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* Page layout */
+  .container{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 32px;
+  }
+
+  header.site-header{
+    position: absolute;
+    top: 18px;
+    left:0;
+    right:0;
+    z-index:40;
+    pointer-events: none;
+  }
+  .site-header .inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding: 0 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    pointer-events: auto;
+  }
+
+  /* Nav */
+  nav.main-nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    font-weight:600;
+    letter-spacing:0.6px;
+  }
+  nav.main-nav a{
+    position:relative;
+    color: rgba(255,255,255,0.86);
+    padding:8px 10px;
+    border-radius:8px;
+    transition: all .2s ease;
+  }
+  nav.main-nav a:hover{ color:var(--accent) }
+  /* animated underline */
+  nav.main-nav a::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%) scaleX(0);
+    bottom:3px;
+    width:60%;
+    height:2px;
+    background: linear-gradient(90deg,var(--accent),#8ee9ff 80%);
+    border-radius:2px;
+    transform-origin:center;
+    transition: transform .25s cubic-bezier(.2,.9,.3,1);
+  }
+  nav.main-nav a:hover::after{ transform:translateX(-50%) scaleX(1) }
+  nav.main-nav a.active{ color:var(--accent) }
+  nav.main-nav a.active::after{ transform:translateX(-50%) scaleX(1) }
+
+  /* Contact top right */
+  .top-contact{
+    font-weight:600;
+    color: rgba(255,255,255,0.9);
+    display:flex;
+    gap:10px;
+    align-items:center;
+    font-size:14px;
+  }
+  .top-contact a{ color: var(--accent); text-decoration:none; }
+
+  /* HERO */
+  .hero{
+    min-height: 82vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* background image layer */
+  .hero .bg{
+    position:absolute;
+    inset:0;
+    background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=6f6c7f4fef0a53e2a8eaef1c34b1f7f4');
+    background-size:cover;
+    background-position: center;
+    filter: blur(6px) saturate(90%) brightness(0.55);
+    transform:scale(1.06);
+    z-index:0;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(23,24,29,0.55) 0%, rgba(16,17,21,0.75) 60%, rgba(8,9,11,0.9) 100%);
+    z-index:1;
+  }
+
+  .hero .content{
+    position:relative;
+    z-index:5;
+    padding: 56px 24px;
+    width:100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display:flex;
+    align-items:flex-start;
+  }
+
+  /* Left column hero text */
+  .hero .left{
+    width:64%;
+    max-width:760px;
+  }
+  .hero h1{
+    margin:0 0 8px 0;
+    font-size: clamp(28px, 6vw, 56px);
+    letter-spacing:3px;
+    font-weight:800;
+    color: #ffffff;
+  }
+  .hero .subtitle{
+    margin:0 0 22px 0;
+    color: rgba(255,255,255,0.85);
+    font-weight:600;
+    font-size:18px;
+  }
+
+  /* Buttons */
+  .hero .cta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:18px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 18px;
+    border-radius:999px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #fff;
+    font-weight:700;
+    cursor:pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+    box-shadow: 0 6px 18px rgba(2,6,10,0.6);
+  }
+  .btn:hover{ transform: translateY(-3px) }
+  .btn.primary{
+    background: linear-gradient(90deg,var(--accent), #8de9ff 120%);
+    color: #071018;
+    border: none;
+    box-shadow: 0 10px 30px rgba(74,208,252,0.12), 0 2px 8px rgba(0,0,0,0.6);
+  }
+  .btn.ghost{
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* social icons row */
+  .social-row{
+    display:flex;
+    gap:12px;
+    margin-top:6px;
+    align-items:center;
+  }
+  .social-row a{
+    display:inline-flex;
+    width:38px;height:38px;
+    border-radius:8px;
+    align-items:center;
+    justify-content:center;
+    background: rgba(255,255,255,0.04);
+    color:white;
+    text-decoration:none;
+    transition: transform .14s ease, background .14s ease;
+  }
+  .social-row a:hover{ transform: translateY(-4px); background: rgba(74,208,252,0.12); color:var(--accent) }
+
+  /* ABOUT section */
+  section.about{
+    padding: 64px 24px;
+    position:relative;
+    z-index:2;
+  }
+  .about .inner{
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:30px;
+    align-items:center;
+    max-width: var(--max-width);
+    margin:0 auto;
+  }
+  .about h2{
+    font-size:28px;margin:0 0 8px 0;color:var(--text);
+    letter-spacing:1px;
+  }
+  .muted{color:var(--muted);font-weight:500}
+  .accent{color:var(--accent);font-weight:700}
+  .about .left p{color:rgba(255,255,255,0.88); margin-top:14px}
+  .about .meta{margin-top:12px;color:rgba(255,255,255,0.75)}
+  .portrait{
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+    box-shadow: var(--card-shadow);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  }
+  .portrait img{
+    filter: grayscale(80%) contrast(90%) brightness(95%);
+    width:100%; height:100%; object-fit:cover; display:block;
+    transform: translateZ(0);
+  }
+  .portrait::after{
+    content:"";
+    position:absolute; inset:auto 0 0 0; height:40%;
+    background: linear-gradient(180deg, rgba(23,24,29,0) 0%, rgba(23,24,29,0.8) 100%);
+  }
+
+  /* RESUME/Skills - three columns */
+  section.resume{
+    padding: 44px 24px 90px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  }
+  .resume .grid{
+    max-width: var(--max-width);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr 380px;
+    gap:22px;
+  }
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:18px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+  .section-title{
+    display:flex; align-items:center; gap:10px; margin-bottom:12px;
+  }
+  .section-title h3{ margin:0; font-size:16px; font-weight:700; }
+  .divider{height:1px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04)); margin:12px 0 16px}
+
+  /* progress row */
+  .skill-row{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+  .skill-row .label{min-width:120px; font-weight:600; color:rgba(255,255,255,0.88)}
+  .progress{
+    width:100%;
+    height:12px;
+    border-radius:999px;
+    background: rgba(255,255,255,0.04);
+    overflow:hidden;
+    position:relative;
+  }
+  .progress .fill{
+    position:absolute; left:0; top:0; bottom:0; width:0%;
+    background: linear-gradient(90deg,var(--accent), #78e6ff);
+    border-radius:inherit;
+    transition: width 1200ms cubic-bezier(.2,.9,.3,1);
+    box-shadow: 0 6px 18px rgba(74,208,252,0.08);
+  }
+  .progress .value{ font-size:12px; color:var(--muted); margin-left:10px; min-width:40px; text-align:right }
+
+  /* languages smaller progress */
+  .lang{display:flex; gap:12px; align-items:center; margin-bottom:10px}
+  .small-bar{height:8px;border-radius:999px;flex:1;background:rgba(255,255,255,0.03);overflow:hidden}
+  .small-bar .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent), #78e6ff);transition: width 1100ms cubic-bezier(.2,.9,.3,1)}
+
+  /* personal skills list */
+  .list{display:flex;flex-direction:column;gap:8px}
+  .chip{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+  /* center timeline */
+  .timeline{display:flex;flex-direction:column;gap:16px}
+  .timeline-item{
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .timeline-marker{
+    min-width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px;
+    box-shadow: 0 6px 16px rgba(74,208,252,0.08);
+  }
+  .timeline-body h4{margin:0;font-size:15px;font-weight:700}
+  .timeline-body .meta{font-size:13px;color:var(--muted);margin-top:4px}
+
+  /* right column lists */
+  .skill-list{display:flex;flex-direction:column;gap:10px}
+  .skill-list .item{padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);font-weight:600;border:1px solid rgba(255,255,255,0.02)}
+  .hobbies{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .hob{display:flex;flex-direction:column;gap:8px;align-items:center;width:84px}
+  .hob .circle{width:56px;height:56px;border-radius:999px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center}
+
+  /* footer-ish spacing */
+  .spacer{height:40px}
+
+  /* Responsive tweaks */
+  @media (max-width: 980px){
+    .hero .left{width:100%}
+    .about .inner{grid-template-columns: 1fr; gap:20px}
+    .resume .grid{grid-template-columns: 1fr; padding-bottom:24px}
+    header.site-header{top:12px}
+  }
+  @media (max-width:600px){
+    .site-header .inner{padding:0 14px}
+    .top-contact{font-size:13px}
+    .hero{min-height:72vh;padding-bottom:18px}
+    .portrait{height:300px}
+    .hero h1{font-size:28px;letter-spacing:2px}
+    .btn{padding:10px 14px;font-size:14px}
+    .skill-row .label{min-width:95px}
+  }
+
+  /* subtle entrance animations */
+  .fade-up{opacity:0; transform: translateY(10px); transition: all .7s cubic-bezier(.2,.9,.3,1)}
+  .in-view{opacity:1; transform: translateY(0)}
+</style>
 </head>
 <body>
-  <img class="aj-bg" src="Images/AJ.png" alt="AJ Logo Background" />
-  <div class="content-wrapper">
-    <!-- HEADER -->
-    <header>
-      <div class="logo">
-        <img src="Images/AJ.png" alt="Logo" />
-      </div>
-      <nav>
-        <a href="#hero">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <img src="Images/ICON.jpg" alt="Profile" />
-      <h1>Ajay</h1>
-      <p>Creative and detail-oriented designer passionate about crafting visual identities and meaningful user experiences.</p>
-      <a href="https://drive.google.com/file/d/1MrdJ08ilvGVD9Mqt2biPmdJOBYIm4dMH/view?usp=sharing" class="download-cv-btn" target="_blank">Download CV</a>
-    </section>
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="card-row">
-        <div class="exp-card">
-          <img src="Images/Graphic Design.png" alt="Graphic Design Icon" class="project-icon" />
-          <h3>Graphic Design</h3>
-          <p>Creative visual designs crafted with precision and impact.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=sharing" target="_blank">View</a>
-        </div>
-        <div class="exp-card">
-          <img src="Images/UIUX design.png" alt="UI/UX Design Icon" class="project-icon" />
-          <h3>UI/UX Design</h3>
-          <p>Modern and intuitive user experiences focused on usability.</p>
-          <a class="cta-button" href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=sharing" target="_blank">View</a>
-        </div>
-      </div>
-    </section>
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="card-row">
-        <div class="exp-card">
-          <h3>inGO Electrics Pvt Ltd</h3>
-          <p>Graphic Designer, Web Designer & Social Media Handler. Crafted engaging visuals and digital experiences.</p>
-          <small>- Internship</small>
-        </div>
-        <div class="exp-card">
-          <h3>Cloudisian Pvt Ltd</h3>
-          <p>Designed modern interfaces and enhanced user flows for web and mobile, focusing on accessibility and delightful interactions.</p>
-          <small>- Internship</small>
-        </div>
-      </div>
-    </section>
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="contact-card">
-        <div class="contact-text" style="white-space: nowrap;">
-          If you'd like to collaborate or have questions, reach out:
-        </div>
-        <div class="social-icons">
-          <a href="mailto:ajaykumarbv193@gmail.com">
-            <img src="Images/GMAIL.png" alt="Gmail Icon" />
-          </a>
-          <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank">
-            <img src="Images/LINKEDIN.png" alt="LinkedIn" />
-          </a>
-          <a href="https://www.instagram.com/aj_devil__" target="_blank">
-            <img src="Images/INSTAGRAM.png" alt="Instagram" />
-          </a>
-        </div>
-      </div>
-    </section>
+
+<!-- Header -->
+<header class="site-header" role="banner">
+  <div class="inner">
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#portfolio">Portfolio</a>
+    </nav>
+
+    <div class="top-contact" aria-hidden="false">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="opacity:.9">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 3.09 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.12 1.12.38 2.2.78 3.22a2 2 0 0 1-.45 2.11L9.91 10.91a16 16 0 0 0 6 6l1.86-1.86a2 2 0 0 1 2.11-.45c1.02.4 2.1.66 3.22.78A2 2 0 0 1 22 16.92z" fill="currentColor"></path>
+      </svg>
+      <a href="tel:+1234567890" aria-label="Call">+1 (234) 567-890</a>
+    </div>
   </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero" aria-label="Landing">
+  <div class="bg" role="img" aria-hidden="true"></div>
+  <div class="content container">
+    <div class="left">
+      <h1 class="fade-up in-view">JASON MARTIN</h1>
+      <p class="subtitle fade-up in-view" style="transition-delay:.06s">Graphic Designer — Visual Systems & Creative Direction</p>
+
+      <div class="cta fade-up in-view" style="transition-delay:.12s">
+        <a class="btn primary" href="#resume" aria-label="Open Resume">Resume</a>
+        <a class="btn ghost" href="#portfolio" aria-label="View Portfolio">Portfolio</a>
+      </div>
+
+      <div class="social-row fade-up in-view" style="transition-delay:.16s" aria-label="Social links">
+        <!-- Behance -->
+        <a href="#" title="Behance" aria-label="Behance">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12h5.5a3.5 3.5 0 0 0 0-7H3v7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M3 19h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M21 9.5a3 3 0 0 0-3-3h-5v9h5a3 3 0 0 0 3-3v-3z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="#" title="LinkedIn" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M7 10v6M7 8v.01M10 8v8M13 8v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </a>
+
+        <!-- Dribbble -->
+        <a href="#" title="Dribbble" aria-label="Dribbble">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M4 15s5-3 12-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M8 5s3 4 8 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </a>
+
+        <!-- Twitter -->
+        <a href="#" title="Twitter" aria-label="Twitter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M22 5.8c-.6.3-1.3.5-2 .6a3.4 3.4 0 0 0-5.8 3v.4A9.6 9.6 0 0 1 3 6.1a3.4 3.4 0 0 0 1.1 4.5 3.3 3.3 0 0 1-1.5-.4v.04c0 1.6 1.1 3 2.6 3.4a3.4 3.4 0 0 1-1.5.06 3.4 3.4 0 0 0 3.2 2.3 6.8 6.8 0 0 1-4.3 1.5c-.28 0-.56 0-.84-.04A9.5 9.5 0 0 0 13 20c6.1 0 9.5-5.1 9.5-9.5v-.44A6.8 6.8 0 0 0 22 5.8z" fill="currentColor"></path>
+          </svg>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="#" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M21 12.2a9 9 0 1 0-2.5 6.1L22 22l-2.1-0.5A9 9 0 0 0 21 12.2z" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M8.7 7.9c-.2-.6.1-1.3.8-1.5.6-.2 1.3.1 1.5.7.2.6.5 1.2.7 1.7.2.5 0 1-.5 1.3l-.2.1c-.6.3-1.2.6-1.7.9-.5.3-.9.6-.8 1.1.1.5.8 1.2 1.8 1.8.95.5 1.6.8 2 .9.5.2 1 .1 1.4-.2.4-.3 1-1.1 1.2-1.5.2-.4.3-.9.1-1.3-.2-.4-.8-1.1-1.3-1.6" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- small spacer -->
+      <div style="height:16px"></div>
+      <p class="muted" style="font-size:13px">Available for freelance contracts & consultancy</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about" aria-labelledby="about-heading">
+  <div class="inner">
+    <div class="left">
+      <h2 id="about-heading">About</h2>
+      <div class="meta accent">jason.martin.design@example.com</div>
+      <p>
+        I’m a graphic designer with 10+ years building visual identities, product interfaces, and campaign systems.
+        I combine design craft with IT leadership — building teams, setting design systems, and shipping at scale.
+        My background spans branding, digital products, motion graphics, and cross-discipline collaboration.
+      </p>
+      <div class="meta" style="margin-top:12px">
+        <strong class="accent">Location:</strong> London, UK — <span class="muted">Available remotely</span>
+      </div>
+    </div>
+
+    <div class="portrait" aria-hidden="false" title="Portrait of Jason Martin">
+      <!-- placeholder monochrome portrait from Unsplash — replace with your image link -->
+      <img src="https://images.unsplash.com/photo-1545996124-1f4a9f7d3e51?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=aa0d9ad6a5f7b6f6a1aefb4d2e7b4b9a" alt="Monochrome portrait" />
+    </div>
+  </div>
+</section>
+
+<!-- RESUME / SKILLS -->
+<section id="resume" class="resume" aria-labelledby="resume-heading">
+  <div class="container">
+    <h2 id="resume-heading" style="margin:0 0 18px 0; font-size:26px">Resume</h2>
+
+    <div class="grid">
+      <!-- Left Column -->
+      <div class="card fade-up">
+        <div class="section-title">
+          <h3>Software Skills</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="skill-row">
+          <div class="label">Photoshop</div>
+          <div class="progress" data-percent="92" aria-hidden="true"><div class="fill"></div></div>
+          <div class="value">92%</div>
+        </div>
+
+        <div class="skill-row">
+          <div class="label">Illustrator</div>
+          <div class="progress" data-percent="88"><div class="fill"></div></div>
+          <div class="value">88%</div>
+        </div>
+
+        <div class="skill-row">
+          <div class="label">InDesign</div>
+          <div class="progress" data-percent="82"><div class="fill"></div></div>
+          <div class="value">82%</div>
+        </div>
+
+        <div class="skill-row">
+          <div class="label">Figma</div>
+          <div class="progress" data-percent="90"><div class="fill"></div></div>
+          <div class="value">90%</div>
+        </div>
+
+        <div class="skill-row">
+          <div class="label">After Effects</div>
+          <div class="progress" data-percent="70"><div class="fill"></div></div>
+          <div class="value">70%</div>
+        </div>
+
+        <div style="height:8px"></div>
+
+        <div class="section-title" style="margin-top:8px">
+          <h3>Languages</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="lang">
+          <div style="min-width:86px;font-weight:700">English</div>
+          <div class="small-bar" data-percent="100"><div class="fill"></div></div>
+          <div style="min-width:36px;text-align:right" class="muted">Native</div>
+        </div>
+
+        <div class="lang">
+          <div style="min-width:86px;font-weight:700">Arabic</div>
+          <div class="small-bar" data-percent="56"><div class="fill"></div></div>
+          <div style="min-width:36px;text-align:right" class="muted">56%</div>
+        </div>
+
+        <div class="lang">
+          <div style="min-width:86px;font-weight:700">Turkish</div>
+          <div class="small-bar" data-percent="33"><div class="fill"></div></div>
+          <div style="min-width:36px;text-align:right" class="muted">33%</div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="section-title">
+          <h3>Personal Skills</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="list">
+          <div class="chip">Creativity</div>
+          <div class="chip">Teamwork & Leadership</div>
+          <div class="chip">Organization & Process</div>
+        </div>
+      </div>
+
+      <!-- Center Column -->
+      <div class="card fade-up">
+        <div class="section-title">
+          <h3>Experience</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-body">
+              <h4>Art Director — Studio Nova</h4>
+              <div class="meta muted">2020 — Present · Lead creative for brand & product work</div>
+              <p class="muted" style="margin-top:8px">Managing a cross-functional team, design systems, and prescriptive brand identities for enterprise clients.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-body">
+              <h4>Senior Designer — Pixel & Co</h4>
+              <div class="meta muted">2016 — 2020 · Branding & Campaigns</div>
+              <p class="muted" style="margin-top:8px">Delivered campaign identities, packaging, and art direction across digital & print.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-body">
+              <h4>Designer — Freelance</h4>
+              <div class="meta muted">2012 — 2016 · Various contracts</div>
+              <p class="muted" style="margin-top:8px">Built visual identities and product mockups for startups and non-profits.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="section-title" style="margin-top:10px">
+          <h3>Education</h3>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h4 style="margin:0">B.A. Graphic Design</h4>
+          <div class="meta muted" style="margin-top:6px">University of the Arts — 2008 — 2012</div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <aside class="card fade-up" aria-label="Additional skills and hobbies">
+        <div class="section-title">
+          <h3>What Can I Do?</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="skill-list">
+          <div class="item">Logo & Identity</div>
+          <div class="item">Brand Systems</div>
+          <div class="item">Stationery & Packaging</div>
+          <div class="item">UI/UX & Prototyping</div>
+          <div class="item">Motion Graphics</div>
+        </div>
+
+        <div style="height:14px"></div>
+        <div class="section-title">
+          <h3>Design Skills</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="list" style="margin-bottom:10px">
+          <div class="chip">Brand Strategy</div>
+          <div class="chip">Design Systems</div>
+          <div class="chip">Art Direction</div>
+          <div class="chip">Production & Print</div>
+        </div>
+
+        <div style="height:12px"></div>
+        <div class="section-title">
+          <h3>Hobbies & Interests</h3>
+        </div>
+        <div class="divider"></div>
+
+        <div class="hobbies">
+          <div class="hob">
+            <div class="circle" aria-hidden="true">
+              <!-- drawing icon -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 21l4-1 11-11 1-4-4 1L3 21z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div style="font-size:13px" class="muted">Drawing</div>
+          </div>
+
+          <div class="hob">
+            <div class="circle">
+              <!-- camera -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3l2-3h4l2 3h3a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.1"/></svg>
+            </div>
+            <div style="font-size:13px" class="muted">Photography</div>
+          </div>
+
+          <div class="hob">
+            <div class="circle">
+              <!-- travel -->
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12h20M7 12l5-5 5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div style="font-size:13px" class="muted">Travel</div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="spacer"></div>
+
+<!-- Minimal footer -->
+<footer class="container" style="padding:32px 24px;color:var(--muted);font-size:14px; text-align:center">
+  © <span id="year"></span> Jason Martin — Designed & built with care.
+</footer>
+
+<script>
+  // set year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // IntersectionObserver for progress bars & fade-up sections
+  (function(){
+    const ioOptions = { root: null, rootMargin: '0px', threshold: 0.18 };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          // reveal fade-up elements
+          if(entry.target.classList.contains('fade-up')){
+            entry.target.classList.add('in-view');
+          }
+          // progress bars
+          const progress = entry.target.querySelectorAll?.('.progress') || [];
+          entry.target.querySelectorAll?.('.progress')?.forEach(el => {
+            const percent = Number(el.getAttribute('data-percent')||0);
+            const fill = el.querySelector('.fill');
+            if(fill) fill.style.width = percent + '%';
+          });
+
+          entry.target.querySelectorAll?.('.small-bar')?.forEach(el => {
+            const percent = Number(el.getAttribute('data-percent')||0);
+            const fill = el.querySelector('.fill');
+            if(fill) fill.style.width = percent + '%';
+          });
+
+          // if the target itself is a progress element (observed directly)
+          if(entry.target.classList.contains('progress')){
+            const percent = Number(entry.target.getAttribute('data-percent')||0);
+            const fill = entry.target.querySelector('.fill');
+            if(fill) fill.style.width = percent + '%';
+          }
+
+          // mark as seen
+          obs.unobserve(entry.target);
+        }
+      });
+    }, ioOptions);
+
+    // observe major cards and the whole resume section
+    document.querySelectorAll('.fade-up, .card').forEach(el => observer.observe(el));
+    // Observe top-level resume section to animate contained progress bars
+    const resume = document.querySelector('#resume');
+    if(resume) observer.observe(resume);
+
+    // also observe in-case small bars are outside cards
+    document.querySelectorAll('.progress, .small-bar').forEach(el => observer.observe(el));
+  })();
+
+  // Smooth scrolling for anchor links (native doesn't work consistently on all browsers)
+  (function(){
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(a=>{
+      a.addEventListener('click', function(e){
+        const targetId = this.getAttribute('href').slice(1);
+        const t = document.getElementById(targetId);
+        if(t){
+          e.preventDefault();
+          t.scrollIntoView({behavior:'smooth', block:'start'});
+          // update active nav
+          document.querySelectorAll('nav.main-nav a').forEach(x=>x.classList.remove('active'));
+          const inNav = document.querySelector('nav.main-nav a[href="#'+targetId+'"]');
+          if(inNav) inNav.classList.add('active');
+        }
+      });
+    });
+  })();
+
+  // Accessibility: allow keyboard focus visible for interactive elements
+  (function(){
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Tab') document.body.classList.add('user-is-tabbing');
+    });
+  })();
+</script>
+
 </body>
 </html>
