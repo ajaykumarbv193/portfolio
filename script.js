@@ -85,7 +85,23 @@ const portfolioItems = [
         title: "Photography 01",
         category: "photography",
         type: "Photography / DOP",
-        image: "Images/photography/Evening.jpeg",
+        image: "Images/Photography/Evening.jpeg",
+        description: "Photography and DOP still."
+    },
+  
+    {
+        title: "Photography 01",
+        category: "photography",
+        type: "Photography / DOP",
+        image: "Images/Photography/Nature.jpeg",
+        description: "Photography and DOP still."
+    },
+  
+    {
+        title: "Photography 01",
+        category: "photography",
+        type: "Photography / DOP",
+        image: "Images/Photography/terrace.jpeg",
         description: "Photography and DOP still."
     },
 
