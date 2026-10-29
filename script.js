@@ -3,7 +3,7 @@
 // Design files: Images/design/your-design.jpg
 // Keep image filenames and capitalization exactly the same as GitHub.
 const portfolioItems = [
- {title:"Cinematic Poster 01",category:"photography",type:"Poster / Cinematic Art",image:"Images/photography/cinematic-poster-01.jpg",description:"Cinematic poster and visual storytelling."},
+ {title:"Cinematic Poster 01",category:"photography",type:"Poster / Cinematic Art",image:"Images/Dusheera Poster.jpg",description:"Cinematic poster and visual storytelling."},
  {title:"Cinematic Poster 02",category:"photography",type:"Digital Artwork",image:"Images/photography/cinematic-poster-02.jpg",description:"Digital artwork and cinematic concepts."},
  {title:"Visual Identity",category:"design",type:"Branding / Graphic Design",image:"Images/design/visual-identity.jpg",description:"Brand identity and graphic design project."},
  {title:"Social Media Creative",category:"design",type:"Campaign Design",image:"Images/design/social-media-creative.jpg",description:"Social media campaign creative."},
