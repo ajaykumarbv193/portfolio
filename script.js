@@ -51,7 +51,7 @@ const portfolioItems = [
         title: "Graphic Design",
         category: "Design",
         type: "Poster / Cinematic Art",
-        image: "Images/Dusheera Poster.jpg",
+        image: "Images/Graphic design/tuatara.png",
         description: "Cinematic poster and visual storytelling."
     },
 
@@ -59,7 +59,7 @@ const portfolioItems = [
         title: "Photography & DOP",
         category: "photography",
         type: "Digital Artwork",
-        image: "Images/Lambo.jpg",
+        image: "Images/Photography/Temple.jpeg",
         description: "Digital artwork and cinematic concepts."
     },
 
@@ -68,7 +68,7 @@ const portfolioItems = [
         title: "Visual Identity",
         category: "design",
         type: "Branding / Graphic Design",
-        image: "Images/Mustang.png",
+        image: "Images/Graphic design/Mustang.png",
         description: "Brand identity and graphic design project."
     },
 
@@ -76,7 +76,7 @@ const portfolioItems = [
         title: "Social Media Creative",
         category: "design",
         type: "Campaign Design",
-        image: "Images/BloomCrest .jpg",
+        image: "Images/Graphic design/BloomCrest .jpg",
         description: "Social media campaign creative."
     },
 
@@ -85,16 +85,16 @@ const portfolioItems = [
         title: "Photography 01",
         category: "photography",
         type: "Photography / DOP",
-        image: "Images/photography/photography-01.jpg",
+        image: "Images/photography/Evening.jpeg",
         description: "Photography and DOP still."
     },
 
     // DIGITAL DESIGN
     {
-        title: "Digital Design 01",
+        title: "Logo",
         category: "design",
         type: "Digital Design",
-        image: "Images/design/digital-design-01.jpg",
+        image: "Images/Graphic design/NVJ Jewellery.jpg",
         description: "Digital design and visual communication."
     },
 
