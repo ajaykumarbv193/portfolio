@@ -17,15 +17,15 @@ const portfolioItems = [
 
     // PHOTOGRAPHY / CINEMATIC ART
     {
-        title: "Cinematic Poster 01",
-        category: "photography",
+        title: "Graphic Design",
+        category: "Design",
         type: "Poster / Cinematic Art",
         image: "Images/Dusheera Poster.jpg",
         description: "Cinematic poster and visual storytelling."
     },
 
     {
-        title: "Cinematic Poster 02",
+        title: "Photography & DOP",
         category: "photography",
         type: "Digital Artwork",
         image: "Images/Lambo.jpg",
