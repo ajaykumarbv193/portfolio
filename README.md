@@ -1,4 +1,4 @@
-# Ajay Kumar — Professional Portfolio
+# Ajay — Professional Portfolio
 
 ## Pages included
 - `index.html` — main portfolio: profile photo + about on the right, education, skills, experience, selected work, contact

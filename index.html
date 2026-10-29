@@ -8,11 +8,57 @@
 
     <meta
         name="description"
-        content="Ajay Kumar — Graphic Designer, DOP and MCA student."
+        content="Ajay — Graphic Designer, DOP and MCA student."
     >
 
-    <title>Ajay Kumar® — Designer & DOP</title>
+    <title>Ajay® — Designer & DOP</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        :root { --ice: #e63946; --wine: #8f1728; }
+        .brand span, .eyebrow, .section-label, h1 i, .section-head h2 i,
+        .profile-copy h2 i, .availability span { color: #e63946 !important; }
+        .eyebrow:before { background: #e63946 !important; }
+        .btn:hover { border-color: #e63946 !important; }
+        ::selection { background: #e63946 !important; color: #fff; }
+        .work-category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 28px;
+        }
+        .work-category {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            isolation: isolate;
+            padding: 24px;
+            border: 1px solid var(--line);
+            background: var(--panel);
+            transition: transform .3s ease, border-color .3s ease;
+        }
+        .work-category:hover { transform: translateY(-6px); border-color: #e63946; }
+        .work-category img {
+            position: absolute; inset: 0; z-index: -2;
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: .62; transition: transform .5s ease, opacity .3s ease;
+        }
+        .work-category:hover img { transform: scale(1.05); opacity: .78; }
+        .work-category:after {
+            content: ""; position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(180deg, transparent 15%, rgba(9,9,12,.92) 100%);
+        }
+        .work-category .category-number { font: 10px var(--mono); color: #ff6670; letter-spacing: .16em; }
+        .work-category h3 { margin: 12px 0 8px; font-size: clamp(24px, 3vw, 38px); letter-spacing: -.06em; }
+        .work-category p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+        .work-category .category-link { margin-top: 18px; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+        @media (max-width: 760px) {
+            .work-category-grid { grid-template-columns: 1fr; }
+            .work-category { min-height: 250px; }
+        }
+    </style>
 </head>
 
 <body>
@@ -25,7 +71,7 @@
         <div class="wrap topbar">
 
             <a class="brand" href="index.html">
-                AJAY KUMAR<span>®</span>
+                AJAY<span>®</span>
             </a>
 
             <nav>
@@ -367,17 +413,33 @@
 
             </div>
 
-            <!-- IMAGES ARE LOADED FROM script.js -->
-            <div class="preview-grid" id="homePreviews"></div>
+            <!-- THREE PORTFOLIO CATEGORIES -->
+            <div class="work-category-grid">
 
-            <div class="view-all">
-                <a class="btn" href="photography.html">
-                    View all photography ↗
+                <a class="work-category reveal" href="design.html">
+                    <img src="Images/Graphic design.jpg" alt="Graphic design portfolio preview">
+                    <span class="category-number">01 / VISUAL DESIGN</span>
+                    <h3>Graphic Design</h3>
+                    <p>Posters, branding, digital artwork and visual identities.</p>
+                    <span class="category-link">Explore graphic design ↗</span>
                 </a>
 
-                <a class="btn" href="design.html">
-                    View all design ↗
+                <a class="work-category reveal" href="photography.html">
+                    <img src="Images/Lambo.jpg" alt="Photography portfolio preview">
+                    <span class="category-number">02 / BEHIND THE LENS</span>
+                    <h3>Photography</h3>
+                    <p>Photography, cinematic frames and visual storytelling.</p>
+                    <span class="category-link">Explore photography ↗</span>
                 </a>
+
+                <a class="work-category reveal" href="ui-ux.html">
+                    <img src="Images/Ui ux design.jpg" alt="UI and UX design portfolio preview">
+                    <span class="category-number">03 / DIGITAL EXPERIENCES</span>
+                    <h3>UI/UX Designer</h3>
+                    <p>User interfaces, thoughtful experiences, wireframes and prototypes.</p>
+                    <span class="category-link">Explore UI/UX design ↗</span>
+                </a>
+
             </div>
 
         </section>
@@ -437,7 +499,7 @@
     <footer class="wrap">
 
         <span>
-            © <span data-year></span> Ajay Kumar
+            © <span data-year></span> Ajay
         </span>
 
         <span>

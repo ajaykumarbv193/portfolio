@@ -45,7 +45,7 @@ const portfolioItems = [
         title: "Social Media Creative",
         category: "design",
         type: "Campaign Design",
-        image: "ImagesBloomCrest.jpg",
+        image: "Images/BloomCrest .jpg",
         description: "Social media campaign creative."
     },
 
@@ -65,6 +65,14 @@ const portfolioItems = [
         type: "Digital Design",
         image: "Images/design/digital-design-01.jpg",
         description: "Digital design and visual communication."
+    },
+
+    {
+        title: "UI/UX Interface Concept",
+        category: "uiux",
+        type: "UI/UX Design",
+        image: "Images/Ui ux design.jpg",
+        description: "Interface design focused on clarity and usability."
     }
 
 ];
