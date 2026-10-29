@@ -5,27 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#09090c">
-
-    <meta
-        name="description"
-        content="Ajay — Graphic Designer"
-    >
+    <meta name="description" content="Ajay — Graphic Designer">
 
     <title>Soullit Design</title>
     <link rel="stylesheet" href="styles.css">
+
     <style>
-        :root { --ice: #a9c8e8; --wine: #722c3e; }
-        .brand span, .eyebrow, .section-label, h1 i, .section-head h2 i,
-        .profile-copy h2 i, .availability span { color: #a9c8e8 !important; }
-        .eyebrow:before { background: #a9c8e8 !important; }
-        .btn:hover { border-color: #a9c8e8 !important; }
-        ::selection { background: #a9c8e8 !important; color: #fff; }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap');
+
+        :root {
+            --ice: #a9c8e8;
+            --wine: #722c3e;
+            --sans: 'Space Grotesk', Arial, sans-serif;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        .brand span,
+        .eyebrow,
+        .section-label,
+        h1 i,
+        .section-head h2 i,
+        .profile-copy h2 i,
+        .availability span {
+            color: #a9c8e8 !important;
+        }
+
+        .eyebrow:before {
+            background: #a9c8e8 !important;
+        }
+
+        .btn:hover {
+            border-color: #a9c8e8 !important;
+        }
+
+        ::selection {
+            background: #a9c8e8 !important;
+            color: #fff;
+        }
+
         .work-category-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 18px;
             margin-top: 28px;
         }
+
         .work-category {
             position: relative;
             min-height: 300px;
@@ -39,35 +63,102 @@
             background: var(--panel);
             transition: transform .3s ease, border-color .3s ease;
         }
-        .work-category:hover { transform: translateY(-6px); border-color: #a9c8e8; }
-        .work-category img {
-            position: absolute; inset: 0; z-index: -2;
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: .62; transition: transform .5s ease, opacity .3s ease;
-        }
-        .work-category:hover img { transform: scale(1.05); opacity: .78; }
-        .work-category:after {
-            content: ""; position: absolute; inset: 0; z-index: -1;
-            background: linear-gradient(180deg, transparent 15%, rgba(9,9,12,.92) 100%);
-        }
-        .work-category .category-number { font: 10px var(--mono); color: #a9c8e8; letter-spacing: .16em; }
-        .work-category h3 { margin: 12px 0 8px; font-size: clamp(24px, 3vw, 38px); letter-spacing: -.06em; }
-        .work-category p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
-        .work-category .category-link { margin-top: 18px; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-        @media (max-width: 760px) {
-            .work-category-grid { grid-template-columns: 1fr; }
-            .work-category { min-height: 250px; }
-        }
-    
-        /* Refined typography: clean geometric sans + elegant editorial italic. */
-        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap');
-        :root { --sans: 'Space Grotesk', Arial, sans-serif; --serif: 'Cormorant Garamond', Georgia, serif; }
-        h1 { font-size: clamp(48px, 9.1vw, 124px); line-height: .94; letter-spacing: -.065em; overflow-wrap: normal; }
-        h1 i { letter-spacing: -.045em; line-height: 1.02; }
-        .hero { padding-top: clamp(48px, 7vh, 90px); padding-bottom: clamp(48px, 7vh, 90px); }
-        .work-category h3 { line-height: 1.08; letter-spacing: -.035em; overflow-wrap: anywhere; }
-        @media (max-width: 600px) { h1 { font-size: clamp(42px, 12vw, 68px); line-height: .98; letter-spacing: -.055em; } }
 
+        .work-category:hover {
+            transform: translateY(-6px);
+            border-color: #a9c8e8;
+        }
+
+        .work-category img {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .62;
+            transition: transform .5s ease, opacity .3s ease;
+        }
+
+        .work-category:hover img {
+            transform: scale(1.05);
+            opacity: .78;
+        }
+
+        .work-category:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(
+                180deg,
+                transparent 15%,
+                rgba(9, 9, 12, .92) 100%
+            );
+        }
+
+        .work-category .category-number {
+            font: 10px var(--mono);
+            color: #a9c8e8;
+            letter-spacing: .16em;
+        }
+
+        .work-category h3 {
+            margin: 12px 0 8px;
+            font-size: clamp(24px, 3vw, 38px);
+            letter-spacing: -.035em;
+            line-height: 1.08;
+            overflow-wrap: anywhere;
+        }
+
+        .work-category p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .work-category .category-link {
+            margin-top: 18px;
+            font: 10px var(--mono);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(48px, 9.1vw, 124px);
+            line-height: .94;
+            letter-spacing: -.065em;
+            overflow-wrap: normal;
+        }
+
+        h1 i {
+            letter-spacing: -.045em;
+            line-height: 1.02;
+        }
+
+        .hero {
+            padding-top: clamp(48px, 7vh, 90px);
+            padding-bottom: clamp(48px, 7vh, 90px);
+        }
+
+        @media (max-width: 760px) {
+            .work-category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-category {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: clamp(42px, 12vw, 68px);
+                line-height: .98;
+                letter-spacing: -.055em;
+            }
+        }
     </style>
 </head>
 
@@ -80,8 +171,16 @@
     <header id="top">
         <div class="wrap topbar">
 
-            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
-                <span></span><span></span><span></span>
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
             <a class="brand" href="index.html">
@@ -131,6 +230,7 @@
             </p>
 
             <div class="actions">
+
                 <a class="btn primary" href="#work">
                     Explore my work ↘
                 </a>
@@ -138,6 +238,7 @@
                 <a class="btn" href="mailto:ajaykumarbv193@gmail.com">
                     Contact me ↗
                 </a>
+
             </div>
 
         </section>
@@ -154,7 +255,7 @@
 
             <div class="profile-grid reveal">
 
-                <!-- PROFILE IMAGE: Images/Ajay.jpg -->
+                <!-- PROFILE IMAGE -->
                 <div class="profile-photo">
 
                     <img
@@ -199,33 +300,11 @@
                         artwork. I’m also pursuing an MCA, expanding my
                         technical foundation alongside my creative practice.
                     </p>
-<!--
-                    <div class="profile-facts">
 
-                        <div class="fact">
-                            <span>Based in</span>
-                            <strong>Bengaluru, India</strong>
-                        </div>
-
-                        <div class="fact">
-                            <span>Current role</span>
-                            <strong>DOP & Graphic Designer</strong>
-                        </div>
-
-                        <div class="fact">
-                            <span>Focus</span>
-                            <strong>Design · Photography · Film</strong>
-                        </div>
-
-                        <div class="fact">
-                            <span>Education</span>
-                            <strong>BSc CS · MCA ongoing</strong>
-                        </div>
-
-                    </div>
                 </div>
 
             </div>
+
         </section>
 
         <!-- EDUCATION -->
@@ -266,12 +345,14 @@
                 </article>
 
             </div>
+
         </section>
 
         <!-- SKILLS -->
         <section class="wrap section" id="skills">
 
             <div class="section-head reveal">
+
                 <div>
                     <div class="section-label">03 — Skills</div>
                     <h2>
@@ -279,6 +360,7 @@
                         <i>Technical thinking.</i>
                     </h2>
                 </div>
+
             </div>
 
             <div class="skills-grid reveal">
@@ -339,16 +421,19 @@
                 </div>
 
             </div>
+
         </section>
 
         <!-- WORK EXPERIENCE -->
         <section class="wrap section" id="experience">
 
             <div class="section-head reveal">
+
                 <div>
                     <div class="section-label">04 — Work experience</div>
                     <h2>Experience in <i>practice.</i></h2>
                 </div>
+
             </div>
 
             <div class="timeline reveal">
@@ -408,9 +493,10 @@
                 </article>
 
             </div>
+
         </section>
 
-        <!-- SELECTED WORK / IMAGE GALLERIES -->
+        <!-- SELECTED WORK -->
         <section class="wrap section" id="work">
 
             <div class="section-head reveal">
@@ -431,26 +517,41 @@
             <div class="work-category-grid">
 
                 <a class="work-category reveal" href="design.html">
-                    <img src="Images/Graphic design.jpg" alt="Graphic design portfolio preview">
+                    <img
+                        src="Images/Graphic design.jpg"
+                        alt="Graphic design portfolio preview"
+                    >
                     <span class="category-number">01 / VISUAL DESIGN</span>
                     <h3>Graphic Design</h3>
-                    <p>Posters, branding, digital artwork and visual identities.</p>
+                    <p>
+                        Posters, branding, digital artwork and visual identities.
+                    </p>
                     <span class="category-link">Explore graphic design ↗</span>
                 </a>
 
                 <a class="work-category reveal" href="photography.html">
-                    <img src="Images/Lambo.jpg" alt="Photography portfolio preview">
+                    <img
+                        src="Images/Lambo.jpg"
+                        alt="Photography portfolio preview"
+                    >
                     <span class="category-number">02 / BEHIND THE LENS</span>
                     <h3>Photography</h3>
-                    <p>Photography, cinematic frames and visual storytelling.</p>
+                    <p>
+                        Photography, cinematic frames and visual storytelling.
+                    </p>
                     <span class="category-link">Explore photography ↗</span>
                 </a>
 
                 <a class="work-category reveal" href="ui-ux.html">
-                    <img src="Images/Ui ux design.jpg" alt="UI and UX design portfolio preview">
+                    <img
+                        src="Images/Ui ux design.jpg"
+                        alt="UI and UX design portfolio preview"
+                    >
                     <span class="category-number">03 / DIGITAL EXPERIENCES</span>
                     <h3>UI/UX Designer</h3>
-                    <p>User interfaces, thoughtful experiences, wireframes and prototypes.</p>
+                    <p>
+                        User interfaces, thoughtful experiences, wireframes and prototypes.
+                    </p>
                     <span class="category-link">Explore UI/UX design ↗</span>
                 </a>
 
@@ -504,7 +605,9 @@
                     </a>
 
                 </div>
+
             </div>
+
         </section>
 
     </main>
