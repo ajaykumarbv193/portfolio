@@ -80,8 +80,10 @@ if (renderer) {
       }
       particleGeometry.attributes.position.needsUpdate = true;
     }
-    group.scale.setScalar(window.innerWidth < 720 ? 1.05 : 1.28);
-    group.position.set(window.innerWidth < 720 ? 1.15 : 2.35, 0.25, 0);
+    // Keep the 3D object centered on narrow screens; use a larger, offset composition on desktop.
+    const isMobile = window.innerWidth < 720;
+    group.scale.setScalar(isMobile ? 0.92 : 1.28);
+    group.position.set(isMobile ? 0 : 2.35, isMobile ? -0.05 : 0.25, 0);
     renderer.render(scene, camera);
   }
   tick();
