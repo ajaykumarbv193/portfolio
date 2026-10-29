@@ -102,3 +102,80 @@ footer{padding-block:23px 30px;border-top:1px solid var(--line);display:flex;jus
   .hero { position: relative; }
   #scene { opacity: .30; }
 }
+
+
+/* Final mobile menu: full-screen dark editorial drawer, styled to match the icy-blue portfolio. */
+@media (max-width: 600px) {
+  .topbar { z-index: 30; }
+  .menu-toggle { position: relative; z-index: 32; }
+  .menu-toggle[aria-expanded="true"] {
+    position: fixed;
+    top: 17px;
+    right: 18px;
+    left: auto;
+    background: rgba(9,9,12,.92);
+    border-color: rgba(169,200,232,.45);
+  }
+  .topbar nav,
+  .topbar nav.open {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    padding: 88px 28px 36px;
+    margin: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    overflow-y: auto;
+    background: rgba(9,9,12,.985);
+    border: 0;
+    border-right: 1px solid rgba(169,200,232,.22);
+    box-shadow: 18px 0 60px rgba(0,0,0,.45);
+    backdrop-filter: blur(18px);
+    z-index: 31;
+  }
+  .topbar nav.open { display: flex; }
+  .topbar nav::before {
+    content: "AJAY®  /  NAVIGATION";
+    display: block;
+    margin: 0 0 24px;
+    padding: 0 0 18px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ice);
+    font: 10px var(--mono);
+    letter-spacing: .18em;
+  }
+  .topbar nav a,
+  .topbar nav a:last-child {
+    display: flex;
+    align-items: center;
+    min-height: 58px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font: 500 19px var(--sans);
+    letter-spacing: -.035em;
+    text-transform: none;
+    transition: color .2s ease, padding-left .2s ease;
+  }
+  .topbar nav a::after {
+    content: "↗";
+    margin-left: auto;
+    color: var(--ice);
+    font: 12px var(--mono);
+    opacity: .8;
+  }
+  .topbar nav a:hover,
+  .topbar nav a:focus-visible { color: var(--ice); padding-left: 6px; }
+  body.mobile-menu-open { overflow: hidden; }
+  body.mobile-menu-open .brand { position: relative; z-index: 32; }
+  .hero { isolation: isolate; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar nav a { transition: none; }
+}

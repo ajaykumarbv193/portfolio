@@ -1,5 +1,5 @@
 
-// Accessible mobile navigation menu
+// Accessible responsive navigation: desktop links stay inline; mobile opens a full-screen editorial menu.
 (() => {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#primary-navigation');
@@ -9,6 +9,7 @@
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open navigation menu');
     nav.classList.remove('open');
+    document.body.classList.remove('mobile-menu-open');
   };
 
   toggle.addEventListener('click', () => {
@@ -16,14 +17,15 @@
     toggle.setAttribute('aria-expanded', String(!isOpen));
     toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
     nav.classList.toggle('open', !isOpen);
+    document.body.classList.toggle('mobile-menu-open', !isOpen);
   });
 
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeMenu();
   });
-  document.addEventListener('click', event => {
-    if (!nav.contains(event.target) && !toggle.contains(event.target)) closeMenu();
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 600) closeMenu();
   });
 })();
 
