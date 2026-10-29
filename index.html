@@ -1,277 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ajay B V — Portfolio</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08080b">
+<meta name="description" content="Ajay B V — Graphic Designer and UI/UX Designer specializing in brand identity, marketing graphics, and intuitive digital experiences.">
+<title>Ajay B V® — Graphic Designer & UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg-1:#232731;--bg-2:#17181d;--accent:#4ad0fc;--muted:#9aa1ab;--text:#ffffff;
-  --card-shadow:0 8px 24px rgba(11,13,16,0.6);
-  --max-w:1200px;
-}
-
-/* Reset */
-*{box-sizing:border-box}
-body{margin:0;font-family:'Inter',sans-serif;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:var(--text);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-
-/* Header */
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(23,24,29,0.4);backdrop-filter:blur(6px)}
-header .inner{max-width:var(--max-w);margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
-nav a{margin:0 12px;font-weight:600;color:rgba(255,255,255,0.9);position:relative}
-nav a:hover,nav a.active{color:var(--accent)}
-
-/* Hero */
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter: blur(6px) brightness(0.55);
-  z-index:-1;
-}
-.hero::after{content:"";position:absolute;inset:0;background:rgba(23,24,29,0.75)}
-.hero .content{position:relative;z-index:2;max-width:700px;text-align:left;padding:20px}
-.hero h1{font-size:56px;font-weight:800;margin:0;color:#fff;line-height:1.1}
-.hero .subtitle{color:rgba(255,255,255,0.85);font-weight:600;margin:10px 0 25px}
-.cta{display:flex;gap:14px;margin-bottom:16px}
-.btn{padding:12px 24px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
-.btn.primary{background:linear-gradient(90deg,var(--accent),#8de9ff);color:#071018}
-.btn.dark{background:rgba(255,255,255,0.1);color:#fff}
-
-/* Social icons */
-.socials{display:flex;gap:16px;margin-top:20px}
-.socials a{
-  width:42px;height:42px;
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,0.08);
-  transition:all .3s ease;
-}
-.socials a i{font-size:18px;color:white;transition:.3s}
-.socials a:hover{background:var(--accent);transform:translateY(-3px)}
-.socials a:hover i{color:#000}
-
-/* About */
-.about{padding:100px 20px;display:grid;grid-template-columns:1fr 400px;gap:30px;max-width:var(--max-w);margin:auto;align-items:center}
-.about h2{font-size:28px;margin:0 0 10px}
-.about p{color:rgba(255,255,255,0.9)}
-.portrait img{border-radius:14px;filter:grayscale(90%)}
-
-/* Resume */
-.resume{padding:80px 20px;background:rgba(255,255,255,0.02)}
-.resume h2{font-size:26px;margin-bottom:24px;text-align:center}
-.resume .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:var(--max-w);margin:auto}
-.card{background:rgba(255,255,255,0.03);border-radius:10px;padding:20px;box-shadow:var(--card-shadow)}
-.card h3{margin-top:0;color:var(--accent)}
-.list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-.list li{padding:6px 0;color:rgba(255,255,255,0.9)}
-.timeline{display:flex;flex-direction:column;gap:16px}
-.timeline-item h4{margin:0;font-weight:700}
-.timeline-item .meta{color:var(--muted);font-size:13px}
-
-/* My Work Section */
-.my-work{padding:80px 20px;max-width:var(--max-w);margin:auto}
-.my-work h2{text-align:center;font-size:26px;margin-bottom:16px}
-.my-work p{text-align:center;margin-bottom:40px;color:var(--muted)}
-.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
-.work-card{background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;cursor:pointer;box-shadow:var(--card-shadow);transition:transform .3s ease, box-shadow .3s ease}
-.work-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(11,13,16,0.8)}
-.work-card img{height:200px;object-fit:cover;width:100%}
-.work-card .content{padding:20px}
-.work-card h3{font-size:20px;margin:0 0 10px;color:var(--accent)}
-.work-card p{text-align:left;margin:0;color:var(--muted)}
-
-/* Freelancing Section */
-.freelance{padding:80px 20px;background:rgba(255,255,255,0.02)}
-.freelance h2{text-align:center;font-size:26px;margin-bottom:16px}
-.freelance p{text-align:center;margin-bottom:40px;color:var(--muted)}
-.freelance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:var(--max-w);margin:auto}
-.freelance-card{background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden;box-shadow:var(--card-shadow);transition:transform .3s ease}
-.freelance-card:hover{transform:translateY(-5px)}
-.freelance-card img{height:200px;object-fit:cover;width:100%}
-.freelance-card .content{padding:20px}
-.freelance-card h3{font-size:20px;margin:0 0 10px;color:var(--accent)}
-.freelance-card p{margin:0;color:var(--muted)}
-
-/* Footer */
-footer{padding:40px 20px;text-align:center;color:var(--muted)}
-
-/* Responsive */
-@media(max-width:800px){
-  .about{grid-template-columns:1fr}
-  .resume .grid{grid-template-columns:1fr}
-  .hero h1{font-size:42px}
-}
+:root{--bg:#08080b;--paper:#f4f0e9;--muted:#a5a0a0;--line:rgba(244,240,233,.17);--wine:#702c3a;--ice:#a9c8e8;--serif:"Playfair Display",Georgia,serif;--sans:Manrope,Arial,sans-serif;--mono:"DM Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:var(--sans);overflow-x:hidden}a{color:inherit;text-decoration:none}::selection{background:var(--wine);color:#fff}
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.78}.grain{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+body:after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 80% 18%,rgba(112,44,58,.19),transparent 35%),linear-gradient(90deg,rgba(8,8,11,.55),transparent 80%)}
+header,main,footer{position:relative;z-index:2}.wrap{width:min(1280px,100%);margin:auto;padding-inline:5vw}.topbar{display:flex;align-items:center;justify-content:space-between;padding-block:25px;border-bottom:1px solid var(--line)}.brand{font-weight:800;font-size:14px;letter-spacing:-.06em}.brand b{color:var(--ice);font-weight:500}nav{display:flex;gap:30px}nav a,.micro{font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}nav a:hover{color:var(--paper)}.availability{display:flex;align-items:center;gap:9px;font:10px var(--mono);letter-spacing:.06em;color:var(--muted)}.live{width:6px;height:6px;border-radius:50%;background:#9cd8ad;box-shadow:0 0 12px #9cd8ad}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding-top:7vh;padding-bottom:9vh;position:relative}.eyebrow{display:flex;gap:12px;align-items:center;color:var(--ice);font:10px var(--mono);letter-spacing:.17em;text-transform:uppercase}.eyebrow:before{content:"";height:1px;width:36px;background:var(--ice)}h1{font-size:clamp(64px,12.8vw,174px);line-height:.79;letter-spacing:-.105em;margin:32px 0 34px;font-weight:800;max-width:1050px;position:relative;z-index:1}h1 .serif{font-family:var(--serif);font-weight:500;font-style:italic;letter-spacing:-.09em;color:var(--ice)}h1 .stroke{color:transparent;-webkit-text-stroke:1px rgba(244,240,233,.7)}.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:35px;max-width:960px}.intro{max-width:460px;font-size:15px;line-height:1.9;color:#b8b2b2}.intro strong{font-weight:600;color:var(--paper)}.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}.button{display:inline-flex;align-items:center;gap:15px;padding:14px 17px;border:1px solid var(--line);font-size:10px;letter-spacing:.09em;text-transform:uppercase;transition:transform .25s,border-color .25s,background .25s}.button:hover{transform:translateY(-3px);border-color:var(--ice)}.button.filled{background:var(--paper);color:var(--bg);border-color:var(--paper)}.hero-index{font:10px var(--mono);color:var(--muted);writing-mode:vertical-rl;letter-spacing:.14em}.orb-note{position:absolute;right:8%;top:22%;font:9px var(--mono);color:rgba(244,240,233,.55);letter-spacing:.12em;transform:rotate(90deg)}
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:17px 0;color:var(--muted);font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}.marquee-track{display:flex;width:max-content;gap:28px;animation:marquee 28s linear infinite}.marquee em{font-family:var(--serif);font-size:15px;color:var(--ice)}@keyframes marquee{to{transform:translateX(-50%)}}
+section.content{padding-block:115px}.section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:43px}.section-label{font:10px var(--mono);letter-spacing:.16em;color:var(--ice);text-transform:uppercase}.section-top h2{font-size:clamp(38px,6.3vw,82px);letter-spacing:-.085em;line-height:.95;margin:17px 0 0}.section-top h2 i{font-family:var(--serif);font-weight:500;color:var(--ice)}.section-desc{font-size:12px;line-height:1.9;color:var(--muted);max-width:300px}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:48px 20px}.project{min-width:0}.artwork{height:clamp(260px,37vw,490px);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#151116;isolation:isolate;display:grid;place-items:center;transition:border-color .35s}.project:hover .artwork{border-color:rgba(169,200,232,.65)}.artwork:before{content:"";position:absolute;inset:0;z-index:-2;background:var(--artbg,radial-gradient(ellipse at 50% 25%,#69323c,#151116 65%))}.artwork:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 38%,rgba(0,0,0,.08));mix-blend-mode:multiply}.artwork .shape{position:absolute;transition:transform .8s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 30px 45px rgba(0,0,0,.4))}.project:hover .shape{transform:translateY(-8px) rotate(4deg) scale(1.04)}.artwork .poster-type{position:relative;z-index:1;text-align:center;font-size:clamp(34px,7vw,95px);font-weight:800;line-height:.8;letter-spacing:-.09em;text-transform:uppercase;text-shadow:0 10px 35px rgba(0,0,0,.25)}.poster-type .italic{font-family:var(--serif);font-weight:500;font-style:italic;text-transform:none;color:#e8c9c4}.artwork .tiny{position:absolute;z-index:3;left:20px;top:20px;font:9px var(--mono);letter-spacing:.12em}.artwork .tiny.bottom{top:auto;left:auto;right:20px;bottom:20px}.artwork.one{--artbg:radial-gradient(ellipse at 55% 30%,#8a4d4c,#2b171e 48%,#0e0d12 82%)}.one .shape{width:44%;height:66%;border-radius:48% 52% 42% 58%;background:linear-gradient(130deg,#d6b6a2,#65434b 42%,#17171e 75%);transform:rotate(25deg);opacity:.85;filter:blur(.2px) drop-shadow(0 25px 35px #070609)}.artwork.two{--artbg:radial-gradient(ellipse at 48% 48%,#233d50,#10171e 65%,#080b10)}.two .shape{width:46%;aspect-ratio:1;border:1px solid rgba(220,233,245,.7);border-radius:50%;box-shadow:inset 0 0 50px rgba(169,200,232,.2),0 0 80px rgba(94,152,191,.2);transform:rotateX(62deg) rotate(-22deg)}.two .shape:before,.two .shape:after{content:"";position:absolute;inset:12%;border:1px solid rgba(220,233,245,.5);border-radius:50%;transform:rotate(60deg)}.two .shape:after{transform:rotate(-60deg)}.artwork.three{--artbg:radial-gradient(ellipse at 55% 25%,#8a6b43,#30231f 53%,#100e10)}.three .shape{width:35%;height:65%;border-radius:45% 45% 8% 8%;background:linear-gradient(90deg,#3a2525,#d0a878 40%,#755143 72%,#211a1a);clip-path:polygon(24% 0,76% 0,100% 100%,0 100%);opacity:.92}.artwork.four{--artbg:radial-gradient(ellipse at 50% 50%,#552637,#1a1119 65%,#09080b)}.four .shape{width:55%;height:72%;border:1px solid rgba(244,222,218,.55);transform:rotate(35deg);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(100,20,45,.1));box-shadow:0 0 55px rgba(156,61,84,.25)}.project-meta{display:flex;justify-content:space-between;gap:15px;margin-top:17px;font:9px var(--mono);letter-spacing:.1em;color:var(--muted);text-transform:uppercase}.project-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}.project-title h3{font-size:clamp(20px,2.5vw,30px);letter-spacing:-.06em;margin:0;font-weight:600}.arrow{font-size:18px;color:var(--ice);transition:transform .25s}.project:hover .arrow{transform:translate(3px,-3px)}.project-copy{font-size:12px;line-height:1.7;color:var(--muted);max-width:450px;margin:9px 0 0}
+.manifesto{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;border-top:1px solid var(--line);padding-top:35px}.manifesto h2{font-size:clamp(36px,5vw,65px);letter-spacing:-.08em;line-height:.98;margin:12px 0}.manifesto h2 i{font-family:var(--serif);font-weight:500;color:var(--ice)}.manifesto p{font-size:14px;line-height:2;color:var(--muted);max-width:500px;margin:0}.toolset{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.tool{border:1px solid var(--line);padding:10px 12px;color:#d5d0ce;font:9px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.contact-panel{position:relative;border:1px solid var(--line);padding:clamp(28px,7vw,82px);overflow:hidden;background:linear-gradient(120deg,rgba(112,44,58,.2),transparent 55%),rgba(255,255,255,.015)}.contact-panel:after{content:"";position:absolute;right:-10%;top:-60%;width:50vw;max-width:520px;aspect-ratio:1;border:1px solid rgba(169,200,232,.18);border-radius:50%;box-shadow:0 0 0 35px rgba(169,200,232,.025),0 0 0 70px rgba(169,200,232,.02);pointer-events:none}.contact-panel h2{font-size:clamp(48px,9vw,112px);line-height:.86;letter-spacing:-.1em;margin:25px 0;position:relative;z-index:1}.contact-panel h2 i{font-family:var(--serif);font-weight:500;color:var(--ice)}.contact-panel p{max-width:420px;color:var(--muted);font-size:13px;line-height:1.9;position:relative;z-index:1}.contact-panel .cta-row{position:relative;z-index:1}
+footer{padding-block:24px 32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:translateY(0)}
+@media(max-width:720px){nav{gap:13px}nav a{font-size:9px}.availability{display:none}.hero{min-height:82vh;padding-top:10vh}.hero-foot{display:block}.hero-index{display:none}.orb-note{right:5%;top:16%;font-size:8px}.projects{grid-template-columns:1fr;gap:36px}.artwork{height:clamp(300px,95vw,490px)}section.content{padding-block:78px}.section-top{display:block}.section-desc{margin-top:22px}.manifesto{grid-template-columns:1fr;gap:25px}.contact-panel h2{font-size:clamp(48px,14vw,85px)}footer{flex-direction:column}.wrap{padding-inline:5vw}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="inner">
-    <nav>
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#resume">Resume</a>
-      <a href="#my-work">My Work</a>
-      <a href="#freelance">Freelance</a>
-    </nav>
-    <!-- Phone number removed as requested -->
-  </div>
-</header>
-
-<section id="home" class="hero">
-  <!-- Background image converted from CSS to HTML img tag -->
-  <img src="Images/Background.jpg" class="hero-bg" alt="Background">
-  <div class="content">
-    <h1>AJAY B V</h1>
-    <p class="subtitle">Graphic Designer & UI/UX Designer</p>
-    <div class="cta">
-      <a href="#resume" class="btn primary">Resume</a>
-      <a href="#my-work" class="btn dark">My Work</a>
-    </div>
-    <!-- Social Icons -->
-    <div class="socials">
-      <a href="https://www.instagram.com/aj_devil__" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:ajaykumarbv193@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/ajay-b-v-805922334" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </div>
+<canvas id="scene" aria-hidden="true"></canvas><div class="grain"></div>
+<header><div class="wrap topbar"><a class="brand" href="#top">AJAY B V<b>®</b></a><nav><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Resume</a><a href="#contact">Contact ↗</a></nav><div class="availability"><span class="live"></span> AVAILABLE FOR SELECT PROJECTS</div></div></header>
+<main id="top">
+<section class="wrap hero">
+<div class="eyebrow">Graphic Designer & UI/UX Designer</div>
+<div class="orb-note">A STUDY IN LIGHT / FORM / FEELING</div>
+<h1>VISUALS<br>THAT <span class="serif">feel.</span><br><span class="stroke">STORIES.</span></h1>
+<div class="hero-foot"><div class="intro">I’m <strong>Ajay B V</strong> — a versatile Graphic Designer and UI/UX Designer specializing in brand identity, marketing graphics, and intuitive digital experiences. I turn ideas into cohesive, impactful designs.</div><div class="hero-index">INDEPENDENT DESIGNER / BENGALURU, INDIA</div></div>
+<div class="cta-row"><a class="button filled" href="#work">Explore selected work <span>↘</span></a><a class="button" href="#contact">Start a conversation <span>↗</span></a></div>
 </section>
-
-<section id="about" class="about">
-  <div>
-    <h2>About</h2>
-    <p>
-     I am a Versatile Designer specializing in Brand Identity, Marketing Graphics, and Intuitive UI/UX solutions.
-My core strength is creating memorable visuals and functional, appealing user experiences, from Logo Design and effective Layouts to Interactive Prototypes and Design Systems. I turn ideas into cohesive, impactful designs.
-    </p>
-    <p style="margin-top:10px;color:var(--accent)">Email: <a href="mailto:ajaykumarbv193@gmail.com">ajaykumarbv193@gmail.com</a></p>
-  </div>
-  <div class="portrait">
-    <img src="Images/Ajay.jpg" alt="Ajay B V Portrait">
-  </div>
+<div class="marquee"><div class="marquee-track"><span>Art direction</span><em>✳</em><span>Cinematic posters</span><em>✳</em><span>Visual identity</span><em>✳</em><span>Digital illustration</span><em>✳</em><span>Typography</span><em>✳</em><span>Art direction</span><em>✳</em><span>Cinematic posters</span><em>✳</em><span>Visual identity</span><em>✳</em><span>Digital illustration</span><em>✳</em><span>Typography</span><em>✳</em></div></div>
+<section class="wrap content" id="work">
+<div class="section-top reveal"><div><div class="section-label">01 — Selected work</div><h2>Made to be <i>felt.</i></h2></div><p class="section-desc">A curated direction for cinematic artwork, poster design and visual storytelling. Swap these concept covers for your final artwork images.</p></div>
+<div class="projects">
+<article class="project reveal"><a href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=drive_link" target="_blank" rel="noreferrer"><div class="artwork one"><span class="tiny">PORTFOLIO / 01</span><div class="shape"></div><div class="poster-type">BRAND<br><span class="italic">with</span><br>MEANING</div><span class="tiny bottom">GRAPHIC DESIGN</span></div><div class="project-meta"><span>Graphic design</span><span>Open portfolio ↗</span></div><div class="project-title"><h3>Graphic Design & Branding</h3><span class="arrow">↗</span></div><p class="project-copy">Logo designs, branding, posters, marketing graphics and visual identity work.</p></a></article>
+<article class="project reveal"><a href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=drive_link" target="_blank" rel="noreferrer"><div class="artwork two"><span class="tiny">PORTFOLIO / 02</span><div class="shape"></div><div class="poster-type">DIGITAL<br><span class="italic">made</span><br>HUMAN</div><span class="tiny bottom">UI / UX DESIGN</span></div><div class="project-meta"><span>UI / UX design</span><span>Open portfolio ↗</span></div><div class="project-title"><h3>UI/UX & Digital Experiences</h3><span class="arrow">↗</span></div><p class="project-copy">User interfaces, app designs, interactive prototypes and digital experiences.</p></a></article>
+<article class="project reveal"><div class="artwork three"><span class="tiny">FREELANCE / 01</span><div class="shape"></div><div class="poster-type">VR<br><span class="italic">interiors</span></div><span class="tiny bottom">BRAND IDENTITY PROJECT</span></div><div class="project-meta"><span>Freelance project</span><span>01 / Selected work</span></div><div class="project-title"><h3>VR Interiors</h3><span class="arrow">↗</span></div><p class="project-copy">A selected client project featured in my freelance portfolio.</p></article>
+<article class="project reveal"><div class="artwork four"><span class="tiny">FREELANCE / 02</span><div class="shape"></div><div class="poster-type">BLOOM<br><span class="italic">crest</span></div><span class="tiny bottom">E-COMMERCE WEBSITE</span></div><div class="project-meta"><span>Freelance project</span><span>02 / Selected work</span></div><div class="project-title"><h3>BloomCrest</h3><span class="arrow">↗</span></div><p class="project-copy">An e-commerce website project featured among my selected client work.</p></article>
+</div>
 </section>
-
-<section id="resume" class="resume">
-  <h2>Resume</h2>
-  <div class="grid">
-
-    <div class="card">
-      <h3>Software Skills</h3>
-      <ul class="list">
-        <li>Adobe Photoshop</li>
-        <li>Adobe Illustrator</li>
-        <li>Figma</li>
-        <li>Canva</li>
-        <li>Premiere Pro</li>
-        <li>HTML, CSS, Java, C++</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Experience</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h4>Cloudisian Pvt Ltd — Intern (UI/UX Designing)</h4>
-          <p class="meta">Completed — August 2025</p>
-        </div>
-        <div class="timeline-item">
-          <h4>inGo Electric Pvt Ltd — Intern (Social Media Marketing & Graphic Designing)</h4>
-          <p class="meta">Nov 2024 — Feb 2025</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="my-work" class="my-work">
-  <h2>My Work</h2>
-  <p>Explore my design portfolio across different disciplines</p>
-  
-  <div class="work-grid">
-    <!-- Graphic Design Card -->
-    <a href="https://drive.google.com/drive/folders/1e-bJJVdz6WPxXC9gudbwX_K5-7Bfrsmi?usp=drive_link" target="_blank" class="work-card">
-      <img src="Images/Graphic design.jpg" alt="Graphic Design">
-      <div class="content">
-        <h3>Graphic Design</h3>
-        <p>Logo designs, branding, posters, and visual identity work. Click to view my complete graphic design portfolio.</p>
-      </div>
-    </a>
-    
-    <!-- UI/UX Design Card -->
-    <a href="https://drive.google.com/drive/folders/1-SFCltYcs-Q0O7ShaA5hKFAJ5cIYqnNP?usp=drive_link" target="_blank" class="work-card">
-      <img src="Images/Ui ux design.jpg" alt="UI/UX Design">
-      <div class="content">
-        <h3>UI/UX Design</h3>
-        <p>User interfaces, app designs, and digital experiences. Click to view my complete UI/UX design portfolio.</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section id="freelance" class="freelance">
-  <h2>Freelance Projects</h2>
-  <p>Selected projects I've completed for clients</p>
-  
-  <div class="freelance-grid">
-    <!-- Freelance Project 1 -->
-    <div class="freelance-card">
-      <img src="Images/VR_Interiors.jpg" alt="Brand Identity Project">
-      <div class="content">
-        <h3>VR Interiors</h3>
-      </div>
-    </div>
-    
-    <!-- Freelance Project 2 -->
-    <div class="freelance-card">
-      <img src="Images/BloomCrest .jpg" alt="E-commerce Website">
-      <div class="content">
-        <h3>BloomCrest</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © <span id="year"></span> Ajay B V · All Rights Reserved
-</footer>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Update active nav link on scroll
-window.addEventListener('scroll', function() {
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('nav a');
-  
-  let current = '';
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (pageYOffset >= sectionTop - 100) {
-      current = section.getAttribute('id');
-    }
-  });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-});
+<section class="wrap content" id="about"><div class="manifesto reveal"><div><div class="section-label">02 — Point of view</div><h2>Less noise.<br>More <i>meaning.</i></h2></div><div><p>I am a versatile designer specializing in <strong>Brand Identity, Marketing Graphics, and Intuitive UI/UX solutions.</strong> My core strength is creating memorable visuals and functional, appealing user experiences — from logo design and effective layouts to interactive prototypes and design systems. I turn ideas into cohesive, impactful designs.</p><div class="toolset"><span class="tool">Adobe Photoshop</span><span class="tool">Adobe Illustrator</span><span class="tool">Figma</span><span class="tool">Canva</span><span class="tool">Premiere Pro</span><span class="tool">HTML</span><span class="tool">CSS</span><span class="tool">Java</span><span class="tool">C++</span></div></div></div></section>
+<section class="wrap content" id="experience"><div class="section-top reveal"><div><div class="section-label">03 — Resume & experience</div><h2>Experience in <i>practice.</i></h2></div><p class="section-desc">Design experience across user interfaces, social media marketing and graphic design.</p></div><div class="manifesto reveal"><div><div class="section-label">Software skills</div><div class="toolset"><span class="tool">Adobe Photoshop</span><span class="tool">Adobe Illustrator</span><span class="tool">Figma</span><span class="tool">Canva</span><span class="tool">Premiere Pro</span><span class="tool">HTML / CSS</span><span class="tool">Java</span><span class="tool">C++</span></div></div><div><div class="section-label">Work experience</div><div style="border-top:1px solid var(--line);margin-top:18px;padding-top:18px"><div style="display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap"><strong>Cloudisian Pvt Ltd</strong><span class="micro">UI/UX Designing Intern</span></div><p style="margin-top:8px">Internship completed — August 2025.</p></div><div style="border-top:1px solid var(--line);margin-top:20px;padding-top:18px"><div style="display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap"><strong>inGo Electric Pvt Ltd</strong><span class="micro">Nov 2024 — Feb 2025</span></div><p style="margin-top:8px">Intern — Social Media Marketing & Graphic Designing.</p></div></div></div></section>
+<section class="wrap content" id="contact"><div class="contact-panel reveal"><div class="section-label">03 — Have something in mind?</div><h2>Let’s make<br>it <i>mean</i><br>something.</h2><p>Available for graphic design, brand identity, marketing creative, UI/UX design and freelance collaborations.</p><div class="cta-row"><a class="button filled" href="mailto:ajaykumarbv193@gmail.com">Email me ↗</a><a class="button" href="https://github.com/Ajaykumarbv193" target="_blank" rel="noreferrer">GitHub ↗</a><a class="button" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></div></section>
+</main>
+<footer class="wrap"><span>© <span id="year"></span> Ajay B V</span><span>Made with feeling · Bengaluru, India</span><a href="#top">Back to top ↑</a></footer>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+const canvas=document.querySelector('#scene');
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try{renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});}catch(e){canvas.style.display='none';}
+if(renderer){
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.6));renderer.setSize(innerWidth,innerHeight);
+ const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,100);camera.position.z=8;
+ const sculpture=new THREE.Group();scene.add(sculpture);
+ const core=new THREE.Mesh(new THREE.IcosahedronGeometry(1.28,2),new THREE.MeshStandardMaterial({color:0x9b5865,metalness:.8,roughness:.27,wireframe:true,transparent:true,opacity:.82}));sculpture.add(core);
+ const ringMat=new THREE.MeshStandardMaterial({color:0xa9c8e8,metalness:.65,roughness:.3,wireframe:true,transparent:true,opacity:.36});
+ for(let i=0;i<3;i++){const ring=new THREE.Mesh(new THREE.TorusGeometry(1.7+i*.19,.008,6,140),ringMat);ring.rotation.set(i*.8,i*.6,i*.45);sculpture.add(ring);}
+ const dustGeo=new THREE.BufferGeometry(),dust=[];for(let i=0;i<800;i++)dust.push((Math.random()-.5)*18,(Math.random()-.5)*12,(Math.random()-.5)*10);dustGeo.setAttribute('position',new THREE.Float32BufferAttribute(dust,3));
+ const dustField=new THREE.Points(dustGeo,new THREE.PointsMaterial({color:0xd8d7df,size:.012,transparent:true,opacity:.6}));scene.add(dustField);
+ scene.add(new THREE.AmbientLight(0xc0c7df,1.35));const key=new THREE.PointLight(0x9dbbe8,22);key.position.set(3,2,5);scene.add(key);const wine=new THREE.PointLight(0x8d334c,14);wine.position.set(-3,-2,2);scene.add(wine);
+ let px=0,py=0,tx=0,ty=0;window.addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5);ty=(e.clientY/innerHeight-.5)},{passive:true});
+ function resize(){renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()}window.addEventListener('resize',resize);
+ const clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();px+=(tx-px)*.035;py+=(ty-py)*.035;if(!reduced){sculpture.rotation.y=t*.075+px*.35;sculpture.rotation.x=Math.sin(t*.22)*.12+py*.22;core.rotation.z=t*.05;dustField.rotation.y=t*.006}sculpture.position.set(innerWidth<720?1.55:2.5,.45,0);renderer.render(scene,camera)}animate();
+}
+const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelector('#year').textContent=new Date().getFullYear();
 </script>
-
-</body>
-</html>
+</body></html>
