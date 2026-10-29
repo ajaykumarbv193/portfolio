@@ -21,3 +21,25 @@ footer{padding-block:23px 30px;border-top:1px solid var(--line);display:flex;jus
 
 /* Readable responsive type and blue accent consistency */
 @media(max-width:600px){h1{font-size:clamp(42px,12vw,68px);line-height:.98;letter-spacing:-.055em}.page-hero h1{font-size:clamp(42px,11vw,70px)}}
+
+/* Final alignment and motion polish */
+.timeline .job {
+  grid-template-columns: minmax(250px, 1.05fr) minmax(300px, 1.65fr) minmax(135px, auto);
+  align-items: center;
+  column-gap: clamp(18px, 2.4vw, 38px);
+}
+.timeline .job > div:first-child,
+.timeline .job > p { min-width: 0; }
+.timeline .job p { max-width: 720px; }
+.timeline .job .date { justify-self: end; text-align: right; }
+.hero h1 { max-width: 780px; text-wrap: balance; }
+#scene { opacity: .56; }
+@media (max-width: 800px) {
+  .timeline .job { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); align-items: start; }
+  .timeline .job .date { grid-column: 1 / -1; grid-row: 1; justify-self: start; text-align: left; }
+}
+@media (max-width: 600px) {
+  .timeline .job { grid-template-columns: 1fr; row-gap: 9px; }
+  .timeline .job .date { grid-column: auto; grid-row: auto; }
+  .hero h1 { max-width: 100%; }
+}
