@@ -31,7 +31,7 @@ if (renderer) {
   }
 
   // A denser field of small, visible blue-white particles across the whole page.
-  const particleCount = window.innerWidth < 700 ? 1700 : 2600;
+  const particleCount = window.innerWidth < 700 ? 2400 : 4200;
   const positions = new Float32Array(particleCount * 3);
   const drift = new Float32Array(particleCount);
   const twinkle = new Float32Array(particleCount);
@@ -44,7 +44,7 @@ if (renderer) {
   }
   const particleGeometry = new THREE.BufferGeometry();
   particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const particleMaterial = new THREE.PointsMaterial({ color: 0xd4e5f8, size: 0.027, transparent: true, opacity: 0.78, sizeAttenuation: true, depthWrite: false });
+  const particleMaterial = new THREE.PointsMaterial({ color: 0xd4e5f8, size: 0.024, transparent: true, opacity: 0.84, sizeAttenuation: true, depthWrite: false });
   const particles = new THREE.Points(particleGeometry, particleMaterial);
   scene.add(particles);
 
@@ -87,7 +87,7 @@ if (renderer) {
     // Center the artwork within the hero composition, with safe spacing from the top navigation.
     const targetScale = isMobile ? 0.72 : (isTablet ? 0.98 : 1.12);
     group.scale.setScalar(targetScale);
-    const targetX = isMobile ? 0.08 : (isTablet ? 0.9 : 1.0);
+    const targetX = isMobile ? 0.08 : (isTablet ? 0.9 : 2.05);
     const targetY = isMobile ? -0.38 : -0.24;
     group.position.x += (targetX - group.position.x) * 0.035;
     group.position.y += (targetY - group.position.y) * 0.035;

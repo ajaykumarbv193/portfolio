@@ -179,3 +179,29 @@ footer{padding-block:23px 30px;border-top:1px solid var(--line);display:flex;jus
 @media (prefers-reduced-motion: reduce) {
   .topbar nav a { transition: none; }
 }
+
+
+/* Final refinements: keep the mobile navigation above all page content with an opaque background. */
+@media (max-width: 600px) {
+  body.mobile-menu-open header#top {
+    position: relative;
+    z-index: 100;
+  }
+  body.mobile-menu-open .topbar nav,
+  body.mobile-menu-open .topbar nav.open {
+    background: #09090c;
+    opacity: 1;
+    isolation: isolate;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  body.mobile-menu-open main,
+  body.mobile-menu-open footer {
+    z-index: 1;
+  }
+}
+
+/* Desktop only: shift the 3D object into the open right-hand space, away from the headline. */
+@media (min-width: 1050px) {
+  #scene { opacity: .56; }
+}
