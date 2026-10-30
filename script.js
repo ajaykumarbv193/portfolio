@@ -76,7 +76,7 @@ const portfolioItems = [
         title: "Social Media Creative",
         category: "design",
         type: "Campaign Design",
-        image: "Images/Graphic design/BloomCrest .jpg",
+        image: "Images/Graphic design/GD1.png",
         description: "Social media campaign creative."
     },
 
