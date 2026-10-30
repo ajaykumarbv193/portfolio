@@ -79,7 +79,38 @@ const portfolioItems = [
         image: "Images/Graphic design/GD1.png",
         description: "Social media campaign creative."
     },
-
+  
+    {
+        title: "Social Media Creative",
+        category: "design",
+        type: "Campaign Design",
+        image: "Images/Graphic design/GD2.png",
+        description: "Social media campaign creative."
+    },
+    
+   {
+        title: "Social Media Creative",
+        category: "design",
+        type: "Campaign Design",
+        image: "Images/Graphic design/GD3.jpg",
+        description: "Social media campaign creative."
+    },
+    
+   {
+        title: "Social Media Creative",
+        category: "design",
+        type: "Campaign Design",
+        image: "Images/Graphic design/GD4.jpeg",
+        description: "Social media campaign creative."
+    },
+    
+    {
+        title: "Social Media Creative",
+        category: "design",
+        type: "Campaign Design",
+        image: "Images/Graphic design/GD5.jpeg",
+        description: "Social media campaign creative."
+    },
     // PHOTOGRAPHY / DOP
     {
         title: "Photography 01",
