@@ -1,132 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#09090c">
-    <meta name="description" content="Graphic design, posters, branding and digital visuals by Ajay.">
-
-    <title>Graphic Design</title>
-
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body data-category="design">
-
-    <!-- Background Effects -->
-    <canvas id="scene" aria-hidden="true"></canvas>
-    <div class="grain"></div>
-
-    <!-- Header / Navigation -->
-    <header id="top">
-        <div class="wrap topbar">
-
-            <a class="brand" href="index.html">
-                SOULLIT DESIGN
-            </a>
-
-            <nav aria-label="Main navigation">
-                <a href="index.html#profile">About</a>
-                <a href="index.html#experience">Experience</a>
-                <a href="index.html#work">Selected Work</a>
-                <a href="index.html#contact">Contact</a>
-            </nav>
-
-        </div>
-    </header>
-
-    <main>
-
-        <!-- Page Hero -->
-        <section class="wrap page-hero">
-
-            <div class="eyebrow">
-                Graphic Design · Posters · Digital Visuals
-            </div>
-
-            <h1>
-                DESIGNED<br>
-                <i>to connect.</i>
-            </h1>
-
-            <p class="hero-copy">
-                Explore graphic design, posters, branding, social media
-                creatives, and cinematic artwork. Add your exported
-                visuals to the gallery data to display your work here.
-            </p>
-
-            <div class="actions">
-                <a class="btn" href="index.html">
-                    ← Back to Portfolio
-                </a>
-            </div>
-
-        </section>
-
-        <!-- Graphic Design Gallery -->
-        <section class="wrap section" id="design-gallery">
-
-            <div class="gallery-tools">
-
-                <div>
-                    <div class="section-label">
-                        Design Collection
-                    </div>
-
-                    <p class="section-desc">
-                        Explore your graphic design projects in a
-                        scrolling visual gallery. Click an image
-                        to view it in a larger preview.
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Gallery images are populated by script.js -->
-            <div class="gallery" id="fullGallery"></div>
-
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="wrap">
-
-        <span>
-            © <span data-year></span> Ajay
-        </span>
-
-        <a href="index.html">
-            Main Portfolio ↗
-        </a>
-
-    </footer>
-
-    <!-- Image Lightbox -->
-    <div class="lightbox" id="lightbox">
-
-        <button
-            id="lbClose"
-            type="button"
-            aria-label="Close image preview"
-        >
-            CLOSE ✕
-        </button>
-
-        <img
-            id="lbImage"
-            src=""
-            alt="Graphic design project preview"
-        >
-
-        <div class="caption" id="lbCaption"></div>
-
-    </div>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-    <script type="module" src="scene.js"></script>
-
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Graphic Design | Ajay</title>
+<link href="css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="font/bootstrap-icons.css"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/ajay-overrides.css"></head>
+<body data-category="design"><div class="orb orb-1"></div><div class="orb orb-2"></div><header id="topbar"><a class="logo-text" href="index.html" style="text-decoration:none">SOULLIT DESIGN</a><div class="status-badge"><span class="status-dot"></span> Portfolio / Selected Work</div></header>
+<main class="section" style="padding-top:2rem"><div class="section-content"><div class="page-hero"><div class="section-label">SOULLIT DESIGN</div><h1>DESIGNED to connect.</h1><p>Explore graphic design, posters, branding, social media creatives, and cinematic artwork. Browse selected visual design projects below.</p><div class="page-links"><a href="index.html">← Back to Portfolio</a><a href="photography.html">Photography</a><a href="design.html">Graphic Design</a><a href="ui-ux.html">UI/UX</a></div></div><div class="gallery-grid" id="gallery"></div></div></main>
+<div id="lightbox"><button id="lbClose" aria-label="Close">×</button><div><img id="lbImage" src="" alt=""><p id="lbCaption" style="text-align:center;color:white;margin-top:1rem"></p></div></div>
+<footer>© 2026 Ajay · SOULLIT DESIGN</footer><script>
+const entries = {
+ design: [
+  ["BloomCrest","Branding / Poster","Images/Graphic design/BloomCrest .webp"],
+  ["Dussehra Poster","Poster Design","Images/Graphic design/Dusheera Poster.webp"],
+  ["Graphic Design 01","Visual Design","Images/Graphic design/GD1.webp"],
+  ["Graphic Design 02","Visual Design","Images/Graphic design/GD2.webp"],
+  ["Graphic Design 03","Visual Design","Images/Graphic design/GD3.webp"],
+  ["Graphic Design 04","Visual Design","Images/Graphic design/GD4.webp"],
+  ["Graphic Design 05","Visual Design","Images/Graphic design/GD5.webp"],
+  ["Lamborghini","Automotive Artwork","Images/Graphic design/Lambo.webp"],
+  ["Mustang","Automotive Artwork","Images/Graphic design/Mustang.webp"],
+  ["NVJ Jewellery","Digital Design","Images/Graphic design/NVJ Jewellery.webp"],
+  ["Porsche 911","Automotive Artwork","Images/Graphic design/Porsche 911.webp"],
+  ["VR Interiors","Digital Visual","Images/Graphic design/VR_Interiors.webp"],
+  ["Tuatarа","Automotive Artwork","Images/Graphic design/tuatara.webp"]
+ ],
+ photography: [
+  ["Evening","Photography / DOP","Images/Photography/Evening.webp"],
+  ["Nature","Photography / DOP","Images/Photography/Nature.webp"],
+  ["Temple","Photography / DOP","Images/Photography/Temple.webp"],
+  ["Terrace","Photography / DOP","Images/Photography/terrace.webp"]
+ ],
+ uiux: [
+  ["UI/UX Interface Concept","UI/UX Design","Images/UI ux designer/Ui ux design.webp"],
+  ["Interface Design","UI/UX Design","Images/Ui ux design.webp"]
+ ]
+};
+const category=document.body.dataset.category;
+const gallery=document.getElementById('gallery');
+(entries[category]||[]).forEach(([title,type,image])=>{
+ const card=document.createElement('article');card.className='gallery-card';
+ const img=document.createElement('img');img.src=image;img.alt=title;img.loading='lazy';img.addEventListener('click',()=>openLightbox(image,title));img.style.cursor='zoom-in';
+ const info=document.createElement('div');info.innerHTML=`<small>${type}</small><h3>${title}</h3><p>Selected work · Ajay</p>`;
+ card.append(img,info);gallery.append(card);
+});
+const lb=document.getElementById('lightbox'),lbimg=document.getElementById('lbImage'),caption=document.getElementById('lbCaption');
+function openLightbox(src,title){lbimg.src=src;lbimg.alt=title;caption.textContent=title;lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeLightbox(){lb.classList.remove('open');lbimg.src='';document.body.style.overflow=''}
+document.getElementById('lbClose').addEventListener('click',closeLightbox);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+</script></body></html>
