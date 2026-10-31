@@ -39,4 +39,21 @@ document.querySelectorAll('#main-nav a').forEach(a=>a.addEventListener('click',(
 const sections=[...document.querySelectorAll('.section')];const nav=[...document.querySelectorAll('#main-nav a')];
 const spy=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){const i=sections.indexOf(e.target);nav.forEach((n,j)=>n.classList.toggle('active',i===j));}}),{threshold:.35});
 sections.forEach(s=>spy.observe(s));
-</script></body></html>
+</script>
+<script>
+(() => {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  let raf = 0;
+  window.addEventListener('pointermove', (event) => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      document.body.style.setProperty('--mouse-x', event.clientX + 'px');
+      document.body.style.setProperty('--mouse-y', event.clientY + 'px');
+      document.body.classList.add('pointer-glow');
+    });
+  }, { passive: true });
+  window.addEventListener('pointerleave', () => document.body.classList.remove('pointer-glow'));
+})();
+</script>
+
+</body></html>

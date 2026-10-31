@@ -45,4 +45,21 @@ function closeLightbox(){lb.classList.remove('open');lbimg.src='';document.body.
 document.getElementById('lbClose').addEventListener('click',closeLightbox);
 lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
-</script></body></html>
+</script>
+<script>
+(() => {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  let raf = 0;
+  window.addEventListener('pointermove', (event) => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      document.body.style.setProperty('--mouse-x', event.clientX + 'px');
+      document.body.style.setProperty('--mouse-y', event.clientY + 'px');
+      document.body.classList.add('pointer-glow');
+    });
+  }, { passive: true });
+  window.addEventListener('pointerleave', () => document.body.classList.remove('pointer-glow'));
+})();
+</script>
+
+</body></html>

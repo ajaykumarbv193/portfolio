@@ -64,3 +64,34 @@ footer{position:relative;z-index:2;text-align:center;padding:2rem;color:var(--te
 @media(max-width:560px){#main-nav{right:.6rem;gap:.7rem}.nav-dot{width:8px;height:8px}.section{padding:4rem 1.2rem}.projects-grid,.gallery-grid{grid-template-columns:1fr}.home-name{font-size:clamp(3.5rem,18vw,6rem)}.about-img-wrap{height:320px}.scroll-indicator{display:none}}
 
 .section-content{opacity:1!important;transform:none!important}.nav-dot{text-decoration:none;display:block}
+
+
+/* Wider, tighter layout: reduce excessive empty gutters */
+#topbar{padding-left:clamp(18px,3.3vw,52px);padding-right:clamp(18px,3.3vw,52px)}
+.section{padding-left:clamp(18px,3.2vw,52px);padding-right:clamp(18px,3.2vw,52px)}
+.section-content{width:100%;max-width:1440px}
+.about-grid{max-width:1280px;grid-template-columns:minmax(220px,.72fr) 1.55fr;gap:clamp(24px,4vw,64px)}
+.projects-grid,.gallery-grid{width:100%;gap:clamp(12px,1.4vw,22px)}
+#sec-4 .section-content,.work-wrap{max-width:1440px}
+.contact-wrap{max-width:1000px}
+.page-hero{padding-top:3.5rem}
+footer{padding-left:3vw;padding-right:3vw}
+
+/* Soft blue light follows the pointer across the page */
+body::after{
+ content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+ background:radial-gradient(420px circle at var(--mouse-x,50%) var(--mouse-y,45%),rgba(87,151,235,.16),rgba(64,123,205,.065) 34%,transparent 70%);
+ opacity:0;transition:opacity .35s ease;
+}
+body.pointer-glow::after{opacity:1}
+@media (hover:none),(pointer:coarse){
+ body::after{display:none}
+}
+@media(max-width:850px){
+ .section{padding-left:22px;padding-right:22px}
+ .about-grid{max-width:100%;grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .section{padding-left:18px;padding-right:18px}
+ #topbar{padding-left:18px;padding-right:18px}
+}
